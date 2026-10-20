@@ -1,0 +1,20 @@
+[project]
+name = "obsagent"
+version = "0.1.0"
+description = "Observation agent over an email corpus — deterministic pipeline driven by Claude Code"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Observation Report</title>
+<style>
+:root{--navy:#0f2a43;--ink:#1b1f24;--muted:#5f6b7a;--line:#e3e6ea;--bg:#f4f6f8;--card:#fff;--accent:#c8891a;--good:#1e7f4f;--bad:#b3261e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial}
+header{background:var(--navy);color:#fff;padding:28px 40px 24px}
+header h1{margin:0;font-weight:600;font-size:24px;letter-spacing:.2px}
+header .sub{opacity:.8;font-size:13px;margin-top:6px}
+main{max-width:1200px;margin:0 auto;padding:28px 40px 60px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:-50px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.kpi .l{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+.kpi .v{font-size:30px;font-weight:650;margin-top:4px;font-variant-numeric:tabular-nums}
+.kpi .v.money{color:var(--good)}
+.kpi .d{font-size:12px;color:var(--muted);margin-top:2px}
+h2{font-size:17px;font-weight:650;margin:34px 0 12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+table{width:100%;border-collapse:collapse}
+th{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);background:#fafbfc}
+td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-variant-numeric:tabular-nums}
+tr.opp{cursor:pointer}
+tr.opp:hover{background:#fbfcfd}
+td.r{text-align:right;white-space:nowrap}
+.rank{display:inline-block;width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;text-align:center;line-height:26px;font-size:13px;font-weight:600}
+.bar{height:6px;background:#eef1f4;border-radius:3px;margin-top:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent)}
+.money{color:var(--good);font-weight:650}
+.chip{display:inline-block;font-size:11px;padding:2px 8px;border-radius:12px;background:#eef1f4;color:var(--muted);margin-right:4px}
+.chip.draft{background:#e6f4ec;color:var(--good)}
+.chip.nodraft{background:#fdecea;color:var(--bad)}
+tr.detail td{background:#fbfcfd;padding:18px 24px 22px 54px}
+.detail p{margin:0 0 10px}
+.ev{margin:14px 0 0}
+.ev li{margin:8px 0;padding:10px 12px;background:#fff;border:1px solid var(--line);border-radius:8px;list-style:none}
+.ev q{font-style:italic}
+.ev .src{display:block;font-size:12px;color:var(--muted);margin-top:4px}
+.ev a{color:#0b57d0;text-decoration:none;font-family:ui-monospace,Menlo,monospace;font-size:12px}
+.ev a:hover{text-decoration:underline}
+.calc{font-size:13px;color:var(--muted);background:#fff;border:1px dashed var(--line);border-radius:8px;padding:10px 12px;margin-top:12px;font-family:ui-monospace,Menlo,monospace}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:800px){.grid2{grid-template-columns:1fr}main,header{padding-left:16px;padding-right:16px}.kpis{margin-top:16px}}
+.small{font-size:13px;color:var(--muted)}
+.ok{color:var(--good)} .warn{color:var(--bad)}
+ul.plain{margin:0;padding:0 0 0 18px}
+footer{margin-top:40px;font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+  <h1>Where this company loses time</h1>
+  <div class="sub" id="sub">Loading…</div>
+</header>
+<main>
+  <div class="kpis" id="kpis"></div>
+
+  <h2>Ranked automation opportunities <span class="small">— click a row for evidence; click a message id to open the raw file</span></h2>
+  <div class="card"><table id="opps"><thead><tr>
+    <th>#</th><th>Opportunity</th><th class="r">Occ. / month</th><th class="r">Hours saved / mo</th><th class="r">$ / month</th><th class="r">Running total</th><th class="r">Messages</th><th>Artifact</th>
+  </tr></thead><tbody></tbody></table></div>
+
+  <div class="grid2">
+    <div>
+      <h2>Drafted artifacts</h2>
+      <div class="card" id="drafts" style="padding:14px 18px"></div>
+    </div>
+    <div>
+      <h2>Evidence integrity</h2>
+      <div class="card" id="integrity" style="padding:14px 18px"></div>
+    </div>
+  </div>
+  <footer id="foot"></footer>
+</main>
+<script>
+const $ = s => document.querySelector(s);
+const money = n => '$' + Math.round(n).toLocaleString('en-US');
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+fetch('/api/dashboard').then(r => r.json()).then(d => {
+  const c = d.corpus, v = d.validation;
+  $('#sub').textContent = `${c.files.toLocaleString()} raw messages read · ${c.unique.toLocaleString()} unique · ${c.duplicates} duplicates removed · ${c.undated} without a usable date · blended rate $85/h · generated ${d.generated_at.slice(0,16).replace('T',' ')} UTC`;
+  // the synthesis stage re-validates the quotes that survived the observation stage, so count unique quotes once
+  const totalCit = d.opportunities.reduce((n,o)=>n+o.evidence.length, 0);
+  const checkedCit = (v.observations.checked||0);
+  $('#kpis').innerHTML = [
+    ['Recoverable per month', money(d.total_dollars_saved_per_month), 'money', `${d.total_hours_saved_per_month.toLocaleString()} hours / month`],
+    ['Recoverable per year', money(d.total_dollars_saved_per_month*12), 'money', 'at a blended $85 / hour'],
+    ['Opportunities', d.opportunities.length, '', `${d.opportunities.filter(o=>o.draft_required).length} above the ${money(d.threshold)}/mo threshold`],
+    ['Verified citations', `${totalCit}`, '', `${Math.max(0, checkedCit - totalCit)} rejected or dropped of ${checkedCit} proposed`],
+  ].map(([l,v,cls,dd]) => `<div class="kpi"><div class="l">${l}</div><div class="v ${cls}">${v}</div><div class="d">${dd}</div></div>`).join('');
+
+  const max = Math.max(...d.opportunities.map(o => o.economics.dollars_saved_per_month), 1);
+  let running = 0;
+  const tb = $('#opps tbody');
+  d.opportunities.forEach(o => {
+    const e = o.economics; running += e.dollars_saved_per_month;
+    const tr = document.createElement('tr'); tr.className = 'opp';
+    const art = o.drafts.length ? o.drafts.map(x=>`<a class="chip draft" href="/drafts/${esc(x.file)}">${esc(x.type||'draft')}</a>`).join('')
+              : (o.draft_required ? '<span class="chip nodraft">missing</span>' : '<span class="chip">below threshold</span>');
+    tr.innerHTML = `<td><span class="rank">${o.rank}</span></td>
+      <td><b>${esc(o.name)}</b><div class="small">${esc(o.participants.slice(0,4).join(', '))}${o.participants.length>4?' +'+(o.participants.length-4):''}</div>
+      <div class="bar"><i style="width:${(e.dollars_saved_per_month/max*100).toFixed(1)}%"></i></div></td>
+      <td class="r">${e.occurrences_per_month}</td><td class="r">${e.hours_saved_per_month}</td>
+      <td class="r money">${money(e.dollars_saved_per_month)}</td><td class="r">${money(running)}</td>
+      <td class="r">${e.messages_total}</td><td>${art}</td>`;
+    const det = document.createElement('tr'); det.className = 'detail'; det.style.display = 'none';
+    det.innerHTML = `<td colspan="8"><div class="detail">
+      <p>${esc(o.description)}</p>
+      ${o.stall_points ? `<p><b>Where it stalls:</b> ${esc(o.stall_points)}</p>` : ''}
+      ${o.automation ? `<p><b>Automation:</b> ${esc(o.automation)}</p>` : ''}
+      <div class="calc">${e.messages_dated} dated msgs ÷ ${e.active_months} active months (${e.first_date} → ${e.last_date}) = ${e.occurrences_per_month}/mo × ${e.minutes_per_occurrence} min × ${(e.automatable_fraction*100).toFixed(0)}% automatable ÷ 60 × $85 = <b>${money(e.dollars_saved_per_month)}/mo</b>${o.estimate_rationale ? '<br>estimate: ' + esc(o.estimate_rationale) : ''}</div>
+      <ul class="ev">${o.evidence.map(ev => `<li><q>${esc(ev.quote)}</q><span class="src"><a href="/msg/${esc(ev.msg)}?line=${ev.line}" target="_blank">${esc(ev.msg)}:${ev.line}</a> · ${esc(ev.date||'undated')} · ${esc(ev.sender)} · ${esc(ev.subject)}</span></li>`).join('')}</ul>
+    </div></td>`;
+    tr.onclick = () => det.style.display = det.style.display === 'none' ? '' : 'none';
+    tb.append(tr, det);
+  });
+
+  $('#drafts').innerHTML = d.drafts.length ? '<ul class="plain">' + d.drafts.map(x => `<li><a href="/drafts/${esc(x.file)}">${esc(x.title)}</a> <span class="chip">${esc(x.type)}</span><div class="small">for: ${esc(x.opportunity)}</div></li>`).join('') + '</ul>' : '<span class="small">No drafts produced.</span>';
+  const vo = v.observations, vs = v.synthesis;
+  $('#integrity').innerHTML = `
+    <div>Observation stage: <b class="${vo.rejected?'warn':'ok'}">${vo.valid}/${vo.checked}</b> quotes matched the raw files · ${vo.rejected} rejected · ${(vo.processes_dropped||[]).length} processes dropped</div>
+    <div>Synthesis stage: <b class="${vs.rejected?'warn':'ok'}">${vs.valid}/${vs.checked}</b> quotes matched · ${vs.rejected} rejected · ${(vs.processes_dropped||[]).length} dropped</div>
+    <div class="small" style="margin-top:8px">A quote is accepted only if it appears verbatim (whitespace-insensitive, case-sensitive) in the raw file. Rejections are listed in <code>out/validation.json</code>. Frequencies count dated, de-duplicated messages only; the two model-supplied numbers (minutes per occurrence, automatable share) are shown beside every total.</div>`;
+  $('#foot').textContent = `Corpus fingerprint ${c.fingerprint.slice(0,12)} · ${c.batches} observer batches · full report at /report.md`;
+});
+</script>
+</body>
+</html>
