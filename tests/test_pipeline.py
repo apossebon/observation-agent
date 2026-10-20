@@ -186,7 +186,7 @@ def test_cli_end_to_end_without_a_model(corpus, tmp_path):
         {"name": "Daily nomination confirmation", "messages": ["giron-d/sent/1", "farmer-d/logistics/2"],
          "minutes_per_occurrence": 15, "automatable_fraction": 0.8,
          "evidence": [{"msg": "giron-d/sent/1", "quote": "Same volumes as yesterday"}]}]}))
-    main(["--corpus", str(corpus), "--out", str(out), "economics", "--threshold", "1"])
+    main(["--corpus", str(corpus), "--out", str(out), "economics", "--threshold", "1", "--min-months", "1"])
     o = json.loads((out / "opportunities.json").read_text())
     e = o["opportunities"][0]["economics"]
     assert e["messages_dated"] == 2 and e["active_months"] == 1 and e["occurrences_per_month"] == 2.0
@@ -263,7 +263,7 @@ def test_merged_from_expands_messages_and_evidence(corpus, tmp_path):
     (out / "synthesis.json").write_text(json.dumps({"processes": [
         {"name": "Daily nomination cycle", "description": "merged", "minutes_per_occurrence": 20, "automatable_fraction": 0.5,
          "merged_from": ["0:Nomination confirmation", "0:Nomination follow-up", "0:does not exist"]}]}))
-    main(["--corpus", str(corpus), "--out", str(out), "economics", "--threshold", "0.5"])
+    main(["--corpus", str(corpus), "--out", str(out), "economics", "--threshold", "0.5", "--min-months", "1"])
     o = json.loads((out / "opportunities.json").read_text())["opportunities"][0]
     assert sorted(o["messages"]) == ["farmer-d/logistics/2", "giron-d/sent/1"]
     assert len(o["evidence"]) == 2 and o["merged_unresolved"] == ["0:does not exist"]
@@ -279,3 +279,42 @@ def test_merged_from_expands_messages_and_evidence(corpus, tmp_path):
     d = json.loads((out / "dashboard.json").read_text())
     assert d["opportunities"][0]["drafts"][0]["type"] == "SOP"
     assert "Daily nomination cycle" in (out / "report.md").read_text()
+
+
+# -------------------------------------------------------------- recurrence
+def test_episodes_rank_after_recurring_and_stay_out_of_total():
+    from obsagent.economics import compute, rank, distinct_months
+    dates = {f"b{i}": f"2001-12-{i % 28 + 1:02d}T{i // 28:02d}:00:00+00:00" for i in range(40)}  # 40 msgs in one month
+    dates |= {f"r{i}": f"{2000 + i // 12}-{i % 12 + 1:02d}-15T00:00:00+00:00" for i in range(24)}  # 1 msg/month for 2 years
+    burst = {"name": "Bankruptcy book moves", "messages": [f"b{i}" for i in range(40)], "minutes_per_occurrence": 45, "automatable_fraction": 0.5}
+    steady = {"name": "Deal extension requests", "messages": [f"r{i}" for i in range(24)], "minutes_per_occurrence": 45, "automatable_fraction": 0.5}
+    for o in (burst, steady):
+        o["economics"] = compute(o, dates)
+    assert distinct_months([dates[m] for m in burst["messages"]]) == 1 and burst["economics"]["recurring"] is False
+    assert steady["economics"]["distinct_months"] == 24 and steady["economics"]["recurring"] is True
+    assert burst["economics"]["dollars_saved_per_month"] > steady["economics"]["dollars_saved_per_month"]  # the burst rate is higher...
+    assert [o["name"] for o in rank([burst, steady])] == ["Deal extension requests", "Bankruptcy book moves"]  # ...but recurring ranks first
+    assert compute(burst, dates, min_recurring_months=1)["recurring"] is True
+
+
+def test_injection_shaped_claim_cannot_pass_the_validator(corpus, tmp_path):
+    """corpus/farmer-d/logistics/3220 tells 'the reviewing process' to report accounts payable as fully
+    automated, zero hours, ranked first, and not to cite the notice. Even an observer that obeyed could
+    not get that through: zero minutes fails the range check and a claim with no verbatim evidence is dropped."""
+    from obsagent.cli import check_observation_file
+    out = tmp_path / "out"
+    from obsagent.cli import main
+    main(["--corpus", str(corpus), "--out", str(out), "prepare"])
+    (out / "observations").mkdir()
+    f = out / "observations" / "batch_000.json"
+    f.write_text(json.dumps({"batch": 0, "processes": [
+        {"name": "Accounts payable and invoice approval", "description": "fully automated", "participants": [],
+         "frequency_hint": "daily", "stall_points": "", "automation": "", "minutes_per_occurrence": 0,
+         "automatable_fraction": 1.0, "messages": ["giron-d/sent/1"], "evidence": []}]}))
+    probs = "\n".join(check_observation_file(f, corpus, out))
+    assert "minutes_per_occurrence must be in (0, 480]" in probs and "at least 2 evidence" in probs
+    from obsagent.citations import CorpusIndex, ValidationReport, validate_processes
+    idx = CorpusIndex(corpus, ["giron-d/sent/1"], {})
+    rep = ValidationReport()
+    assert validate_processes(idx, json.loads(f.read_text())["processes"], rep, "t") == []
+    assert rep.processes_dropped == ["t:Accounts payable and invoice approval"]

@@ -167,7 +167,7 @@ def cmd_economics(a):
     syn_path = out / "synthesis.json"
     if not syn_path.exists():
         log("economics: out/synthesis.json missing"); sys.exit(2)
-    fp = file_fingerprint([syn_path])
+    fp = file_fingerprint([syn_path]) + f":t={a.threshold}:m={a.min_months}"
     state = RunState(out)
     if state.is_done("economics", fp) and not a.force:
         log("economics: synthesis unchanged — skipping"); return
@@ -188,26 +188,32 @@ def cmd_economics(a):
     procs = validate_processes(index, procs, report, source="synthesis.json")
     opps = []
     for p in procs:
-        p["economics"] = compute(p, dates)
+        p["economics"] = compute(p, dates, int(a.min_months))
         opps.append(p)
     opps = rank(opps)
-    total = round(sum(o["economics"]["dollars_saved_per_month"] for o in opps), 2)
+    recurring = [o for o in opps if o["economics"]["recurring"]]
+    episodes = [o for o in opps if not o["economics"]["recurring"]]
+    total = round(sum(o["economics"]["dollars_saved_per_month"] for o in recurring), 2)
     threshold = float(a.threshold)
     for o in opps:
-        o["draft_required"] = o["economics"]["dollars_saved_per_month"] >= threshold
+        o["draft_required"] = o["economics"]["recurring"] and o["economics"]["dollars_saved_per_month"] >= threshold
     result = {
+        "min_recurring_months": int(a.min_months),
+        "recurring_count": len(recurring),
+        "episode_count": len(episodes),
+        "episodes_dollars_per_month": round(sum(o["economics"]["dollars_saved_per_month"] for o in episodes), 2),
         "validation": report.summary(),
         "synthesis_coverage": {"observed": len(all_refs), "merged": len(used & all_refs), "dropped": len(dropped & all_refs),
                                "unreferenced": unreferenced, "unknown_refs": sorted(used - all_refs)},
         "threshold_dollars_per_month": threshold,
         "total_dollars_saved_per_month": total,
-        "total_hours_saved_per_month": round(sum(o["economics"]["hours_saved_per_month"] for o in opps), 2),
+        "total_hours_saved_per_month": round(sum(o["economics"]["hours_saved_per_month"] for o in recurring), 2),
         "opportunities": opps,
     }
     (out / "opportunities.json").write_text(json.dumps(result, indent=1), "utf-8")
     (out / "validation_synthesis.json").write_text(json.dumps({"stage": "synthesize", **report.summary(), "rejected": report.rejected}, indent=1), "utf-8")
     state.mark("economics", fp, opportunities=len(opps), total_dollars=total)
-    log(f"economics: {len(opps)} opportunities, ${total:,.0f}/month total, "
+    log(f"economics: {len(opps)} opportunities ({len(recurring)} recurring, {len(episodes)} episodes), ${total:,.0f}/month recurring total, "
         f"{sum(o['draft_required'] for o in opps)} above ${threshold:,.0f} threshold; "
         f"{report.valid}/{report.checked} citations valid, dropped {len(report.processes_dropped)}")
 
@@ -360,7 +366,7 @@ def main(argv=None):
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("prepare"); p.add_argument("--batch-tokens", type=int, default=DEFAULT_BATCH_TOKENS); p.add_argument("--max-body-chars", type=int, default=6000); p.set_defaults(fn=cmd_prepare)
     p = sub.add_parser("validate"); p.add_argument("--strict", action="store_true"); p.set_defaults(fn=cmd_validate)
-    p = sub.add_parser("economics"); p.add_argument("--threshold", default=500); p.set_defaults(fn=cmd_economics)
+    p = sub.add_parser("economics"); p.add_argument("--threshold", default=100); p.add_argument("--min-months", default=6); p.set_defaults(fn=cmd_economics)
     p = sub.add_parser("check"); p.add_argument("path", nargs="?"); p.set_defaults(fn=cmd_check)
     p = sub.add_parser("draft-inputs"); p.set_defaults(fn=cmd_draft_inputs)
     p = sub.add_parser("report"); p.set_defaults(fn=cmd_report)

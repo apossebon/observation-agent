@@ -64,6 +64,10 @@ def build_report(corpus: Path, out: Path):
         "validation": {"observations": {k: obs_val.get(k) for k in ("checked", "valid", "rejected", "processes_dropped")},
                        "synthesis": {k: syn_val.get(k) for k in ("checked", "valid", "rejected", "processes_dropped")}},
         "threshold": data["threshold_dollars_per_month"],
+        "min_recurring_months": data.get("min_recurring_months", 6),
+        "recurring_count": data.get("recurring_count", len(opps)),
+        "episode_count": data.get("episode_count", 0),
+        "episodes_dollars_per_month": data.get("episodes_dollars_per_month", 0),
         "total_dollars_saved_per_month": data["total_dollars_saved_per_month"],
         "total_hours_saved_per_month": data["total_hours_saved_per_month"],
         "opportunities": opps,
@@ -81,24 +85,31 @@ def render_markdown(d: dict) -> str:
     L.append(f"Generated {d['generated_at'][:19]}Z from {d['corpus']['files']} raw messages "
              f"({d['corpus']['unique']} unique after removing {d['corpus']['duplicates']} duplicates; "
              f"{d['corpus']['undated']} without a usable date).\n")
-    L.append(f"**Total automation opportunity: ${d['total_dollars_saved_per_month']:,.0f} / month "
-             f"({d['total_hours_saved_per_month']:,.1f} hours / month at a blended $85/hour).**\n")
+    L.append(f"**Total recurring automation opportunity: ${d['total_dollars_saved_per_month']:,.0f} / month "
+             f"({d['total_hours_saved_per_month']:,.1f} hours / month at a blended $85/hour), across "
+             f"{d['recurring_count']} recurring processes.** {d['episode_count']} further episodes (work seen in fewer than "
+             f"{d['min_recurring_months']} distinct months) are listed separately and worth ${d['episodes_dollars_per_month']:,.0f} / month "
+             "while they last; they are not in the total.\n")
     L.append("Every figure below is computed from validated citations: each quote was matched verbatim "
              "against the raw file, and any claim that failed was discarded before this report was written. "
              f"Observation stage: {d['validation']['observations']['valid']}/{d['validation']['observations']['checked']} citations held; "
              f"synthesis stage: {d['validation']['synthesis']['valid']}/{d['validation']['synthesis']['checked']}.\n")
-    L.append("## Ranked opportunities\n")
-    L.append("| # | Opportunity | Occurrences / month | Hours saved / month | $ / month | Messages | Draft |")
-    L.append("|---|---|---:|---:|---:|---:|---|")
+    for title, subset in (("## Ranked recurring opportunities\n", [o for o in d["opportunities"] if o["economics"].get("recurring", True)]),
+                          (f"## Episodes (seen in fewer than {d['min_recurring_months']} distinct months)\n", [o for o in d["opportunities"] if not o["economics"].get("recurring", True)])):
+        if not subset:
+            continue
+        L.append(title)
+        L.append("| # | Opportunity | Months active | Occurrences / month | Hours saved / month | $ / month | Messages | Draft |")
+        L.append("|---|---|---:|---:|---:|---:|---:|---|")
+        for o in subset:
+            e = o["economics"]
+            draft = ", ".join(x["file"] for x in o["drafts"]) or ("—" if not o["draft_required"] else "(missing)")
+            L.append(f"| {o['rank']} | {o['name']} | {e.get('distinct_months', e['active_months'])} | {e['occurrences_per_month']} | {e['hours_saved_per_month']} | "
+                     f"{e['dollars_saved_per_month']:,.0f} | {e['messages_total']} | {draft} |")
+        L.append("")
     for o in d["opportunities"]:
         e = o["economics"]
-        draft = ", ".join(x["file"] for x in o["drafts"]) or ("—" if not o["draft_required"] else "(missing)")
-        L.append(f"| {o['rank']} | {o['name']} | {e['occurrences_per_month']} | {e['hours_saved_per_month']} | "
-                 f"{e['dollars_saved_per_month']:,.0f} | {e['messages_total']} | {draft} |")
-    L.append("")
-    for o in d["opportunities"]:
-        e = o["economics"]
-        L.append(f"## {o['rank']}. {o['name']}\n")
+        L.append(f"## {o['rank']}. {o['name']}" + ("" if e.get("recurring", True) else " (episode)") + "\n")
         L.append(o.get("description", "").strip() + "\n")
         L.append(f"- **Who touches it:** {', '.join(o.get('participants', [])) or 'n/a'}")
         L.append(f"- **How often:** {e['occurrences_per_month']} occurrences/month "
@@ -127,6 +138,8 @@ def render_markdown(d: dict) -> str:
              "4. A synthesizer merged per-batch processes into company-wide ones; its citations were checked again.\n"
              "5. Hours and dollars computed by code from dated message counts and two model-supplied estimates "
              "(minutes per occurrence, automatable fraction), both shown beside each result.\n"
-             "6. Drafts produced only for opportunities above the threshold "
+             f"6. A process counts as recurring when it has dated mail in at least {d['min_recurring_months']} distinct months; "
+             "shorter bursts are reported as episodes, outside the total.\n"
+             "7. Drafts produced only for recurring opportunities above the threshold "
              f"(${d['threshold']:,.0f}/month).\n")
     return "\n".join(L)

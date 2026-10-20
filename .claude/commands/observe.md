@@ -4,7 +4,7 @@ argument-hint: [--threshold DOLLARS_PER_MONTH] [--force]
 allowed-tools: Bash(PYTHONPATH=src python3 *), Bash(python3 *), Bash(./serve.sh *), Bash(mkdir *), Bash(echo *), Bash(cat *), Bash(ls *), Read, Write, Task
 ---
 
-Run the whole pipeline end to end, unattended. Arguments: `$ARGUMENTS` (optional `--threshold N`, default 150; optional `--force` to redo model stages even if outputs exist).
+Run the whole pipeline end to end, unattended. Arguments: `$ARGUMENTS` (optional `--threshold N`, default 100; optional `--force` to redo model stages even if outputs exist).
 
 You are the orchestrator. Deterministic work is done by `python3 -m obsagent …`; judgement is delegated to subagents with small, fixed inputs. Never read a batch file or the corpus yourself — your context is for coordination. Every stage appends to `out/logs/run.log` as shown below.
 
@@ -49,6 +49,8 @@ prints a JSON list of slugs that need a draft. For each slug launch a `drafter` 
 
 > Read `out/draft_inputs/<slug>.json` and write the artifact file(s) it asks for under `out/drafts/`.
 
+Economics is re-run whenever the threshold or the synthesis changes; the observers and the synthesizer are not. Opportunities marked `"recurring": false` (episodes) are never drafted.
+
 ## 6. Report and serve
 ```
 PYTHONPATH=src python3 -m obsagent report 2>&1 | tee -a out/logs/run.log
@@ -61,4 +63,4 @@ Then start the dashboard in the background and tell the user the URL:
 ```
 
 ## Final message
-Report, in under ten lines: messages read / unique / duplicates, batches observed, citations checked vs valid at each stage, number of opportunities, total $/month, drafts written, and the dashboard URL. Mention anything that was retried or dropped.
+Report, in under ten lines: messages read / unique / duplicates, batches observed, citations checked vs valid at each stage, number of recurring opportunities and episodes, recurring total $/month, drafts written, and the dashboard URL. Mention anything that was retried or dropped.

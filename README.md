@@ -23,7 +23,7 @@ Re-running against an unchanged corpus repeats nothing: `out/state.json` fingerp
 | observe | 28 × `observer` subagent, 6 in parallel | one batch → `out/observations/batch_NNN.json` (processes + verbatim quotes); a PostToolUse hook validates each file as it is written |
 | validate | code | every quote checked against the raw file; failures dropped and logged → `out/observations_valid.json`, `out/observations_compact.json` |
 | synthesize | 1 × `synthesizer` subagent | compact list → `out/synthesis.json` (merged processes, by reference) |
-| economics | code | expand references, re-validate, hours & dollars, rank → `out/opportunities.json` |
+| economics | code | expand references, re-validate, hours & dollars, recurrence rule (≥6 distinct months), rank → `out/opportunities.json` |
 | draft | N × `drafter` subagent | one opportunity above the threshold → `out/drafts/<slug>-<type>.md` |
 | report | code | → `out/report.md`, `out/dashboard.json` |
 | serve | code | `python3 -m obsagent serve` → dashboard with drill-through to every cited line |
@@ -31,7 +31,7 @@ Re-running against an unchanged corpus repeats nothing: `out/state.json` fingerp
 ## Check it yourself
 
 ```bash
-python3 -m pytest -q                                   # 19 tests, no model
+python3 -m pytest -q                                   # 21 tests, no model
 PYTHONPATH=src python3 -m obsagent status              # which stages are done for this corpus
 cat out/validation.json | head -40                     # every rejected citation and why
 ```

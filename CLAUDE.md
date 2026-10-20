@@ -36,5 +36,5 @@ NOTES.md                how the run was driven, what was wrong, what was taken o
 - Python 3.11+, standard library only at runtime; `pytest` for tests. Run from the repo root with `PYTHONPATH=src`.
 - Message ids are the corpus path without the trailing dot: `giron-d/sent/795` ↔ `corpus/giron-d/sent/795.`
 - Quotes are matched whitespace-insensitively but case-sensitively against the raw file; 12–400 characters.
-- Money is always `dated_messages / active_months × minutes / 60 × automatable_fraction × $85`, shown with its inputs.
+- Money is always `dated_messages / active_months × minutes / 60 × automatable_fraction × $85`, shown with its inputs. A process is recurring only with dated mail in ≥6 distinct months; episodes are listed apart, outside the total, never drafted.
 - Do not install packages, do not call external APIs, do not touch `corpus/`.

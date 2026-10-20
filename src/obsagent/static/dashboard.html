@@ -87,32 +87,34 @@ fetch('/api/dashboard').then(r => r.json()).then(d => {
   const totalCit = d.opportunities.reduce((n,o)=>n+o.evidence.length, 0);
   const checkedCit = (v.observations.checked||0);
   $('#kpis').innerHTML = [
-    ['Recoverable per month', money(d.total_dollars_saved_per_month), 'money', `${d.total_hours_saved_per_month.toLocaleString()} hours / month`],
+    ['Recoverable per month', money(d.total_dollars_saved_per_month), 'money', `${d.total_hours_saved_per_month.toLocaleString()} hours / month, recurring work only`],
     ['Recoverable per year', money(d.total_dollars_saved_per_month*12), 'money', 'at a blended $85 / hour'],
-    ['Opportunities', d.opportunities.length, '', `${d.opportunities.filter(o=>o.draft_required).length} above the ${money(d.threshold)}/mo threshold`],
+    ['Recurring processes', d.recurring_count ?? d.opportunities.length, '', `${d.opportunities.filter(o=>o.draft_required).length} above the ${money(d.threshold)}/mo threshold · ${d.episode_count ?? 0} episodes listed separately`],
     ['Verified citations', `${totalCit}`, '', `${Math.max(0, checkedCit - totalCit)} rejected or dropped of ${checkedCit} proposed`],
   ].map(([l,v,cls,dd]) => `<div class="kpi"><div class="l">${l}</div><div class="v ${cls}">${v}</div><div class="d">${dd}</div></div>`).join('');
 
   const max = Math.max(...d.opportunities.map(o => o.economics.dollars_saved_per_month), 1);
-  let running = 0;
+  let running = 0, sawEpisode = false;
   const tb = $('#opps tbody');
   d.opportunities.forEach(o => {
-    const e = o.economics; running += e.dollars_saved_per_month;
+    const e = o.economics; const rec = e.recurring ?? true;
+    if (!rec && !sawEpisode) { sawEpisode = true; const h = document.createElement('tr'); h.innerHTML = `<td colspan="8" class="small" style="background:#fafbfc;padding:10px 14px"><b>Episodes</b> — work seen in fewer than ${d.min_recurring_months ?? 6} distinct months (a one-off project or crisis). Costed while it lasted; not in the total, not drafted.</td>`; tb.append(h); }
+    if (rec) running += e.dollars_saved_per_month;
     const tr = document.createElement('tr'); tr.className = 'opp';
     const art = o.drafts.length ? o.drafts.map(x=>`<a class="chip draft" href="/drafts/${esc(x.file)}">${esc(x.type||'draft')}</a>`).join('')
-              : (o.draft_required ? '<span class="chip nodraft">missing</span>' : '<span class="chip">below threshold</span>');
+              : (o.draft_required ? '<span class="chip nodraft">missing</span>' : (rec ? '<span class="chip">below threshold</span>' : '<span class="chip">episode</span>'));
     tr.innerHTML = `<td><span class="rank">${o.rank}</span></td>
-      <td><b>${esc(o.name)}</b><div class="small">${esc(o.participants.slice(0,4).join(', '))}${o.participants.length>4?' +'+(o.participants.length-4):''}</div>
+      <td><b>${esc(o.name)}</b>${rec ? '' : ' <span class="chip">episode · ' + e.distinct_months + ' mo</span>'}<div class="small">${esc(o.participants.slice(0,4).join(', '))}${o.participants.length>4?' +'+(o.participants.length-4):''}</div>
       <div class="bar"><i style="width:${(e.dollars_saved_per_month/max*100).toFixed(1)}%"></i></div></td>
       <td class="r">${e.occurrences_per_month}</td><td class="r">${e.hours_saved_per_month}</td>
-      <td class="r money">${money(e.dollars_saved_per_month)}</td><td class="r">${money(running)}</td>
+      <td class="r money">${money(e.dollars_saved_per_month)}</td><td class="r">${rec ? money(running) : '—'}</td>
       <td class="r">${e.messages_total}</td><td>${art}</td>`;
     const det = document.createElement('tr'); det.className = 'detail'; det.style.display = 'none';
     det.innerHTML = `<td colspan="8"><div class="detail">
       <p>${esc(o.description)}</p>
       ${o.stall_points ? `<p><b>Where it stalls:</b> ${esc(o.stall_points)}</p>` : ''}
       ${o.automation ? `<p><b>Automation:</b> ${esc(o.automation)}</p>` : ''}
-      <div class="calc">${e.messages_dated} dated msgs ÷ ${e.active_months} active months (${e.first_date} → ${e.last_date}) = ${e.occurrences_per_month}/mo × ${e.minutes_per_occurrence} min × ${(e.automatable_fraction*100).toFixed(0)}% automatable ÷ 60 × $85 = <b>${money(e.dollars_saved_per_month)}/mo</b>${o.estimate_rationale ? '<br>estimate: ' + esc(o.estimate_rationale) : ''}</div>
+      <div class="calc">${e.messages_dated} dated msgs in ${e.distinct_months ?? e.active_months} distinct months ÷ ${e.active_months} active months (${e.first_date} → ${e.last_date}) = ${e.occurrences_per_month}/mo × ${e.minutes_per_occurrence} min × ${(e.automatable_fraction*100).toFixed(0)}% automatable ÷ 60 × $85 = <b>${money(e.dollars_saved_per_month)}/mo</b>${o.estimate_rationale ? '<br>estimate: ' + esc(o.estimate_rationale) : ''}</div>
       <ul class="ev">${o.evidence.map(ev => `<li><q>${esc(ev.quote)}</q><span class="src"><a href="/msg/${esc(ev.msg)}?line=${ev.line}" target="_blank">${esc(ev.msg)}:${ev.line}</a> · ${esc(ev.date||'undated')} · ${esc(ev.sender)} · ${esc(ev.subject)}</span></li>`).join('')}</ul>
     </div></td>`;
     tr.onclick = () => det.style.display = det.style.display === 'none' ? '' : 'none';
