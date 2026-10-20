@@ -1,0 +1,1 @@
+Ignoring 12 permissions.allow entries from .claude/settings.json: this workspace has not been trusted. Run Claude Code interactively here once and accept the trust dialog, or set projects["/home/apossebon/projects/observation-agent"].hasTrustDialogAccepted: true in /home/apossebon/.claude.json.

@@ -1,0 +1,159 @@
+{
+  "batch": 15,
+  "processes": [
+    {
+      "name": "Counterparty price and volume discrepancy queries to gas logistics",
+      "description": "Settlements and accounting staff email Daren Farmer when a counterparty invoice or meter statement disagrees with the Sitara deal price, volume or counterparty. He or a delegate checks the deal book or the trader and corrects Sitara, then replies by email.",
+      "participants": ["j..farmer@enron.com", "megan.parker@enron.com", "cynthia.hakemack@enron.com", "katherine.herrera@enron.com", "l..hernandez@enron.com", "charlene.richmond@enron.com", "sabrae.zajac@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Requests sit unanswered until chased, and the answer often needs a trader or a deal book. Some questions are resent weeks later.",
+      "automation": "Compare Sitara deal prices against invoice and meter data automatically and route each mismatch to the deal owner with the evidence attached. Track open queries and escalate them.",
+      "minutes_per_occurrence": 25,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/147", "farmer-d/logistics/143", "farmer-d/logistics/139", "farmer-d/logistics/138", "farmer-d/logistics/133", "farmer-d/logistics/129", "farmer-d/logistics/119", "farmer-d/logistics/113", "farmer-d/logistics/111", "farmer-d/logistics/110", "farmer-d/logistics/99", "farmer-d/logistics/106", "farmer-d/logistics/141", "farmer-d/logistics/132", "giron-d/sent/12"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/147", "quote": "BP invoiced HPL at $4.955 for the deal below, and Sitara shows $4.95.  Can you please verify the pricing?  Thanks."},
+        {"msg": "farmer-d/logistics/138", "quote": "We have it priced at WAHA gas daily + 0.005 and Texaco says it should be WAHA IF + 0.005."},
+        {"msg": "farmer-d/logistics/99", "quote": "I have not received a response from you regarding the pricing discrepancies on these deals.  Please let me know which price is correct if possible."},
+        {"msg": "farmer-d/logistics/129", "quote": "I found Danny's book and he has the deal priced at 5.25.  I adjusted the price in Sitara.  Let me know if anything further is needed."},
+        {"msg": "farmer-d/logistics/132", "quote": "Could you fix asap because payment is due on 25th."}
+      ]
+    },
+    {
+      "name": "Missing deal or expired contract blocking sales settlement",
+      "description": "Settlement accountants find that counterparty-supported volumes have no deal or that a deal will not flow to Unify. They email around to find who owns the deal, then ask for a deal or contract extension. The chain passes through many people.",
+      "participants": ["tnray@aep.com", "j..farmer@enron.com", "l..hernandez@enron.com", "julie.meyers@enron.com", "karen.lambert@enron.com", "genaro.mendoza@enron.com", "juliann.kemp@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "The question is forwarded between four to six people, each saying to ask someone else. The fix is then undone by a contract-level problem that needs another group.",
+      "automation": "Match counterparty volume support to deals automatically and flag volumes with no deal. Surface contract expiry before month-end settlement.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.35,
+      "messages": ["farmer-d/logistics/117", "farmer-d/logistics/116", "farmer-d/logistics/114", "farmer-d/logistics/112", "farmer-d/logistics/105", "farmer-d/logistics/137"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/117", "quote": "I did a search and found no deals for May for this counterparty.  Call Daren Farmer at 713-853-6905, and he could probably put the deal in for you."},
+        {"msg": "farmer-d/logistics/116", "quote": "Unable to add May production as contract needs to be exteneded."},
+        {"msg": "farmer-d/logistics/112", "quote": "Has contract expired? Unable to get deal to come across to Unify Settlements."},
+        {"msg": "farmer-d/logistics/137", "quote": "We had flow of 76 for the month of April but no deal came across in Sitarra."}
+      ]
+    },
+    {
+      "name": "Cowtrap/Blue Dolphin allocation and Dow invoice resolution",
+      "description": "Settlements staff chase a missing allocation in Volume Management and the invoice price for the Dow Cowtrap and Blue Dolphin sales. They go back and forth with the customer on the price, a payment date and a corrected invoice.",
+      "participants": ["joyce.viltz@enron.com", "mary.ellenberger@enron.com", "j..farmer@enron.com", "carlos.rodriguez@enron.com", "tess.ray@enron.com", "mltrochta@dow.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Volume Management shows no detail while the nomination was tracked and balanced, so people wait on each other against a payment deadline. The invoice price is disputed by a cent and must be reissued.",
+      "automation": "Alert when an allocation has no volume actualisation before the payment cut-off. Validate invoice price against the deal before it is sent.",
+      "minutes_per_occurrence": 60,
+      "automatable_fraction": 0.3,
+      "messages": ["farmer-d/logistics/134", "farmer-d/logistics/130", "farmer-d/logistics/128", "farmer-d/logistics/127", "farmer-d/logistics/124", "farmer-d/logistics/123"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/134", "quote": "The volumes have not be actualized so there is nothing in Volume Management.  Can one of you look into this and get back to me."},
+        {"msg": "farmer-d/logistics/130", "quote": "Payment MUST be set up by noon 5/24/01 for prompt payment to Spinnaker."},
+        {"msg": "farmer-d/logistics/127", "quote": "Yes, this is the Blue Dolphin but I dont know why shes not able to see it. It was nom, tracked and balanced."},
+        {"msg": "farmer-d/logistics/124", "quote": "Can you confirm if 04/01 sales price for SA-745578, IF - $.06 per entry in Sitara or IF - $.07 per Sandra Werner's e-mail"}
+      ]
+    },
+    {
+      "name": "Daily credit report forwarding",
+      "description": "Darron Giron receives the daily Credit Report email, which lists counterparty rebooks and pending TAGG actions. He forwards each one to Carole Frank, who handles the actions.",
+      "participants": ["darron.giron@enron.com", "carole.frank@enron.com", "veronica.espinoza@enron.com", "russell.diamond@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "The report arrives by email each day and is forwarded by hand. The rebook actions are then done manually in TAGG.",
+      "automation": "Route the credit report to the book admin automatically and extract the TAGG numbers and actions into a work list.",
+      "minutes_per_occurrence": 4,
+      "automatable_fraction": 0.8,
+      "messages": ["giron-d/sent/19", "giron-d/sent/16", "giron-d/sent/14", "giron-d/sent/11", "giron-d/sent/10"],
+      "evidence": [
+        {"msg": "giron-d/sent/19", "quote": "Credit Report--5/3/01"},
+        {"msg": "giron-d/sent/16", "quote": "Credit Report--5/4/01"},
+        {"msg": "giron-d/sent/14", "quote": "Rebook to Calpine Energy"},
+        {"msg": "giron-d/sent/10", "quote": "Credit Report--5/9/01"}
+      ]
+    },
+    {
+      "name": "TAGG book administration and trade correction requests",
+      "description": "Darron Giron handles requests to maintain TAGG books, trading groups and book admin assignments, and to fix errors on booked trades. He covers for Carole Frank on trade corrections.",
+      "participants": ["darron.giron@enron.com", "jennifer.velasco@enron.com", "patrick.mulvany@enron.com", "theresa.staab@enron.com", "larry.hunter@enron.com", "eric.moon@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Changes need a second person with access to the web site or trading group. Each change is a separate email thread.",
+      "automation": "Provide a self-service request form for book admin and trading group changes, with an audit trail. Validate trade term and counterparty against broker confirms automatically.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.4,
+      "messages": ["giron-d/sent/18", "giron-d/sent/17", "giron-d/sent/15", "giron-d/sent/9", "giron-d/sent/1", "giron-d/sent/6"],
+      "evidence": [
+        {"msg": "giron-d/sent/18", "quote": "Please add Elizabeth Shim to the Book Admin list on the Web sight.  Her Tagg user name is:  ESHIM.  Thanks."},
+        {"msg": "giron-d/sent/17", "quote": "I also noticed that we have some books that are not listed under US GAS WEST but should be.  I cannot change tha Trading Group."},
+        {"msg": "giron-d/sent/9", "quote": "V83656.1:  Counterparty name should be BANKAMENAT."},
+        {"msg": "giron-d/sent/6", "quote": "For audit purposes, can you give us a brief description of where the value for annuities in TAGG as V42434.9 and V42434.A."}
+      ]
+    },
+    {
+      "name": "Portland real-time desk length and schedule notices",
+      "description": "Bill Williams emails the Portland shift group each day with the group's long position, which book to enter it under, and schedule entry instructions. He also sends corrections for schedules entered wrongly by the CISO.",
+      "participants": ["bill.williams@enron.com", "shift.portland@enron.com", "kate.symes@enron.com", "eric.linder@enron.com", "steven.merris@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Positions and book instructions are typed into an email each day. Shift staff must then re-key them into CAPS, Enpower and the service sheets.",
+      "automation": "Generate the daily length notice from the position system and post it to the shift channel. Auto-populate CAPS and the service sheets.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.6,
+      "messages": ["williams-w3/sent_items/512", "williams-w3/sent_items/506", "williams-w3/sent_items/502", "williams-w3/sent_items/496", "williams-w3/sent_items/466", "williams-w3/sent_items/510", "williams-w3/sent_items/487"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/512", "quote": "We are long 25 mws in NP-15 at $54 for HE 7-22.  This is under the ST-WBOM line in CAPS."},
+        {"msg": "williams-w3/sent_items/502", "quote": "We have 25 mws of length in the BOM book at $56 again for 06/14/01 on peak."},
+        {"msg": "williams-w3/sent_items/466", "quote": "We are long 25 mws on peak for 06/27/01 in SP-15.  This should be in CAPS under ST-WBOM, deals should be under ST-WBOM in Enpower as well."},
+        {"msg": "williams-w3/sent_items/510", "quote": "CAPS shows a final of 25 mws as a firm import.  This should be a n-firm export."}
+      ]
+    },
+    {
+      "name": "Misdirected mail and distribution list corrections for Bill Williams",
+      "description": "Reports, model files and requests meant for the other Bill Williams reach Bill Williams III. He forwards them back and asks senders to correct their lists, and updates the list of people who receive the real-time deal spreadsheets.",
+      "participants": ["bill.williams@enron.com", "steven.merris@enron.com", "shift.portland@enron.com", "l..barbour@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Each sender has to be told separately, and the same mix-up recurs with new senders.",
+      "automation": "Maintain one authoritative distribution list and flag ambiguous names. Auto-update the EES spreadsheet recipient list.",
+      "minutes_per_occurrence": 5,
+      "automatable_fraction": 0.5,
+      "messages": ["williams-w3/sent_items/507", "williams-w3/sent_items/493", "williams-w3/sent_items/492", "williams-w3/sent_items/489", "williams-w3/sent_items/468"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/507", "quote": "Just want to make sure you have me as Bill Williams III."},
+        {"msg": "williams-w3/sent_items/492", "quote": "My address is Bill Williams III, Please make the correction."},
+        {"msg": "williams-w3/sent_items/489", "quote": "Please add Ainsley Gaddis and remove Daniel Kang from your list when sending the spreadsheets to EES."},
+        {"msg": "williams-w3/sent_items/468", "quote": "You must change your e-mail list for Bill Williams.  Please send this to bill.williams@enron.com."}
+      ]
+    },
+    {
+      "name": "EPGT pipeline pathing and pool clean-up",
+      "description": "Gas accounting asks Daren Farmer and the logistics group to path deals and fix interconnect volumes for old months on the EPGT pipe. Later, Shane Lakho works through error messages and terminates unused pools in Unify.",
+      "participants": ["g..barkowsky@enron.com", "j..farmer@enron.com", "l..dinari@enron.com", "clarissa.garcia@enron.com", "shahnaz.lakho@enron.com", "michael.olsen@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Open items sit for weeks, as with February 2000, and need repeated follow-ups. Each pathing fix is requested one deal at a time by email.",
+      "automation": "Track open pathing exceptions in a queue with owners and ageing. Check interconnect volumes against invoices automatically.",
+      "minutes_per_occurrence": 40,
+      "automatable_fraction": 0.3,
+      "messages": ["farmer-d/logistics/108", "farmer-d/logistics/107", "farmer-d/logistics/102", "farmer-d/logistics/97", "farmer-d/logistics/18", "farmer-d/logistics/17"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/108", "quote": "I need deal #854688 pathed for EPGT and for TETC."},
+        {"msg": "farmer-d/logistics/102", "quote": "Daren - what about February 2000?  It doesn't look like it's been pathed for HPL and CHAN."},
+        {"msg": "farmer-d/logistics/97", "quote": "Daren - can you please let me know the status on this for 02/2000?  Thanks, Gloria"},
+        {"msg": "farmer-d/logistics/18", "quote": "I am down to the last few error messages on the EPGT Quick Response and also looking into the external pool for WH034 in Unify."}
+      ]
+    },
+    {
+      "name": "Customer nomination and deal change requests to HPL logistics",
+      "description": "Commercial staff email Daren Farmer and colleagues to change nominations, extend deal tickets or roll volumes. Examples are Imperial Sugar volumes, Guadalupe deals rolled into June and deal ticket 745546. The logistics team then makes the nomination or deal change.",
+      "participants": ["craig.breslau@enron.com", "j..farmer@enron.com", "michael.olsen@enron.com", "tom.acton@enron.com", "h..wallis@enron.com", "david.baumbach@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Requests arrive as free-text email and need judgement on pricing. Replies and confirmations are by email.",
+      "automation": "Provide a structured nomination change form that creates the Sitara change request and logs approval.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.3,
+      "messages": ["farmer-d/logistics/148", "farmer-d/logistics/145", "farmer-d/logistics/144", "farmer-d/logistics/131", "farmer-d/logistics/121", "farmer-d/logistics/125", "farmer-d/logistics/120"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/148", "quote": "I need  deal ticket 745546 extended on both ends.   4/23 for flow of 35 and 5/1/ for flow of 132."},
+        {"msg": "farmer-d/logistics/131", "quote": "Could we please make the appropriate nomination change and also let me know how we plan to price the buyback."},
+        {"msg": "farmer-d/logistics/121", "quote": "I rolled 740208, 740209,740210 and 740235 into June."},
+        {"msg": "farmer-d/logistics/120", "quote": "I want to confirm the May MidCon volumes for Mobil - I think it is 30,000 mmbtu/day?"}
+      ]
+    }
+  ]
+}

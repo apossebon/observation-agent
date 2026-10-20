@@ -1,0 +1,124 @@
+{
+  "batch": 12,
+  "processes": [
+    {
+      "name": "Daily credit report forwarding and counterparty rebook list",
+      "description": "Each business day Veronica Espinoza (or Russell Diamond) distributes a Credit Report to a long list of recipients. Darron Giron then manually forwards each one, often in batches days later, to Carole Frank so his team can act on the counterparty rebook comments.",
+      "participants": ["darron.giron@enron.com", "carole.frank@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Forwarding is a manual pass-along and several reports are forwarded in a lump days after they were issued (1/24 to 1/31 reports all forwarded on 2/2). Distribution itself is delayed by systems issues.",
+      "automation": "Auto-route the daily credit report to the team distribution list on arrival and extract the counterparty rebook and pending items into a tracked list.",
+      "minutes_per_occurrence": 4,
+      "automatable_fraction": 0.85,
+      "messages": ["giron-d/sent/267", "giron-d/sent/264", "giron-d/sent/260", "giron-d/sent/261", "giron-d/sent/262", "giron-d/sent/263", "giron-d/sent/259", "giron-d/sent/257", "giron-d/sent/255", "giron-d/sent/253", "giron-d/sent/251", "giron-d/sent/243", "giron-d/sent/242", "giron-d/sent/234", "giron-d/sent/228", "giron-d/sent/226", "giron-d/sent/220", "giron-d/sent/218", "giron-d/sent/210", "giron-d/sent/206", "giron-d/sent/202", "giron-d/sent/196"],
+      "evidence": [
+        {"msg": "giron-d/sent/255", "quote": "I apologize for the delay on the distribution, as we had systems issues."},
+        {"msg": "giron-d/sent/263", "quote": "AEP Communications, Inc.   q00902.1  Rebook to AEP Energy Services, Inc."},
+        {"msg": "giron-d/sent/255", "quote": "Please contact Walter Guidroz at x5-3595 if you have any questions on the Aquila COLW deal."}
+      ]
+    },
+    {
+      "name": "Flipping deals to the FT-US/CAND-ERMS book",
+      "description": "Stacey Vallejo repeatedly asks all book admins to find ECC and Canadian counterparty deals in TAGG and move them to the FT-US/CAND-ERMS book before invoicing or NYMEX close. Darron Giron forwards each reminder to his team and confirms back when his books are done.",
+      "participants": ["darron.giron@enron.com", "stacey.vallejo@enron.com", "carole.frank@enron.com", "patrick.ryder@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Invoicing waits on every book admin confirming completion, and new counterparties (Aquila Canada, Dynegy Canada) keep surfacing as deals still showing as settling with ENA. Same-day deadlines force reminders.",
+      "automation": "A TAGG query or rule that flags deals with these counterparties settling with ENA and auto-flips or lists them, replacing manual book-by-book searching and reminder emails.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.6,
+      "messages": ["giron-d/sent/270", "giron-d/sent/250", "giron-d/sent/246", "giron-d/sent/23", "giron-d/sent/195", "giron-d/sent/192"],
+      "evidence": [
+        {"msg": "giron-d/sent/270", "quote": "Just a quick reminder to please go into your books and flip all the ECC deals"},
+        {"msg": "giron-d/sent/246", "quote": "Please let me know when these are finished as I need to get an invoice to the customers within the next couple of hours."},
+        {"msg": "giron-d/sent/195", "quote": "Please take care of this if you have any to be flipped.  Thanks."},
+        {"msg": "giron-d/sent/192", "quote": "These deals are showing up in TAGG as settling with ENA, could you all please keep an eye out for deals with this company and flip them right away."}
+      ]
+    },
+    {
+      "name": "Flow with no deal: extending or adding deals to clear meter exceptions",
+      "description": "Logistics schedulers find meters with flow but no nomination or an expired deal, and ask Daren Farmer whether to extend, copy or add a deal to clear the allocation exception. Farmer answers case by case by email.",
+      "participants": ["daren.farmer@enron.com", "mary.poorman@enron.com", "michael.olsen@enron.com", "aimee.lannou@enron.com", "tom.acton@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Each exception needs a one-off question to Farmer, and fixes can be blocked (suspended counterparty cannot be extended), forcing a second round of emails near the month-end system cutoff.",
+      "automation": "Auto-detect meter flow with no matching deal, propose the prior-period deal for extension, and route a one-click approval to the deal owner.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/2077", "farmer-d/logistics/2078", "farmer-d/logistics/2082", "farmer-d/logistics/2086", "farmer-d/logistics/2090", "farmer-d/logistics/2092", "farmer-d/logistics/2093", "farmer-d/logistics/2095", "farmer-d/logistics/2099", "farmer-d/logistics/2101", "farmer-d/logistics/2102", "farmer-d/logistics/2103", "farmer-d/logistics/2096"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/2077", "quote": "The meter shows flow the first two day, the deal to sell to San Jac is expired.  Do you want me to extend the deal to cover the volume?"},
+        {"msg": "farmer-d/logistics/2078", "quote": "For Dec. and Jan. production there are flow volumes without a deal.  Deal 502952 was good for November."},
+        {"msg": "farmer-d/logistics/2095", "quote": "Deal with inactive or suspended counterparty may not be extended."},
+        {"msg": "farmer-d/logistics/2102", "quote": "meter 1558 has flow and no nom for day 1 and day 6."},
+        {"msg": "farmer-d/logistics/2099", "quote": "Today is the last day we can make changes in the system."}
+      ]
+    },
+    {
+      "name": "Deal and meter point change notifications",
+      "description": "Mark McCoy emails Daren Farmer and colleagues after changing deal meter points, volumes or net-outs in Sitara/Tagg, often sending several follow-up corrections for the same change.",
+      "participants": ["mark.mccoy@enron.com", "daren.farmer@enron.com", "elsa.villarreal@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Changes are communicated after the fact and correction emails follow (effective date and additional deal numbers sent separately), so recipients must piece the change together from several messages.",
+      "automation": "Generate change notices automatically from the deal-change log with all affected deals and effective dates in a single message.",
+      "minutes_per_occurrence": 8,
+      "automatable_fraction": 0.6,
+      "messages": ["farmer-d/logistics/2071", "farmer-d/logistics/2072", "farmer-d/logistics/2073", "farmer-d/logistics/2074", "farmer-d/logistics/2075", "farmer-d/logistics/2084", "farmer-d/logistics/2085"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/2072", "quote": "I changed points on this deal from PGTT-TECO Waha 18002800 to PGTT-TECO"},
+        {"msg": "farmer-d/logistics/2073", "quote": "OOOPS!   This is effective the 1st."},
+        {"msg": "farmer-d/logistics/2074", "quote": "Oh yeah, and that goes for deal 594596 Crosstex , also."},
+        {"msg": "farmer-d/logistics/2085", "quote": "So I went ahead and changed the AEC ticket to match up with the Aquila deal."}
+      ]
+    },
+    {
+      "name": "Counterparty payment and invoice dispute research",
+      "description": "Settlements and volume management staff chase down why a counterparty is disputing or has not been paid (Alpine meter 5892, Texas General Land Office sale, Torch/Cleco, PG&E/TECO, HL&P buyback). Each case runs through long forwarded email chains across scheduling, volume management, measurement and settlements.",
+      "participants": ["daren.farmer@enron.com", "charlene.richmond@enron.com", "fred.boas@enron.com", "katherine.herrera@enron.com", "mary.poorman@enron.com", "paul.couvillon@enron.com", "esther.garcia@enron.com", "gary.lamphier@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Questions bounce between people (Karen Lindley to Fred Boas to measurement) for days, and the requester escalates in capitals before an answer arrives; nobody owns the full chain.",
+      "automation": "A shared dispute tracker that pulls deal, meter, nominated vs flowed volumes and allocation statements in one view and assigns an owner and due date.",
+      "minutes_per_occurrence": 60,
+      "automatable_fraction": 0.35,
+      "messages": ["farmer-d/logistics/2064", "farmer-d/logistics/2065", "farmer-d/logistics/2067", "farmer-d/logistics/2068", "farmer-d/logistics/2069", "farmer-d/logistics/2070", "farmer-d/logistics/2083", "farmer-d/logistics/2087", "farmer-d/logistics/2089", "farmer-d/logistics/2091", "farmer-d/logistics/2094", "farmer-d/logistics/2100", "farmer-d/logistics/2107"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/2089", "quote": "I am getting several phone calls from Alpine Resources demanding to be paid for meter 5892 and there is nothing there to be paid."},
+        {"msg": "farmer-d/logistics/2094", "quote": "WOULD SOMEONE PLEASE HELP ME GET THIS MATTER RESOLVED."},
+        {"msg": "farmer-d/logistics/2100", "quote": "Karen Lindley allocates this point but I feel the need to help her because this issue came to light while I was in transition."},
+        {"msg": "farmer-d/logistics/2069", "quote": "Janet Wallis told me so."},
+        {"msg": "farmer-d/logistics/2087", "quote": "Do you have a Crude Oil payable to offset this sales invoice?"}
+      ]
+    },
+    {
+      "name": "Month-end P&L, OA and daily position reporting and corrections",
+      "description": "Darron Giron's book admin group closes each month by completing last day files, sending economics and summary reports, reviewing P&L and OA variances, and correcting misallocated originations or liquidations. Corrections are communicated one by one in email.",
+      "participants": ["darron.giron@enron.com", "gregory.mausser@enron.com", "troy.klussmann@enron.com", "darla.saucier@enron.com", "misti.day@enron.com", "richard.tomaski@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Gas accounting cannot start until every desk replies that its file is done, and errors (sharing calculation, mis-coded originations, double counting) are found after the fact and fixed in the next month.",
+      "automation": "Automated checklist of desk completion and variance checks on P&L tabs to catch calculation and coding errors before reporting.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.3,
+      "messages": ["giron-d/sent/258", "giron-d/sent/248", "giron-d/sent/219", "giron-d/sent/221", "giron-d/sent/213", "giron-d/sent/232", "giron-d/sent/231", "giron-d/sent/265"],
+      "evidence": [
+        {"msg": "giron-d/sent/258", "quote": "Please reply when your last day file is complete and don't forget to provide me with your Economics Detail and Summary Level Reports."},
+        {"msg": "giron-d/sent/248", "quote": "Kevin's reported P&L was understated by the $188K on the OA Flash tab."},
+        {"msg": "giron-d/sent/232", "quote": "Please make these corrections in February in order to correct the NG P&L for the quarter."},
+        {"msg": "giron-d/sent/219", "quote": "We are taking a hit of $28,900,000 on tonight's P&L for Dec-00 production."}
+      ]
+    },
+    {
+      "name": "Mark-to-market valuation requests for counterparty audits",
+      "description": "The Confirmations group asks each desk for MTM values or mini-books for specific counterparties as of a past date so the counterparty can show third party valuations to its auditors. Desk book admins pull the values by hand and export them to Excel.",
+      "participants": ["larry.hunter@enron.com", "darron.giron@enron.com", "ellen.wallumrod@enron.com", "patrick.ryder@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "There is no system with back-dated curves, so a risk person must be interrupted for each request, with Delta/Vol information blacked out, and requests often arrive with late notice.",
+      "automation": "Build the valuation tool with back-dated curves so Confirmations can self-serve MTM and open position reports without desk involvement.",
+      "minutes_per_occurrence": 40,
+      "automatable_fraction": 0.7,
+      "messages": ["giron-d/sent/240", "giron-d/sent/241", "giron-d/sent/214"],
+      "evidence": [
+        {"msg": "giron-d/sent/240", "quote": "Please forward to Ellen Wallumrod the MTM valuation(mini-book) for all CoEnergy Trading Company deals as of Dec 31, 2000."},
+        {"msg": "giron-d/sent/241", "quote": "we will be coming to them often with these requests (we recieve several per week)"},
+        {"msg": "giron-d/sent/214", "quote": "Can you provide MTM values as of Dec 29, 2000, for the short name of CROSS TIMBERS."}
+      ]
+    }
+  ]
+}

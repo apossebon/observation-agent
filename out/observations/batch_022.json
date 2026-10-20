@@ -1,0 +1,152 @@
+{
+  "batch": 22,
+  "processes": [
+    {
+      "name": "Daily imbalance check routing and sign-off",
+      "description": "The daily imbalance check is a recurring task whose owner is unclear: Williams says Giron owns it, while Poorman says Williams holds sign-off. Numbers get sent to the wrong person and are walked over or forwarded by hand.",
+      "participants": ["bill.williams@enron.com", "darron.giron@enron.com", "mary.poorman@enron.com", "michelle.lokay@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Ownership is contradicted between two messages sent a day apart, so numbers sent to one person must be forwarded or walked to the actual signer.",
+      "automation": "A named owner and an automated routing of the daily imbalance numbers to the approver with a sign-off record would remove the hand-offs.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.5,
+      "messages": ["williams-w3/sent_items/526", "giron-d/inbox/483"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/526", "quote": "Darron has owned the daily imbalance check since March. I only pick it up when he is out of the office"},
+        {"msg": "giron-d/inbox/483", "quote": "The daily imbalance check is Bill's and has been since the reorg. He is the only"},
+        {"msg": "giron-d/inbox/483", "quote": "so anything you send me I have to walk over to"}
+      ]
+    },
+    {
+      "name": "Deal counterparty correction chase (Deal 93836)",
+      "description": "Settlements staff need a deal ticket corrected before payments can go out. The request is passed through several people by forwarding the whole chain, and the requester chases for status.",
+      "participants": ["sherlyn.schumack@enron.com", "j..farmer@enron.com", "marlene.hilliard@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "The change request sat from Nov 15 to Nov 27 and was forwarded through four hands, with the requester chasing against a payment deadline.",
+      "automation": "A tracked deal-correction ticket with an owner and status would replace the forwarded email chain and manual chasers.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/16", "farmer-d/logistics/15"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/16", "quote": "Will you let me know when this change has been made?  I need to get some payments finaled by 3pm tomorrow."},
+        {"msg": "farmer-d/logistics/16", "quote": "Have you had a chance to look at this yet?"},
+        {"msg": "farmer-d/logistics/15", "quote": "This deal is for Global # 96022051.  This is between HPL and Black Marlin Pipeline Company.  This should be handled by your group."}
+      ]
+    },
+    {
+      "name": "Full month position meter confirmation by email paste",
+      "description": "The month position (scheduled vs actual by meter) is sent to the team, who each pull their own meters and confirm back. The attachment bounced, so the table was pasted into the email body.",
+      "participants": ["daren.farmer@enron.com", "darron.giron@enron.com", "bill.williams@enron.com", "michelle.lokay@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Attachment bounces off the gateway and the data is re-sent inline; each recipient must manually filter their own meters and confirm by a deadline.",
+      "automation": "Publish the position to a shared location filtered by owner, with automatic variance flags and confirmation tracking.",
+      "minutes_per_occurrence": 60,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/3221"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/3221", "quote": "Pasting the full month position below since the attachment keeps bouncing off the gateway. Please pull your own meters out of this and confirm back to me by close of business Thursday."},
+        {"msg": "farmer-d/logistics/3221", "quote": "Full month position - attachment would not send"}
+      ]
+    },
+    {
+      "name": "Enpower deal entry rules, deal numbers and nightly schedule checkouts",
+      "description": "The Portland desk enters deals in Enpower under written rules (EpmiCalPool deals), shares Enpower deal numbers by email, and checks out prescheduled paths with counterparties nightly. Rules and tool changes are communicated by email and corrected repeatedly.",
+      "participants": ["bill.williams@enron.com", "kate.symes@enron.com", "kysa.alport@enron.com", "shift.dl-portland@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "EpmiCalPool deals keep causing problems with reports; deal numbers are forwarded by hand; checkouts require phone calls to dozens of counterparties between HE 19 and HE 21.",
+      "automation": "Validate deal-entry rules at entry in Enpower and auto-generate checkout lists and confirmation status instead of manual calls and emailed deal numbers.",
+      "minutes_per_occurrence": 90,
+      "automatable_fraction": 0.35,
+      "messages": ["williams-w3/sent_items/88", "williams-w3/sent_items/86", "williams-w3/sent_items/79", "williams-w3/sent_items/78", "williams-w3/sent_items/83", "williams-w3/sent_items/73", "williams-w3/sent_items/72"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/88", "quote": "Epmicalpool deals continue to provide problems with reports. Please see me with any questions."},
+        {"msg": "williams-w3/sent_items/86", "quote": "You must check out with all major marketers and utilities each night."},
+        {"msg": "williams-w3/sent_items/86", "quote": "These checkouts should be started in HE 19 and finished by HE 21."},
+        {"msg": "williams-w3/sent_items/79", "quote": "Book-to-book between Services and Real-Time #811820."},
+        {"msg": "williams-w3/sent_items/73", "quote": "There was no note on the model or in Lotus notes."}
+      ]
+    },
+    {
+      "name": "Transwestern contract amendment, credit and status processing",
+      "description": "Customer requests for receipt point changes or new service arrive by email, are approved, and are forwarded to contracts staff to generate amendments. Credit approval requests and a December 1 contract status list are circulated by email.",
+      "participants": ["michelle.lokay@enron.com", "dennis.lee@enron.com", "craig.buehler@enron.com", "kevin.meredith@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Customer revisions arrive after the original request and must be re-forwarded; status is compiled manually into an email list.",
+      "automation": "A request-to-amendment workflow with credit approval status and a generated contract status report.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.4,
+      "messages": ["lokay-m/inbox/69", "lokay-m/inbox/53", "lokay-m/sent_items/164", "lokay-m/inbox/71", "lokay-m/inbox/72", "lokay-m/inbox/52"],
+      "evidence": [
+        {"msg": "lokay-m/sent_items/164", "quote": "Please generate amendments for PPL's Red Rock expansion contract #27641.  The Administrative Contract will also need to be updated."},
+        {"msg": "lokay-m/inbox/53", "quote": "Just a quick revision to Dave's note below."},
+        {"msg": "lokay-m/inbox/71", "quote": "Contract Submitted to CAS for Capacity Approval"},
+        {"msg": "lokay-m/inbox/72", "quote": "December 1st Contract Status as of November 27th (at 4:50 pm)"},
+        {"msg": "lokay-m/inbox/52", "quote": "Please set up the following points and combinations."}
+      ]
+    },
+    {
+      "name": "Meeting scheduling and call coordination",
+      "description": "Meetings and conference calls are arranged via calendar invites and forwarded notices, with attendees asking for confirmation and calling details afterwards.",
+      "participants": ["michelle.lokay@enron.com", "jeff.dasovich@enron.com", "audrey.robertson@enron.com", "lynn.blair@enron.com", "bill.williams@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Details are forwarded weeks later and recipients ask if the meeting is still on and for dial-in instructions.",
+      "automation": "Calendar invites with agenda and dial-in auto-attached and reminders, replacing forwarded notices and confirmation emails.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.5,
+      "messages": ["lokay-m/inbox/45", "lokay-m/inbox/47", "lokay-m/inbox/51", "lokay-m/inbox/70", "lokay-m/sent_items/71", "lokay-m/sent_items/52", "lokay-m/inbox/49", "williams-w3/sent_items/87", "giron-d/inbox/461"],
+      "evidence": [
+        {"msg": "lokay-m/sent_items/52", "quote": "Are we still on tomorrow?  What are the calling instructions?  Thanks."},
+        {"msg": "lokay-m/inbox/51", "quote": "Please note, Paul has scheduled a meeting to discuss \"Available Capacity\" on tomorrow, Tuesday, November 27, 10:30 - 11:30, ECN-1336."},
+        {"msg": "williams-w3/sent_items/87", "quote": "Contact me as soon as you can if you think you may not be able to make it."},
+        {"msg": "lokay-m/sent_items/71", "quote": "FYI...this is the conference call that I'd mentioned during staff meeting yesterday."}
+      ]
+    },
+    {
+      "name": "Customer price quote requests and desk activity recap",
+      "description": "Customers email requests for forward gas quotes that must be checked with traders and answered by phone. The desk also writes a long daily recap of deals, ticket numbers and open issues for the manager.",
+      "participants": ["darron.giron@enron.com", "csulzer@grenergy.com", "patrick.tucker@enron.com", "bryant.frihart@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Quote requests wait on trader availability, and when the contact is out of the office the customer buys from someone else. Recaps are written free-form.",
+      "automation": "A quote request intake with trader routing, and deal tickets summarized automatically from the deal system into the recap.",
+      "minutes_per_occurrence": 40,
+      "automatable_fraction": 0.3,
+      "messages": ["giron-d/inbox/389", "giron-d/inbox/393", "giron-d/inbox/395"],
+      "evidence": [
+        {"msg": "giron-d/inbox/389", "quote": "Would you check with the traders on the price qoutes for 1,000 per day at Ventura."},
+        {"msg": "giron-d/inbox/393", "quote": "I talked to Brian Frihart on Friday and purchased  3 fixed forward contracts"},
+        {"msg": "giron-d/inbox/395", "quote": "Bonnie said that we needed to wait until she could see all of the deal tickets in Sitara."}
+      ]
+    },
+    {
+      "name": "Expense report approval and system access",
+      "description": "Expense reports waiting in the Concur manager queue trigger reminders. Approvers who cannot log in forward the reminder to an assistant to fix access.",
+      "participants": ["bill.williams@enron.com", "jill.chatterton@enron.com", "michelle.lokay@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Reports sit more than 4 days in the manager queue and approval is blocked when login fails.",
+      "automation": "Delegated approval and self-service password reset.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.4,
+      "messages": ["williams-w3/sent_items/91", "lokay-m/inbox/50"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/91", "quote": "Could you look into my concur expense login/password. I am at a class today and need to approve these expense reports in the system."},
+        {"msg": "williams-w3/sent_items/91", "quote": "The following reports have been waiting for your approval for more than 4 days.  Please review."},
+        {"msg": "lokay-m/inbox/50", "quote": "The Approval status has changed on the following report:"}
+      ]
+    },
+    {
+      "name": "Prompt post and other ID look-ups by email",
+      "description": "Reference ids (prompt post ids) are requested and sent by email as plain lists and are re-sent with additions.",
+      "participants": ["scott.palmer@enron.com", "c..giron@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "The id list is sent twice, with an extra wellhead id added after the fact.",
+      "automation": "Lookup table of ids available in a shared reference instead of emailed lists.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.6,
+      "messages": ["giron-d/inbox/403", "giron-d/inbox/405"],
+      "evidence": [
+        {"msg": "giron-d/inbox/403", "quote": "prompt post id"},
+        {"msg": "giron-d/inbox/405", "quote": "I do not know if you need wellhead, just in case it is 1416535."}
+      ]
+    }
+  ]
+}

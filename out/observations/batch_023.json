@@ -1,0 +1,138 @@
+{
+  "batch": 23,
+  "processes": [
+    {
+      "name": "Real-time schedule cut handling and Enpower booking",
+      "description": "When a counterparty cuts a schedule, the Portland real-time desk documents the cut, tries to resupply, zeroes the deals in Enpower, builds an annuity and files a paper cut sheet. Procedures are re-issued by email as errors and edge cases appear.",
+      "participants": ["bill.williams@enron.com", "shift.dl-portland@enron.com", "kate.symes@enron.com", "albert.meyers@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "The procedure is re-explained across several emails because cuts are entered inconsistently, and the cuts database gave errors that left the entry unconfirmed. Cut sheets are paper in an accordion folder.",
+      "automation": "A cut-entry form that books the zeroed deal, offsetting annuity and path-confirm note in one step, with validation. This would replace the manual re-keying across Enpower workspaces and the cuts database.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.5,
+      "messages": ["williams-w3/sent_items/66", "williams-w3/sent_items/62", "williams-w3/sent_items/61", "williams-w3/sent_items/69", "williams-w3/inbox/133"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/66", "quote": "We need to zero out all cut deals in Enpower, we then need to calculate the value of the deals and make an annuity."},
+        {"msg": "williams-w3/sent_items/62", "quote": "Try to have the counterparties continue any paths around us."},
+        {"msg": "williams-w3/sent_items/61", "quote": "We are having a nightmare taking care of weekend cuts, particularly imports into California."},
+        {"msg": "williams-w3/sent_items/69", "quote": "I attempted to enter this in the cuts database but got several errors and do not have confidence that this occurred."}
+      ]
+    },
+    {
+      "name": "Average price schedule-pull spreadsheet iteration",
+      "description": "The trading desk gets a spreadsheet that pulls schedule average prices from Enpower. It is reviewed and sent back repeatedly with new exclusion rules, and a different person is handed the work along the way.",
+      "participants": ["bill.williams@enron.com", "kate.symes@enron.com", "susan.amador@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Each test run uncovers another deal type to exclude (transmission, EpmiCalPool, California Imbalance, annuities). Prices came out far too low and early-November data was missing, so the query was reworked several times.",
+      "automation": "A tested, parameterised price-average report with exclusion rules documented and applied by default. Each review round would then not need a new emailed spreadsheet.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.4,
+      "messages": ["williams-w3/sent_items/68", "williams-w3/inbox/137", "williams-w3/inbox/136"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/68", "quote": "Transmission deals, EpmiCalPool deals, and sales or purchases from the counterparty California Imbalance in Enpower need to be excluded."},
+        {"msg": "williams-w3/inbox/137", "quote": "I just tested the schedule pull again and found one more deal type we need to exclude - ANNUITIES."},
+        {"msg": "williams-w3/inbox/136", "quote": "the spreadsheet doesn't pull in anything for the first half of November"}
+      ]
+    },
+    {
+      "name": "Transwestern short-term capacity and contract change approvals",
+      "description": "Shippers email requests to raise contract quantity or extend service for one or a few days. Michelle Lokay approves and forwards each one to gas logistics (Dennis Lee, Michael Bodnar) to be changed in the system. Credit approval requests come the same way.",
+      "participants": ["michelle.lokay@enron.com", "dennis.lee@enron.com", "michael.bodnar@enron.com", "zuela.carter@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Each request is a one-day change, so the same contract (27748) is re-requested, re-approved and re-forwarded several times in a week. Requests are forwarded again to a second logistics person.",
+      "automation": "A request intake that records contract, quantity, dates and rate. It would route to approval and push the change to the logistics system without forwarding emails.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.5,
+      "messages": ["lokay-m/sent_items/2", "lokay-m/sent_items/3", "lokay-m/sent_items/4", "lokay-m/sent_items/14", "lokay-m/sent_items/15", "lokay-m/sent_items/73", "lokay-m/sent_items/19"],
+      "evidence": [
+        {"msg": "lokay-m/sent_items/2", "quote": "Please increase the Total Quantity from 10000 to 23115 for TODAY.  Points remain the same."},
+        {"msg": "lokay-m/sent_items/3", "quote": "please increase our 27748 MDQ from 10,000 to 16,000 effective 12/11 for one day only."},
+        {"msg": "lokay-m/sent_items/4", "quote": "Approved. Additional 15,000 on top of the 10,000 that is there all month."},
+        {"msg": "lokay-m/sent_items/73", "quote": "Approved.  The contract number will remain the same, #27785."}
+      ]
+    },
+    {
+      "name": "Weekly California Capacity Report",
+      "description": "Each Friday Michelle Lokay compiles and emails a report of Transwestern and El Paso deliveries to California, capacity utilisation, posted Gas Daily prices and Enron basis to the commercial group.",
+      "participants": ["michelle.lokay@enron.com", "kimberly.watson@enron.com", "lorraine.lindberg@enron.com", "audrey.robertson@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "The figures are compiled and typed by hand each week. Price and basis lines are sometimes not available (n/a).",
+      "automation": "Generate the report from the deliveries and price feeds on a schedule and distribute it automatically.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.7,
+      "messages": ["lokay-m/sent_items/18", "lokay-m/sent_items/67", "lokay-m/sent_items/63"],
+      "evidence": [
+        {"msg": "lokay-m/sent_items/18", "quote": "Transwestern's average deliveries to California were 1122 MMBtu/d (103%), with San Juan lateral throughput at 844 MMBtu/d."},
+        {"msg": "lokay-m/sent_items/67", "quote": "Transwestern's average deliveries to California were 1059 MMBtu/d (97%), with San Juan lateral throughput at 839 MMBtu/d."},
+        {"msg": "lokay-m/sent_items/63", "quote": "Transwestern's average deliveries to California were 959 MMBtu/d (88%), with San Juan lateral throughput at 827 MMBtu/d."}
+      ]
+    },
+    {
+      "name": "Centana storage sale: Sitara deal entry and pathing chase",
+      "description": "Accounting asks logistics to enter a Sitara deal and path it from storage for the Centana storage sale to AEP. The request is forwarded and chased by email until the deals are pathed, actualized and balanced.",
+      "participants": ["j..farmer@enron.com", "michael.olsen@enron.com", "stephen.swisher@enron.com", "rita.wynne@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "The request sat from mid-November to mid-December because counterparties and contracts were inactive. The deal could not be pathed until Global Counterparties activated them, and Rita Wynne had to chase for close.",
+      "automation": "A tracked deal-entry request with status and an alert when a counterparty or contract is inactive. It would replace the forwarded email chain.",
+      "minutes_per_occurrence": 60,
+      "automatable_fraction": 0.3,
+      "messages": ["farmer-d/logistics/14", "farmer-d/logistics/12", "farmer-d/logistics/11", "farmer-d/logistics/10", "farmer-d/logistics/9"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/14", "quote": "I need a deal entered into Sitra and pathed for the sale of the Centana Storage to AEP."},
+        {"msg": "farmer-d/logistics/12", "quote": "Have the two of you been able to get the deal in for the sale of the Centana storage to AEP?"},
+        {"msg": "farmer-d/logistics/11", "quote": "I am going to have them activate the old contracts so that Mike can finish pathing."},
+        {"msg": "farmer-d/logistics/9", "quote": "The deals have been pathed and I have just actualized and balanced them."}
+      ]
+    },
+    {
+      "name": "Bulk Sitara deal zero-out and bankruptcy book moves",
+      "description": "IT and contracts send lists of Sitara deals to be killed or zeroed out, or moved to the bankruptcy book. Logistics and Volume Management must decide how it affects Unify paths and who zeroes the deals.",
+      "participants": ["tammy.jaquet@enron.com", "jayant.krishnaswamy@enron.com", "mark.mcclure@enron.com", "victor.lamadrid@enron.com", "scott.palmer@enron.com", "j..farmer@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Impact is questioned only after about 2000 deals are announced for killing. Volume Management objects and asks why and for how long. Deal lists arrive in separate parts, with contract follow-up for volumes after 11/30.",
+      "automation": "Impact analysis that checks the list against paths and volumes in Unify before changes. Deal lists would be applied in one pass instead of arriving by email in parts.",
+      "minutes_per_occurrence": 60,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/7", "farmer-d/logistics/6", "farmer-d/logistics/5", "farmer-d/logistics/4", "farmer-d/logistics/1", "farmer-d/logistics/3", "farmer-d/logistics/2"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/5", "quote": "If a deal is killed it poses a problem for us in Unify if there are any paths associated with the deal; therefore, we request the deals be zeroed out."},
+        {"msg": "farmer-d/logistics/4", "quote": "I would like to meet with you guys and get more detail on why we are doing this and determine the impact?"},
+        {"msg": "farmer-d/logistics/1", "quote": "Here is a list of the 66 physical deals that were zeroed out from December 15 onwards"},
+        {"msg": "farmer-d/logistics/3", "quote": "More deals that will be moved to the Bankruptcy book in TAGG and zeroed out 12/01 forward in Sitara."}
+      ]
+    },
+    {
+      "name": "Williams Field Services OBA imbalance cash-out tracking",
+      "description": "Michelle Lokay tracks the Williams Field Services OBA through signature, approval and cash receipt. She forwards updates to management and to accounting contacts, who ask about the cash.",
+      "participants": ["michelle.lokay@enron.com", "shelley.corman@enron.com", "steven.harris@enron.com", "paul.cherry@enron.com", "laura.giambrone@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Status moves by forwarded emails with no single tracker. Approvals at Williams took several days, and the wire amount appears as both $268,702 and $267,701 in different emails.",
+      "automation": "A shared status tracker for imbalances and cash receipts, with an automatic notice when the wire is booked.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.3,
+      "messages": ["lokay-m/sent_items/5", "lokay-m/sent_items/6", "lokay-m/sent_items/9", "lokay-m/sent_items/10", "lokay-m/sent_items/69", "lokay-m/sent_items/68"],
+      "evidence": [
+        {"msg": "lokay-m/sent_items/5", "quote": "Williams Field Services signed their new OBA and returned it (CR 27760)."},
+        {"msg": "lokay-m/sent_items/9", "quote": "Final approval received!  I have an executed document signed by Williams and Danny McCarty."},
+        {"msg": "lokay-m/sent_items/68", "quote": "This is the wire transfer that I have been looking for since last week."}
+      ]
+    },
+    {
+      "name": "System access approvals and shared login changes",
+      "description": "Access requests for Enpower go to data approvers via automatic emails. Approver roles are unclear and requests are passed between people. Shared ISO/OATI scheduling logins and passwords are changed by email.",
+      "participants": ["bill.williams@enron.com", "michael.tully@enron.com", "will.smith@enron.com", "chris.mallory@enron.com", "support@oatiinc.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Requests wait because the listed approver is not the right one and the request is forwarded on. Credentials are circulated in plain email to the group.",
+      "automation": "Route access requests to the right approver automatically, and use a managed credential store with rotation notices instead of emailing passwords.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.5,
+      "messages": ["williams-w3/sent_items/70", "williams-w3/inbox/135", "williams-w3/sent_items/52"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/70", "quote": "I do need those folks to have access"},
+        {"msg": "williams-w3/sent_items/70", "quote": "Mike, I am not the approver for these rights.  Try Bill Williams."},
+        {"msg": "williams-w3/inbox/135", "quote": "This New login, SC ID and password will take effect for scheduling Tuesday the 11th."},
+        {"msg": "williams-w3/sent_items/52", "quote": "I would like to request a password change for the following EPMI logins."}
+      ]
+    }
+  ]
+}

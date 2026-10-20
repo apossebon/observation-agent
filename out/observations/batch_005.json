@@ -1,0 +1,157 @@
+{
+  "batch": 5,
+  "processes": [
+    {
+      "name": "Missing or expired deal ticket requests for flowing meters",
+      "description": "Volume management and settlement staff find flow at a meter with no Sitara deal (or a deal that expired mid-month) and email Daren Farmer asking him to extend the deal or create a ticket. The same ask recurs monthly for different meters and Daren answers one at a time.",
+      "participants": ["daren.farmer@enron.com", "aimee.lannou@enron.com", "ricky.ellis@enron.com", "mary.poorman@enron.com", "jackie.young@enron.com", "thu.nguyen@enron.com", "robert.cotten@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Requester cannot allocate or create the accounting arrangement until Daren replies, and some requests need a second round to clarify which deal is already out there.",
+      "automation": "Flag meters with flow and no active deal at month end and route a pre-filled extend-deal request to the desk, with a one-click approve.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/1270", "farmer-d/logistics/1274", "farmer-d/logistics/1279", "farmer-d/logistics/1277", "farmer-d/logistics/1286", "farmer-d/logistics/1308", "farmer-d/logistics/1265", "farmer-d/logistics/1626"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1286", "quote": "During the month of June there is flow at meter 6347, but there is no deal."},
+        {"msg": "farmer-d/logistics/1308", "quote": "I have flow at meter 989602 for July without a deal to allocate to."},
+        {"msg": "farmer-d/logistics/1277", "quote": "Could you extend this deal thru the 30th so that I can have Vol. Management create an accounting arrangement for it."},
+        {"msg": "farmer-d/logistics/1274", "quote": "Daren - I need a deal set up for meter 1459 for June '00. It flowed 34/day 6/1-6/6."},
+        {"msg": "farmer-d/logistics/1270", "quote": "Can the deal be extended to the 6th to cover flow of .803 decatherms?"}
+      ]
+    },
+    {
+      "name": "Invoice and deal price discrepancy chasing",
+      "description": "Settlement and accounting staff compare counterparty invoices or statements against Sitara/Unify and email the trader or logistics lead when a deal is missing or the price differs. Resolution requires someone to verify the deal and re-key the fix, sometimes with a workaround price.",
+      "participants": ["daren.farmer@enron.com", "joanie.ngo@enron.com", "megan.parker@enron.com", "nicole.vo@enron.com", "stacey.neuweiler@enron.com", "david.baumbach@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Requester waits on Daren to confirm the deal; one follow-up shows the customer had already called twice before an answer.",
+      "automation": "Auto-match counterparty invoice lines to Sitara/Unify deals and list unmatched or mispriced lines for the desk to confirm.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/1246", "farmer-d/logistics/1284", "farmer-d/logistics/1285", "farmer-d/logistics/1309", "farmer-d/logistics/1247"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1246", "quote": "Conoco is saying that we are missing one day of sale to them:  5/5  10,000 mmbtu at 2.95, deal #256686."},
+        {"msg": "farmer-d/logistics/1284", "quote": "I received an invoice from PG&E Texas Industrial Energy for 6/00 production and I do not see one of the pieces in Unify."},
+        {"msg": "farmer-d/logistics/1309", "quote": "Mary Gregg from LCRA said that Sitara #283939 should have been for $4.50/MMBtu."},
+        {"msg": "farmer-d/logistics/1285", "quote": "Since we cannot fix the deal, go ahead and put a fixed price of $2.81359 on both lines of the May 2000 deal."}
+      ]
+    },
+    {
+      "name": "Sitara book setup and deal corrections for the Central desk",
+      "description": "Darron Giron receives requests from settlements, credit and risk to create books, change demand charges or counterparties, and rebook deals in Sitara/Tagg, then replies Done so the requester can redraft Unify. He also sets rules for how each deal must be linked and commented.",
+      "participants": ["darron.giron@enron.com", "kevin.drachenberg@enron.com", "audrey.cook@enron.com", "karie.hastings@enron.com", "lesli.campbell@enron.com", "gary.stadler@enron.com", "kevin.radous@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Requesters wait for Darron to edit Sitara before they can redraft Unify or send invoices, and chase for updates (one adjustment was still pending after weeks).",
+      "automation": "Provide a request form that applies approved price/demand-charge/book changes to Sitara and notifies the requester automatically.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.45,
+      "messages": ["giron-d/sent/759", "giron-d/sent/741", "giron-d/sent/711", "giron-d/sent/738", "giron-d/sent/717", "giron-d/sent/721", "giron-d/sent/724", "giron-d/sent/710", "giron-d/sent/750"],
+      "evidence": [
+        {"msg": "giron-d/sent/738", "quote": "Please update the Sitara demand charges on the following deals to match the actualized pipeline statements:"},
+        {"msg": "giron-d/sent/717", "quote": "Have you had a chance to look at this adjustment to $.1134? Sitara still shows .0556."},
+        {"msg": "giron-d/sent/759", "quote": "We are breaking up our Central Midcon region into two books beginning July 1."},
+        {"msg": "giron-d/sent/711", "quote": "We need to have two more books created as soon as possible."},
+        {"msg": "giron-d/sent/721", "quote": "The new exchange deals for the EMW Park & Loan are 350499 and 350511."}
+      ]
+    },
+    {
+      "name": "EOL deal handling rules and corrections",
+      "description": "EOL-originated deals must not be altered in Sitara, but logistics staff repeatedly change paths or volumes and then have to be reminded and corrected. Managers send reminders and explain the rule case by case.",
+      "participants": ["pat.clynes@enron.com", "mary.poorman@enron.com", "mark.mccoy@enron.com", "daren.farmer@enron.com", "victor.lamadrid@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Changes get made before anyone checks whether the deal came from EOL, which forces after-hours calls and re-pathing.",
+      "automation": "Lock EOL-sourced tickets in the scheduling tool and show a warning with the allowed points before an edit is saved.",
+      "minutes_per_occurrence": 25,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/1298", "farmer-d/logistics/1299", "farmer-d/logistics/1300", "farmer-d/logistics/1303", "farmer-d/logistics/1302", "farmer-d/logistics/1248"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1298", "quote": "All EOL deals at Katy must stay at the tailgate of the Exxon Katy Plant #4132."},
+        {"msg": "farmer-d/logistics/1299", "quote": "Please be careful of EOL deals.  I got a call on Friday evening about this deal being changed but you had already left."},
+        {"msg": "farmer-d/logistics/1302", "quote": "explained to her that any deal they make on EOL cannot be changed in any way"}
+      ]
+    },
+    {
+      "name": "Customer and producer nominations and revisions",
+      "description": "Customers and producers send daily, weekend or monthly nominations and revisions by email or attached Word documents. Logistics staff read them and decide whether to adjust the path.",
+      "participants": ["robert.cotten@enron.com", "daren.farmer@enron.com", "rickya@calpine.com", "robert.lloyd@enron.com", "michael.mitcham@enron.com", "ami.chokshi@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Nominations arrive as attachments and a revision needs a person to ask Daren whether to adjust before anything changes.",
+      "automation": "Parse nomination emails and attachments into structured volumes, diff against the current nom, and propose the adjustment for approval.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.6,
+      "messages": ["farmer-d/logistics/1239", "farmer-d/logistics/1242", "farmer-d/logistics/1245", "farmer-d/logistics/1330", "farmer-d/logistics/1255"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1239", "quote": "Prize Energy revised their nom eff. 6/26 through 6/29 for the following meters:"},
+        {"msg": "farmer-d/logistics/1239", "quote": "Please advise if you want me to adjust."},
+        {"msg": "farmer-d/logistics/1242", "quote": "Enron Methanol nominates the following natural gas requirements for the Methanol Plant for July 2000:"},
+        {"msg": "farmer-d/logistics/1245", "quote": "Calpine Daily Gas Nomination and Monthly (JULY) Nomination"}
+      ]
+    },
+    {
+      "name": "Monthly hours and activity driver survey",
+      "description": "The cost-model team emails every operations group a monthly hours survey and an activity driver survey, and each group fills it in and returns it by a deadline.",
+      "participants": ["shari.mao@enron.com", "james.scribner@enron.com", "jennifer.reside@enron.com", "daren.farmer@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Each team re-keys the same driver numbers every month and the deadline needs follow-up.",
+      "automation": "Pull driver quantities from existing reports and prefill the survey for owner sign-off.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/1243", "farmer-d/logistics/1244", "farmer-d/logistics/1319"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1243", "quote": "If your hours have not changed from last month, please send us an email to indicate so."},
+        {"msg": "farmer-d/logistics/1244", "quote": "Please select your RCs, and fill in the driver quantity for the requested driver for the month of June."},
+        {"msg": "farmer-d/logistics/1319", "quote": "Please fill out the attached activity driver survey with July numbers for your RC and return to Shari Mao by end of day Friday, August 11."}
+      ]
+    },
+    {
+      "name": "Gas control outage and shut-in notices",
+      "description": "Gas Control and plant contacts email the logistics and producer services group when a lateral leaks, meters are shut in for pigging, or the Methanol plant is down. Updates, reschedules and requests to send producer letters follow the same chain.",
+      "participants": ["gary.hanks@enron.com", "maritta.mullet@enron.com", "daren.farmer@enron.com", "cheryl.dudley@enron.com", "melissa.graves@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Each reschedule is a new forwarded chain, so recipients re-read the full thread, and letters to producers are done by hand.",
+      "automation": "Publish outages to a shared calendar or feed with affected meters and auto-generate producer notice letters.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/1268", "farmer-d/logistics/1272", "farmer-d/logistics/1315", "farmer-d/logistics/1331", "farmer-d/logistics/1375", "farmer-d/logistics/1267", "farmer-d/logistics/1297"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1268", "quote": "On Friday, July 7 2000, the field detected a leak on the Wilson Creek Lateral in Wharton Co."},
+        {"msg": "farmer-d/logistics/1272", "quote": "Repairs to the Wilson Creek lateral were completed on Monday afternoon 7/10/00."},
+        {"msg": "farmer-d/logistics/1375", "quote": "All producers are to be shut-in by 9:00 AM on September 12, 2000."},
+        {"msg": "farmer-d/logistics/1297", "quote": "The Methanol Plant is still on target to begin making spec methanol on Friday, July 28."}
+      ]
+    },
+    {
+      "name": "Transport tickets, POPS arrangements and buyback tickets",
+      "description": "Logistics and settlement staff ask each other to set up transport usage tickets, POPS accounting arrangements and buyback tickets so that invoices can be drafted. Requests are urgent near close and get forwarded between people.",
+      "participants": ["heidi.withers@enron.com", "fred.boas@enron.com", "robert.lloyd@enron.com", "lee.papayoti@enron.com", "daren.farmer@enron.com", "stella.morris@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "The ticket request moves through several forwards while settlement waits to close, and rates must be confirmed by hand.",
+      "automation": "Generate monthly transport usage tickets and buyback tickets from the prior month and flag only the rate changes.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/1257", "farmer-d/logistics/1275", "farmer-d/logistics/1304", "farmer-d/logistics/1317"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1257", "quote": "I have input and updated transport usage tickets for July."},
+        {"msg": "farmer-d/logistics/1304", "quote": "Equistar invoice can not be drafted without this deal ticket."},
+        {"msg": "farmer-d/logistics/1317", "quote": "Will there be a Buyback ticket for Formosa during August 2000 activity."},
+        {"msg": "farmer-d/logistics/1275", "quote": "Please put the HPLC 012-41500-02-013 transport contract in POPS at meter 980692 for June 2000"}
+      ]
+    },
+    {
+      "name": "EMW daily P&L and monthly book reporting",
+      "description": "Darron Giron sends the daily EMW P&L and monthly books (such as Agave) to risk and trading contacts, and reconciles differences between desk P&L and schedule amounts. Corrections go out as a second email with a replacement attachment.",
+      "participants": ["darron.giron@enron.com", "carrie.hollomon@enron.com", "janet.dietrich@enron.com", "kevin.radous@enron.com", "drew.hill@enron.com", "rahmaan.mwongozi@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "The wrong attachment is sent and has to be replaced, and small differences between P&L and schedule are chased by email.",
+      "automation": "Generate and distribute the signed-off P&L automatically and highlight reconciling differences against the schedule.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.5,
+      "messages": ["giron-d/sent/739", "giron-d/sent/745", "giron-d/sent/722"],
+      "evidence": [
+        {"msg": "giron-d/sent/739", "quote": "Currently attached is the P&L that was signed off on last night."},
+        {"msg": "giron-d/sent/745", "quote": "Here is Agave for June.  I also made a change to May."},
+        {"msg": "giron-d/sent/722", "quote": "There is still a remaining difference of  771.00 dollars that IM Central  and/ or  Chicago have not recognized on their P&L."}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+ "slug": "real-time-power-schedule-cut-and-variance-corrections",
+ "name": "Real-time power schedule, cut and variance corrections",
+ "description": "Real-time shift traders spend part of each day correcting schedules and positions. When Colstrip or a counterparty cuts, they zero deals and book offsetting annuities. They fix import IDs and load zones, create DA and HA finals in CAPS, and run the SAR and INC reconciliation against CAPS and Enpower. They also repair El Paso Electric schedules with missing tags, check out schedules with counterparties by phone, and call generators every hour for checkout. The same cut is recorded in several places, including paper cut sheets and a Lotus Notes database, and procedures are re-issued when entries are inconsistent.",
+ "stall_points": "Variances are found after the fact and need detective work. Real-time cuts are not in CAPS, so the SAR and INC only match after manual additions. HA finals creation hits SQL errors and data scrape failures that go unnoticed over weekends. The EPE schedule sheet misses tags day after day. Paper cut sheets get lost, and hourly generator calls are sometimes missed.",
+ "automation": "A cut-entry form that zeroes the deal, books the offsetting annuity and logs the cut once to every destination. An automated morning SAR, INC and CARP comparison would write the reconciliation sheet. Tags in the EPE schedule would be validated automatically against dispatcher schedules, and the scrape and finals imports would be monitored with alerts. Metered generator output would be pulled into the services sheet automatically.",
+ "participants": [
+  "albert.meyers@enron.com",
+  "bill.williams@enron.com",
+  "cara.semperger@enron.com",
+  "craig.dean@enron.com",
+  "geir.solberg@enron.com",
+  "john.anderson@enron.com",
+  "john.oh@enron.com",
+  "kalmeida@caiso.com",
+  "kate.symes@enron.com",
+  "lester.rawson@enron.com"
+ ],
+ "economics": {
+  "messages_total": 52,
+  "messages_dated": 52,
+  "first_date": "2001-06-29",
+  "last_date": "2002-02-06",
+  "active_months": 9,
+  "distinct_months": 7,
+  "recurring": true,
+  "min_recurring_months": 6,
+  "occurrences_per_month": 5.78,
+  "minutes_per_occurrence": 30.0,
+  "automatable_fraction": 0.45,
+  "gross_hours_per_month": 2.89,
+  "hours_saved_per_month": 1.3,
+  "dollars_saved_per_month": 110.5,
+  "blended_rate": 85.0,
+  "formula": "dated_messages / active_months * minutes / 60 * automatable_fraction * 85"
+ },
+ "evidence": [
+  {
+   "msg": "williams-w3/sent_items/417",
+   "line": 18,
+   "quote": "Even if there are no variances, please complete the July EPE Reconciliation sheet going forward.",
+   "date": "2001-07-10",
+   "sender": "bill.williams@enron.com",
+   "subject": "EPE Reconciliation Sheet"
+  },
+  {
+   "msg": "williams-w3/sent_items/417",
+   "line": 18,
+   "quote": "Houston will assume that no one ran the CARP if the sheet has no entries.",
+   "date": "2001-07-10",
+   "sender": "bill.williams@enron.com",
+   "subject": "EPE Reconciliation Sheet"
+  },
+  {
+   "msg": "williams-w3/sent_items/391",
+   "line": 19,
+   "quote": "The SAR and INC sheet are matching if the 42 mw purchase from the imbalance at $44 is factored in",
+   "date": "2001-07-16",
+   "sender": "bill.williams@enron.com",
+   "subject": "Reconciliation for Monday and Tuesday"
+  },
+  {
+   "msg": "williams-w3/sent_items/453",
+   "line": 18,
+   "quote": "We had some double deal-entry last night under the ST-WBOM book.",
+   "date": "2001-06-29",
+   "sender": "bill.williams@enron.com",
+   "subject": "Adjustments for ST-WBOM for 06/27/01"
+  },
+  {
+   "msg": "williams-w3/sent_items/418",
+   "line": 29,
+   "quote": "we show no variances between the Real Time El Paso model and our CARP report.",
+   "date": "2001-07-10",
+   "sender": "bill.williams@enron.com",
+   "subject": "RE: EPE Reconciliation Model: Follow-up"
+  },
+  {
+   "msg": "williams-w3/sent_items/373",
+   "line": 18,
+   "quote": "We are short 14 mws at the Portland General System in position manager for Friday, July 20th.",
+   "date": "2001-07-23",
+   "sender": "bill.williams@enron.com",
+   "subject": "Position manager"
+  },
+  {
+   "msg": "williams-w3/sent_items/372",
+   "line": 27,
+   "quote": "I fixed it, no idea where those megawiggles went",
+   "date": "2001-07-23",
+   "sender": "bill.williams@enron.com",
+   "subject": "RE: Position manager"
+  },
+  {
+   "msg": "williams-w3/sent_items/291",
+   "line": 18,
+   "quote": "We are off in position manager at Mid Columbia because of Enron Canada.",
+   "date": "2001-08-23",
+   "sender": "bill.williams@enron.com",
+   "subject": "Position Manager"
+  },
+  {
+   "msg": "williams-w3/sent_items/308",
+   "line": 21,
+   "quote": "I have added deals to Enpower to flatten the report, these deals are only necessary for the sake of the report.",
+   "date": "2001-08-13",
+   "sender": "bill.williams@enron.com",
+   "subject": "Congestion/Enpower to CAPS variance"
+  },
+  {
+   "msg": "williams-w3/sent_items/312",
+   "line": 41,
+   "quote": "We had a variance in the SAR for the West BOM Book on Friday night.",
+   "date": "2001-08-13",
+   "sender": "bill.williams@enron.com",
+   "subject": "Interdesk scheduling"
+  },
+  {
+   "msg": "williams-w3/sent_items/357",
+   "line": 29,
+   "quote": "We must call Grays Harbor and Frontier at the top of EVERY hour.",
+   "date": "2001-07-28",
+   "sender": "bill.williams@enron.com",
+   "subject": "Generator Checkouts and Control Area Services"
+  },
+  {
+   "msg": "williams-w3/sent_items/357",
+   "line": 29,
+   "quote": "Then we need to call BPA and communicate the ACTUAL energy generated, not an estimate.",
+   "date": "2001-07-28",
+   "sender": "bill.williams@enron.com",
+   "subject": "Generator Checkouts and Control Area Services"
+  }
+ ],
+ "output_prefix": "out/drafts/real-time-power-schedule-cut-and-variance-corrections-"
+}

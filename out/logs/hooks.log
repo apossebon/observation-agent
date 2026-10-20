@@ -1,0 +1,46 @@
+2026-10-20T18:37:05.810766+00:00 check batch_004.json: 0 problems
+2026-10-20T18:37:08.491784+00:00 check batch_001.json: 1 problems
+    processes[5] (Monthly cost-center, survey and allocation data collection from Energy Operations managers): evidence rejected (quote not found verbatim): msg='farmer-d/logistics/856' quote='Please return these surveys by end of day Friday, March 3rd.'
+2026-10-20T18:37:09.249443+00:00 check batch_003.json: 1 problems
+    processes[2] (PanEnergy/Duke exchange settlement and PG&E interconnect variance resolution): evidence rejected (quote not found verbatim): msg='farmer-d/logistics/1039' quote='Each group will respond promptly to ensure payment can be made through the syste'
+2026-10-20T18:37:14.064654+00:00 check batch_005.json: 0 problems
+2026-10-20T18:37:20.090455+00:00 check batch_002.json: 0 problems
+2026-10-20T18:37:39.702741+00:00 check batch_000.json: 0 problems
+2026-10-20T18:37:39.987611+00:00 check batch_001.json: 0 problems
+2026-10-20T18:37:46.621065+00:00 check batch_003.json: 0 problems
+2026-10-20T18:38:20.149905+00:00 check batch_000.json: 0 problems
+2026-10-20T18:39:25.838131+00:00 check batch_011.json: 1 problems
+    processes[7] (Customer and pipeline nomination changes and confirmations): evidence rejected (quote not found verbatim): msg='farmer-d/logistics/2028' quote='she has informed me that for this time period there should be no nominations at '
+2026-10-20T18:39:26.339386+00:00 check batch_008.json: 0 problems
+2026-10-20T18:39:29.419724+00:00 check batch_009.json: 0 problems
+2026-10-20T18:39:29.821786+00:00 check batch_007.json: 0 problems
+2026-10-20T18:39:31.504453+00:00 check batch_010.json: 1 problems
+    processes[7] (Holiday and weather staffing coordination for Texas logistics desk): evidence rejected (quote not found verbatim): msg='farmer-d/logistics/1990' quote='I would like to have a minimum of three on staff, so I need two volunteers (one '
+2026-10-20T18:39:41.715375+00:00 check batch_006.json: 0 problems
+2026-10-20T18:39:53.933906+00:00 check batch_011.json: 0 problems
+2026-10-20T18:39:59.911276+00:00 check batch_008.json: 0 problems
+2026-10-20T18:40:03.990589+00:00 check batch_010.json: 0 problems
+2026-10-20T18:41:01.433291+00:00 check batch_016.json: 0 problems
+2026-10-20T18:41:04.233027+00:00 check batch_013.json: 0 problems
+2026-10-20T18:41:10.412917+00:00 check batch_015.json: 0 problems
+2026-10-20T18:41:14.689406+00:00 check batch_017.json: 0 problems
+2026-10-20T18:41:14.998082+00:00 check batch_012.json: 0 problems
+2026-10-20T18:41:16.463788+00:00 check batch_014.json: 0 problems
+2026-10-20T18:41:32.669957+00:00 check batch_016.json: 0 problems
+2026-10-20T18:42:29.379968+00:00 check batch_022.json: 0 problems
+2026-10-20T18:42:30.946409+00:00 check batch_019.json: 1 problems
+    processes[6] (Gas logistics path and contract issue resolution): evidence rejected (quote not found verbatim): msg='farmer-d/logistics/48' quote="We've seen old bad, zero paths be re-used accidentally."
+2026-10-20T18:42:34.090666+00:00 check batch_021.json: 0 problems
+2026-10-20T18:42:36.633806+00:00 check batch_020.json: 0 problems
+2026-10-20T18:42:40.134615+00:00 check batch_023.json: 0 problems
+2026-10-20T18:42:43.690881+00:00 check batch_018.json: 0 problems
+2026-10-20T18:43:01.781058+00:00 check batch_019.json: 0 problems
+2026-10-20T18:43:54.790028+00:00 check batch_027.json: 3 problems
+    processes[0] (Weekly California Capacity Report): evidence rejected (quote not found verbatim): msg='lokay-m/sent_items/131' quote='subject: California Capacity Report for Week of 03/04-03/08'
+    processes[3] (TW web page review before production): evidence rejected (quote not found verbatim): msg='lokay-m/sent_items/83' quote='subject: Error message TW Unsubscribed Capacity'
+    processes[4] (Contract, OBA and amendment administration): evidence rejected (quote not found verbatim): msg='lokay-m/inbox/37' quote='subject: TW Contract Status as of March 25th @ 5:15 pm'
+2026-10-20T18:44:00.675487+00:00 check batch_026.json: 0 problems
+2026-10-20T18:44:09.275809+00:00 check batch_025.json: 0 problems
+2026-10-20T18:44:09.508402+00:00 check batch_024.json: 0 problems
+2026-10-20T18:44:18.932696+00:00 check batch_027.json: 0 problems
+2026-10-20T18:49:52.051933+00:00 check synthesis.json: 0 problems

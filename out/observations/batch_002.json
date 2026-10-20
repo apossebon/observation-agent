@@ -1,0 +1,165 @@
+{
+  "batch": 2,
+  "processes": [
+    {
+      "name": "Sitara deal extension / roll requests to clear allocation exceptions",
+      "description": "Volume management and logistics staff find meters with flow but an expired or missing Sitara deal and email Daren Farmer (or Stacey) to extend or roll the ticket so the allocation exception clears. The trader checks the contract, edits the deal, and replies by email, often after several back-and-forths.",
+      "participants": ["jackie.young@enron.com", "daren.farmer@enron.com", "stella.morris@enron.com", "aimee.lannou@enron.com", "stacey.neuweiler@enron.com", "anita.luong@enron.com", "julie.meyers@enron.com", "robert.lloyd@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Each request waits on one person (Daren) to check contracts and edit the ticket; the requester cannot close the exception or set up the accounting arrangement until the answer arrives, and contract questions are passed on again to Julie Meyers.",
+      "automation": "Flag deals that expire while a meter still flows (or lack an evergreen flag) and propose the extension to the deal owner for one-click approval, instead of each analyst emailing the same request.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/872", "farmer-d/logistics/873", "farmer-d/logistics/879", "farmer-d/logistics/881", "farmer-d/logistics/896", "farmer-d/logistics/897", "farmer-d/logistics/899", "farmer-d/logistics/995", "farmer-d/logistics/1000", "farmer-d/logistics/1005"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/872", "quote": "Can you please extend sitara deal #156657 for 3/1/00, if the deal will allow?"},
+        {"msg": "farmer-d/logistics/879", "quote": "I'm attempting to clean up my allocations, due to this being allocation close week for Volume Management."},
+        {"msg": "farmer-d/logistics/881", "quote": "Could one of you please extend deal # 151203 for meter 1595?  This deal expired 12/31/99."},
+        {"msg": "farmer-d/logistics/1005", "quote": "Can you please see if you can roll deal 156657 for day 1 for April?"},
+        {"msg": "farmer-d/logistics/899", "quote": "In the future, please run all wellhead deals through Tom Acton first."}
+      ]
+    },
+    {
+      "name": "Month-end intercompany and pipeline volume variance clearing",
+      "description": "Settlements and volume management staff list Sitara deals with volume variances or a missing purchase or sale side, then chase schedulers to fix pathing, desk-to-desk deals and swing contracts before the close. Answers come by email and often require a meeting or repeated follow-up.",
+      "participants": ["gregg.lenart@enron.com", "thu.nguyen@enron.com", "stacey.neuweiler@enron.com", "daren.farmer@enron.com", "aimee.lannou@enron.com", "fred.boas@enron.com", "sherlyn.schumack@enron.com", "robert.lloyd@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Same variances are re-raised across weeks because the person who must re-path or create the deal is busy; the analyst has to forward the original email with a nudge and sometimes ask for a meeting to explain.",
+      "automation": "Run a monthly accrual-vs-nomination comparison that lists one-sided or mismatched intercompany deals and routes each to the owning scheduler with a due date.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/868", "farmer-d/logistics/876", "farmer-d/logistics/877", "farmer-d/logistics/878", "farmer-d/logistics/919", "farmer-d/logistics/927", "farmer-d/logistics/944", "farmer-d/logistics/946", "farmer-d/logistics/947", "farmer-d/logistics/949", "farmer-d/logistics/950", "farmer-d/logistics/951"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/868", "quote": "Below is a list of Sitara deals that had volume variances or where one side (purchase/sale) did not get accrued for the FEB 2000 accrual."},
+        {"msg": "farmer-d/logistics/877", "quote": "We are required to clear intercompany variances by the end of the month, so it would help if you could research this as soon as possible."},
+        {"msg": "farmer-d/logistics/927", "quote": "I need a desk to desk deal set up at meter 378 for February 2000."},
+        {"msg": "farmer-d/logistics/951", "quote": "I must be missing something.  Can I meet with you today and show you what I have?"},
+        {"msg": "farmer-d/logistics/878", "quote": "The new deal, 158220, is missing 10,000 for day 1.  Please let me know when you have this corrected."}
+      ]
+    },
+    {
+      "name": "Counterparty invoice and price discrepancy resolution",
+      "description": "Settlements and accounting staff find that a counterparty's invoice or price does not match Sitara or Unify, and email Daren Farmer or Julie Meyers to confirm the correct deal, trader or price. Fixes are then keyed into Sitara or done via accounting arrangements.",
+      "participants": ["megan.parker@enron.com", "julie.meyers@enron.com", "daren.farmer@enron.com", "tina.valadez@enron.com", "kristen.hanson@enron.com", "susan.trevino@enron.com", "katherine.herrera@enron.com", "sherlyn.schumack@enron.com", "charlotte.hawkins@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Requests sit with Daren or Julie, who forward to others (Craig, traders at the counterparty); invoice due dates pass and settlements has to chase again.",
+      "automation": "Auto-compare invoice lines against Sitara deal price, entity and volume and send the exception with the supporting deal data to one queue, so settlements does not hunt for the trader or confirmation.",
+      "minutes_per_occurrence": 25,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/904", "farmer-d/logistics/922", "farmer-d/logistics/999", "farmer-d/logistics/942", "farmer-d/logistics/953", "farmer-d/logistics/957", "farmer-d/logistics/963", "farmer-d/logistics/989", "farmer-d/logistics/992", "farmer-d/logistics/979", "farmer-d/logistics/985"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/922", "quote": "We have a price difference with Mitchell Gas Services for 2/00 production, deal 156658."},
+        {"msg": "farmer-d/logistics/963", "quote": "Pat Dresner (accountant) at Midcon Texas says she does not show these deals in her system and she can not pay on them."},
+        {"msg": "farmer-d/logistics/979", "quote": "The following point should be adjusted to reflect a price of $2.52, per the contract."},
+        {"msg": "farmer-d/logistics/985", "quote": "This problem, among others with this exchange deal, is currently we have a massive A/R issue and we're trying to get this cleanup before end of month."},
+        {"msg": "farmer-d/logistics/999", "quote": "Is this still outstanding?  Craig is back in the office now."}
+      ]
+    },
+    {
+      "name": "Producer and customer nomination changes relayed and re-keyed",
+      "description": "Producers and customers (KCS Josey Ranch, Reliant, wellhead producers, methanol and MTBE plants, power plants) send revised nominations by email or spreadsheet. A trade-support person forwards each revision to Daren, Tom Acton and others, who then re-key the volumes in Sitara or spreadsheets.",
+      "participants": ["susan.trevino@enron.com", "tom.acton@enron.com", "daren.farmer@enron.com", "lauri.allen@enron.com", "ami.chokshi@enron.com", "vance.taylor@enron.com", "michael.mitcham@enron.com", "george.grant@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Revisions arrive several times a month (1st, 2nd, 3rd rev for Josey) and each is forwarded manually; recipients can be missed from the send list, and some requests sit until someone replies.",
+      "automation": "Parse incoming nomination emails and attachments into a structured nomination change, diff against the current Sitara volume and prepare the update for approval.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/895", "farmer-d/logistics/907", "farmer-d/logistics/913", "farmer-d/logistics/920", "farmer-d/logistics/921", "farmer-d/logistics/955", "farmer-d/logistics/970", "farmer-d/logistics/980", "farmer-d/logistics/984", "farmer-d/logistics/993", "farmer-d/logistics/1001", "farmer-d/logistics/908", "farmer-d/logistics/967"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/921", "quote": "Here's REVISED March 2000 (effective 3/21/00 9:00am cycle) setup for Josey:"},
+        {"msg": "farmer-d/logistics/984", "quote": "FW: 3rd rev Mar. 2000 Josey Ranch nom"},
+        {"msg": "farmer-d/logistics/993", "quote": "This is the estimated Josey Ranch nomination for the month of April 2000."},
+        {"msg": "farmer-d/logistics/980", "quote": "deal tickets should be created and entered into sitara based on the following information:"},
+        {"msg": "farmer-d/logistics/1001", "quote": "I recently received this nomination and the total package of gas for the aforementioned changed as follows:"}
+      ]
+    },
+    {
+      "name": "Unaccounted-for (UA4) and zero-volume feed monitoring and correction",
+      "description": "Analysts watch daily P&L and imbalance numbers for UA4 swings, find meters where MIPS/POPS fed zero volumes to Sitara or MOPS, and manually override them with estimates. A team was assembled to reconcile 1999 UA4, with email escalation to measurement.",
+      "participants": ["lauri.allen@enron.com", "charlotte.hawkins@enron.com", "bryan.hull@enron.com", "michael.eiben@enron.com", "tom.acton@enron.com", "rita.wynne@enron.com", "aimee.lannou@enron.com", "daren.farmer@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "The root fix sits with another system team that treated it as not a priority, so analysts override zeros by hand each night and re-check the next day to see if it held.",
+      "automation": "Alert automatically when a meter feed drops to zero while nominations are positive, and show UA4 movement by meter in the nightly P&L so overrides are targeted.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/925", "farmer-d/logistics/928", "farmer-d/logistics/935", "farmer-d/logistics/936", "farmer-d/logistics/937", "farmer-d/logistics/910", "farmer-d/logistics/917", "farmer-d/logistics/1141"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/925", "quote": "Someone needs to be overriding the 0 volumes so that Sitara is receiving correct information and the P&L is kept as accurate as possible."},
+        {"msg": "farmer-d/logistics/928", "quote": "In the mean time we are overriding the volumes in POPS with the estimated volumes."},
+        {"msg": "farmer-d/logistics/937", "quote": "I looked at our p&l tonite and our UA4 volumes actually increased by about 90,000 MMBtu's for a grand total of 550,000 MMBtu's for the month."},
+        {"msg": "farmer-d/logistics/1141", "quote": "After comparing HPL's numbers with PG&E's numbers I have found a few discrepancies with the Tufco volumes."},
+        {"msg": "farmer-d/logistics/917", "quote": "As of Thursday night's   P &L calc., unaccounted for March 2000 on Texas was a little over 400,000 mmbtus."}
+      ]
+    },
+    {
+      "name": "Daily P&L calculation and distribution",
+      "description": "After entering deals and running the calc, a book owner emails the daily P&L (with notes on deal changes, held-back amounts and UA4 positions) to traders and desk heads. Questions about the numbers are answered by follow-up email.",
+      "participants": ["darron.giron@enron.com", "lee.fascetti@enron.com", "richard.tomaski@enron.com", "james.simpson@enron.com", "bryan.hull@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "The calc depends on the system being up (deals missed the run when it went down) and unexplained P&L adjustments need a call or email to reconcile.",
+      "automation": "Generate and send the daily P&L summary and UA4 balance per book automatically after the calc completes, flagging unexplained adjustments.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.5,
+      "messages": ["giron-d/sent/703", "giron-d/sent/694", "giron-d/sent/375", "giron-d/sent/373", "farmer-d/logistics/888"],
+      "evidence": [
+        {"msg": "giron-d/sent/703", "quote": "I held back $1,087,409 from the MEH book."},
+        {"msg": "giron-d/sent/694", "quote": "after I put in the deals, the system went down and I was not able to get them to calc."},
+        {"msg": "giron-d/sent/375", "quote": "The P&L is attached.  The total daily is $471,793 before any sharing."},
+        {"msg": "farmer-d/logistics/888", "quote": "we attached both a consolidated p&l and an updated prudency schedule."}
+      ]
+    },
+    {
+      "name": "Transport rate verification and PMA clearing",
+      "description": "Transport and settlement analysts check pipeline rates and contract allocations against Unify and Sitara usage tickets and clear price mismatch adjustments (PMAs). Discrepancies are emailed to schedulers who must confirm numbers with the pipeline.",
+      "participants": ["heidi.withers@enron.com", "mary.smith@enron.com", "stacey.neuweiler@enron.com", "sherlyn.schumack@enron.com", "marlene.hilliard@enron.com", "daren.farmer@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Rates live in two systems (Unify for invoicing, Sitara tickets for P&L) so they are corrected twice; the scheduler cannot give a time frame and the issue stays open across weeks.",
+      "automation": "Compare contract rates in the rate matrix, Unify and Sitara usage tickets automatically each month and list mismatches for one person to correct.",
+      "minutes_per_occurrence": 40,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/867", "farmer-d/logistics/874", "farmer-d/logistics/930", "farmer-d/logistics/958", "farmer-d/logistics/972"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/867", "quote": "Right now we have not entered in or corrected rates in their transport usage tickets."},
+        {"msg": "farmer-d/logistics/874", "quote": "I have a lot of PMA's for 1999 related to rates missing or incorrect."},
+        {"msg": "farmer-d/logistics/972", "quote": "I have provided Stacey with the daily allocation from PG&E Texas."},
+        {"msg": "farmer-d/logistics/958", "quote": "Please be advised that Contract No. Teco9121 shows in the Global Contract system as PG&E Texas Pipeline, L.P."}
+      ]
+    },
+    {
+      "name": "Cost allocation surveys, labor reports and department admin requests",
+      "description": "Finance and admin groups send recurring monthly surveys (hours, activity drivers), labor distribution checks, O&M reports and vacation or hiring requests that managers fill in and return by a deadline. Each is a spreadsheet or email that must be filled in by hand each month.",
+      "participants": ["shari.mao@enron.com", "daren.farmer@enron.com", "lisa.csikos@enron.com", "yvette.connevey@enron.com", "brian.heinrich@enron.com", "brenda.herod@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Surveys come with tight deadlines and manual spreadsheet entry; reports go to the wrong person (Daren was not receiving the Labor Distribution report) and must be chased.",
+      "automation": "Pre-fill the survey from last month and existing reports, and route labor and O&M reports to the right managers automatically.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/914", "farmer-d/logistics/923", "farmer-d/logistics/931", "farmer-d/logistics/932", "farmer-d/logistics/954", "farmer-d/logistics/956", "farmer-d/logistics/997", "farmer-d/logistics/998"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/997", "quote": "For the month of March, please provide a completed \"Hours\" survey for each position within your group."},
+        {"msg": "farmer-d/logistics/998", "quote": "Please fill out the attached activity driver survey with March numbers for your RC by end of day Wednesday, April 5th."},
+        {"msg": "farmer-d/logistics/923", "quote": "This lack of information prevents your expenses from being 100% allocated out to the commercial teams."},
+        {"msg": "farmer-d/logistics/914", "quote": "I get a Labor Distribution report and show that Kenneth Seaman is showing as being active for payperiod 1 and 2 in February."},
+        {"msg": "farmer-d/logistics/954", "quote": "Please submit your scheduled April Vacation to me by the end of Monday afternoon."}
+      ]
+    },
+    {
+      "name": "Customer plant and pipeline outage notices relayed to schedulers",
+      "description": "Plant upset updates (methanol, MTBE), customer outages and pipeline maintenance are emailed to a distribution list or forwarded by hand to schedulers. Schedulers then decide whether to zero volumes, arrange buybacks or find alternate supply.",
+      "participants": ["maritta.mullet@enron.com", "robert.lloyd@enron.com", "gary.lamphier@enron.com", "gary.hanks@enron.com", "daren.farmer@enron.com", "jackie.young@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Updates arrive as repeated emails that revise earlier forecasts, and the nomination decision (zero volumes, buyback) waits for a trader to reply.",
+      "automation": "Tag outage notices to affected meters and nominations and prompt the scheduler with a proposed volume change and status history.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/943", "farmer-d/logistics/945", "farmer-d/logistics/959", "farmer-d/logistics/960", "farmer-d/logistics/961", "farmer-d/logistics/971", "farmer-d/logistics/981", "farmer-d/logistics/1261", "farmer-d/logistics/902", "farmer-d/logistics/903", "farmer-d/logistics/905", "farmer-d/logistics/969"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/959", "quote": "The MTBE plant had an upset early today and a steam boiler is being taken out of service."},
+        {"msg": "farmer-d/logistics/961", "quote": "The MTBE plant will continue operating at lower production rates of approximately 8 MBD to 9 MBD until April 6 or 7 at the earliest."},
+        {"msg": "farmer-d/logistics/905", "quote": "Please zero out the volumes until further notice."},
+        {"msg": "farmer-d/logistics/902", "quote": "Do you want to arrange a buyback for this activity."},
+        {"msg": "farmer-d/logistics/969", "quote": "The following meters are in the affected section for the outage planned in April:"}
+      ]
+    }
+  ]
+}

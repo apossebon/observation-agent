@@ -1,0 +1,143 @@
+{
+  "batch": 9,
+  "processes": [
+    {
+      "name": "Unnominated meter flow: finding or extending a deal to cover it",
+      "description": "After measurement closes, logistics staff find gas flowing at meters with no deal or an expired deal. They email the deal owner asking for a new deal, an extension, or a move to the Strangers contract. The same question is raised meter by meter.",
+      "participants": ["aimee.lannou@enron.com", "mary.poorman@enron.com", "daren.farmer@enron.com", "julie.meyers@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Waiting for the deal owner to reply while the exception stays on the Vol. Mgmt UA4 list. Contract validity is checked by a further email to a third person.",
+      "automation": "Match daily flow against active deals, flag meters with flow and no deal, and send the owner a prefilled request with the last deal number.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/1508", "farmer-d/logistics/1512", "farmer-d/logistics/1520", "farmer-d/logistics/1522", "farmer-d/logistics/1543", "farmer-d/logistics/1544"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1512", "quote": "Daren - meter 1601 has flow from 11/8-11/10.  There is no deal for these days."},
+        {"msg": "farmer-d/logistics/1543", "quote": "I need a deal to pick up the 500 and change that squeaked through the meter, please.  My exceptions need to be cleared pretty quickly."},
+        {"msg": "farmer-d/logistics/1544", "quote": "A small volume (352 Dth) flowed on the 10th at Flagstaff meter, I think it may have been a test volume."},
+        {"msg": "farmer-d/logistics/1520", "quote": "I am now on the dreaded ua4 list from Vol. Mgmt."}
+      ]
+    },
+    {
+      "name": "EnerVest Sitara price changes on request",
+      "description": "Tricia Truong emails Darron Giron to change the rate on Sitara deal S#27239 for a given production month. He edits it by hand and replies done. Earlier months were missed and chased repeatedly.",
+      "participants": ["darron.giron@enron.com", "tricia.truong@enron.com", "bryce.baxter@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Prior months' changes sat unactioned and needed several chasers across people and weeks. A new request arrives each month with the new price.",
+      "automation": "Load the monthly invoice price into all Sitara delivery points for a deal automatically, and flag points that differ.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.6,
+      "messages": ["giron-d/sent/508", "giron-d/sent/469", "giron-d/sent/378"],
+      "evidence": [
+        {"msg": "giron-d/sent/469", "quote": "Could you please change rate on the above Sitara to $4.878216 for Oct. 00 production?"},
+        {"msg": "giron-d/sent/378", "quote": "Could you please change rate on the above Sitara to $4.15544 for Nov. 00 Production ?"},
+        {"msg": "giron-d/sent/508", "quote": "It's done.  I appologize for this taking so long.  It won't happen again."},
+        {"msg": "giron-d/sent/508", "quote": "The rate at some locations has not been changed in Sitara.  Are they supposed to be at the same price for all points?"}
+      ]
+    },
+    {
+      "name": "Book lists and moving deals between books",
+      "description": "Darron Giron is repeatedly asked for lists of the books his desk officializes each night, and to move deals between books. He types out the book codes by hand for different requesters and forwards move requests to his team.",
+      "participants": ["darron.giron@enron.com", "connie.sutton@enron.com", "susan.trevino@enron.com", "russell.diamond@enron.com", "stacey.vallejo@enron.com", "carole.frank@enron.com", "chris.walker@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "The same list is rebuilt for each requester and the first version was wrong and had to be redone. Move requests carry same-day or next-day deadlines.",
+      "automation": "Publish a maintained book and portfolio reference table, and auto-generate the list on request. Bulk-move deals between books from the request.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.5,
+      "messages": ["giron-d/sent/502", "giron-d/sent/500", "giron-d/sent/492", "giron-d/sent/470", "giron-d/sent/466", "giron-d/sent/467", "giron-d/sent/460", "giron-d/sent/459"],
+      "evidence": [
+        {"msg": "giron-d/sent/500", "quote": "I have updated the list to include every book we officialize each night."},
+        {"msg": "giron-d/sent/492", "quote": "I believe this is all of the Enovate/EMW books that are officialized each night."},
+        {"msg": "giron-d/sent/466", "quote": "For Basis, add  -BAS to the end of the book name.  For Gas Daily, add  -GDL to the end of the book name."},
+        {"msg": "giron-d/sent/460", "quote": "Please move these deals to the FT-US/CAND-ERMS book by the end of tomorrow."},
+        {"msg": "giron-d/sent/459", "quote": "There's a deal in the FT-West book that needs to be moved to the FT-US/CAND-ERMS book right away."}
+      ]
+    },
+    {
+      "name": "Daily DPR, P&L and position review sign-off",
+      "description": "The risk analyst checks drafts of the daily position report and replies with P&L reasonableness and net open position. The monthly flash and benchmark roll-offs are also checked, with questions when something is missed.",
+      "participants": ["darron.giron@enron.com", "daniel.falcone@enron.com", "chris.abel@enron.com", "jeffrey.gossett@enron.com", "gregory.mausser@enron.com", "carole.frank@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Basis positions were not rolled off the benchmark and the owner had to be reminded. The month-end flash has to be confirmed before the CPR detail file can be created.",
+      "automation": "Auto-compare draft DPR positions and P&L against the prior day and send exceptions. Auto-track which books have flashed and roll off expired basis positions.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.4,
+      "messages": ["giron-d/sent/478", "giron-d/sent/476", "giron-d/sent/442", "giron-d/sent/430", "giron-d/sent/436"],
+      "evidence": [
+        {"msg": "giron-d/sent/478", "quote": "I show a net open position of (15.9) contracts."},
+        {"msg": "giron-d/sent/476", "quote": "P&L is OK.  Open position is 39.0 contracts."},
+        {"msg": "giron-d/sent/442", "quote": "On the Benchmark, these traders basis positions were not rolled off."},
+        {"msg": "giron-d/sent/430", "quote": "Has everyone flashed?  Nagesh is waiting for me to give him the O.K. to create the CPR detail file that OA imports into their database."},
+        {"msg": "giron-d/sent/436", "quote": "Please plan on adjusting your PL for the following amount during the month of November..."}
+      ]
+    },
+    {
+      "name": "Risk team class scheduling",
+      "description": "Giron, Kelly and Baumbach organise a recurring training class for the risk team. They split groups, pick times, brainstorm topics by email and chase each other when no class is scheduled.",
+      "participants": ["darron.giron@enron.com", "william.kelly@enron.com", "david.baumbach@enron.com", "kam.keiser@enron.com", "errol.mclaughlin@enron.com", "jeffrey.gossett@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Nobody owns the next class, so it drifts until someone asks whether there is one. Time and topic are settled over several reply chains.",
+      "automation": "A shared recurring calendar series with a topic backlog and automatic invites.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.5,
+      "messages": ["giron-d/sent/499", "giron-d/sent/503", "giron-d/sent/477", "giron-d/sent/421", "giron-d/sent/397"],
+      "evidence": [
+        {"msg": "giron-d/sent/499", "quote": "Group 1 will meet this Wednesday @ 11:30am and Group 2 this Thursday @ 11:30am."},
+        {"msg": "giron-d/sent/503", "quote": "Can you meet today @ 2:00 to discuss this weeks class?"},
+        {"msg": "giron-d/sent/421", "quote": "I have not had an opportunity to set anything up for this week, yet."},
+        {"msg": "giron-d/sent/397", "quote": "We really need to pick up again next week."}
+      ]
+    },
+    {
+      "name": "Plant processing and Indian Springs deal setup and elections",
+      "description": "Logistics (Mary Poorman) coordinates with the deal desk and assets group on processing agreements at plants such as Teco Indian Springs and King Ranch. She requests back-dated HPL sales and purchase tickets, relays monthly elections, and forwards worksheets for volume checks.",
+      "participants": ["mary.poorman@enron.com", "clem.cernosek@enron.com", "daren.farmer@enron.com", "edward.gottlob@enron.com", "katherine.herrera@enron.com", "lauri.allen@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Deal tickets are requested by email and logistics waits on them. Pricing questions stay open, and the volumes must be checked against another group's numbers.",
+      "automation": "Standard monthly election notice, and a ticket request with fields prefilled from the processing agreement. Auto-compare the logistics worksheet to the deal desk volumes.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.3,
+      "messages": ["farmer-d/logistics/1503", "farmer-d/logistics/1509", "farmer-d/logistics/1514", "farmer-d/logistics/1516", "farmer-d/logistics/1518", "farmer-d/logistics/1521", "farmer-d/logistics/1534", "farmer-d/logistics/1540"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1514", "quote": "I need HPL Sales and Purchases, back dated to 8/99 between HPL and TECO to book any processing revenue or losses."},
+        {"msg": "farmer-d/logistics/1518", "quote": "Deal #487040 has been setup with demand charge equally to the amounts that Teco paid HPL at Indian Spring for the following months:"},
+        {"msg": "farmer-d/logistics/1534", "quote": "HPL has elected to be kept whole with respect to processing during the month of December 2000 on its gas delivered from the Three Rivers Gathering System."},
+        {"msg": "farmer-d/logistics/1540", "quote": "Mary provided this to Brian, please check against your numbers ASAP"}
+      ]
+    },
+    {
+      "name": "Settlement and invoice discrepancy queries to the deal owner",
+      "description": "Settlements, accounting and logistics staff email Daren Farmer when invoices or accruals do not tie to deals in Unify or Sitara. They ask which deal number applies, whether deals should net, or request volume breakouts. Each is a separate one-off thread to the same person.",
+      "participants": ["daren.farmer@enron.com", "katherine.herrera@enron.com", "laurie.ellis@enron.com", "o'neal.winfree@enron.com", "fred.boas@enron.com", "janet.wallis@enron.com", "sabrae.zajac@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Answers depend on one deal owner, and the other person on a deal may be out until after Thanksgiving. Volumes do not match between sales and purchase.",
+      "automation": "Look up counterparty and month against deal and volume data and attach the matching Sitara or deal numbers. Flag sales and purchase volume mismatches before settlement.",
+      "minutes_per_occurrence": 25,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/1528", "farmer-d/logistics/1536", "farmer-d/logistics/1542", "farmer-d/logistics/1523", "farmer-d/logistics/1511", "farmer-d/logistics/1928"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1528", "quote": "Settlements is showing both a sales and purchase for Texas General Land Office and they are stating that they should not be billed or paid for anything."},
+        {"msg": "farmer-d/logistics/1542", "quote": "I am trying to process two invoices from Samson Resources Co. (Samson Lone Star Limited) for September 2000 and October 2000."},
+        {"msg": "farmer-d/logistics/1536", "quote": "Please take a look at the attached spreadsheet, we have over 500,000mmbtu as unaccounted for"},
+        {"msg": "farmer-d/logistics/1511", "quote": "Just wanted to review weekend sales to Southern Union."}
+      ]
+    },
+    {
+      "name": "Nomination intake and chasing unresponsive counterparties",
+      "description": "Counterparties send gas nominations by email and the logistics group must obtain transport and meter numbers and move the volumes onto a contract. When a producer such as Hilcorp does not respond, staff chase by phone and email and then reroute the gas.",
+      "participants": ["aimee.lannou@enron.com", "tom.acton@enron.com", "lauri.allen@enron.com", "mary.johnson@enron.com", "daren.farmer@enron.com", "edward.gottlob@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Nominations arrive before the transport contract or meter number exists. Producer silence forces a deadline chase and a reroute decision.",
+      "automation": "Track nominations against missing contract or meter attributes and send reminders. Auto-escalate a counterparty that has not responded by the cut-off.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.3,
+      "messages": ["farmer-d/logistics/1504", "farmer-d/logistics/1539", "farmer-d/logistics/1530", "farmer-d/logistics/1532", "farmer-d/logistics/1533"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1504", "quote": "Please accept this transmission as nomination for gas flow on Southland Pipeline (Now Desoto Pipeline)"},
+        {"msg": "farmer-d/logistics/1539", "quote": "Aimee, I am still waiting on a transport number from lori Allen in your"},
+        {"msg": "farmer-d/logistics/1532", "quote": "Well- I have officially NOT heard from Hilcorp after numerous voice and email"},
+        {"msg": "farmer-d/logistics/1530", "quote": "If we don't hear by 4pm, we are supposed to bypass the gas..........."}
+      ]
+    }
+  ]
+}

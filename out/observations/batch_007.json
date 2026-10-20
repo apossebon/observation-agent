@@ -1,0 +1,156 @@
+{
+  "batch": 7,
+  "processes": [
+    {
+      "name": "New trading book setup requests (Tagg/Sitara/CPR)",
+      "description": "Darron Giron emails separate administrators to create new books and regions in Tagg, Sitara and CPR for the Chicago and West desks, often attaching a book request form. Each request is a fresh email to a different person, with later clarifications, trader-name lookups and deal moves between books.",
+      "participants": ["darron.giron@enron.com", "gary.stadler@enron.com", "susan.trevino@enron.com", "regina.perkins@enron.com", "scott.mills@enron.com", "burton.mcintyre@enron.com", "jeremy.wong@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Requests go to several different people and Giron has to chase urgency and clarify which system each book belongs to. Follow-up questions such as trader names for the books come back by email.",
+      "automation": "A single book-request intake form that routes to Tagg, Sitara and CPR admins and tracks status. It could auto-fill trader and system details.",
+      "minutes_per_occurrence": 25,
+      "automatable_fraction": 0.5,
+      "messages": ["giron-d/sent/650", "giron-d/sent/648", "giron-d/sent/644", "giron-d/sent/641", "giron-d/sent/557", "giron-d/sent/491", "giron-d/sent/160", "giron-d/sent/623", "giron-d/sent/619"],
+      "evidence": [
+        {"msg": "giron-d/sent/650", "quote": "I need some Tagg books set up for the Chicago office."},
+        {"msg": "giron-d/sent/648", "quote": "I will need a region set up in CPR to hold the physical deals.  Do you do this?"},
+        {"msg": "giron-d/sent/623", "quote": "Darron - please provide me with the trader's name for the following books:"},
+        {"msg": "giron-d/sent/619", "quote": "I want to move all deals currently in the INTRA-EMWMEH book into the FT-IM-ENOV book."}
+      ]
+    },
+    {
+      "name": "Meter variance and nomination-vs-flow corrections",
+      "description": "Logistics analysts review meters where flow does not match nominations or where deals do not cover the flow dates. They email the trader or deal owner to raise a nom, extend a deal or supply a deal number. The cases come from the UA4 variance report and from daily flow checks.",
+      "participants": ["mary.poorman@enron.com", "daren.farmer@enron.com", "aimee.lannou@enron.com", "vance.taylor@enron.com", "rebecca.griffin@enron.com", "liz.bellamy@enron.com", "tom.acton@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Each query waits on a trader or deal owner to reply with a deal number or decision. Sitara often does not show who the trader is for the meter.",
+      "automation": "Auto-flag meters where flow differs from nom or has no deal, and route them to the owner with deal and meter details. Track the response until it is cleared.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/1413", "farmer-d/logistics/1428", "farmer-d/logistics/1429", "farmer-d/logistics/1448", "farmer-d/logistics/1450"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1413", "quote": "The two meters below are new and have unallocatable flow.......I will need a purchase for each of them."},
+        {"msg": "farmer-d/logistics/1428", "quote": "Sitara does not show who the trader is for this meter."},
+        {"msg": "farmer-d/logistics/1448", "quote": "There is flow at meter 74 on 9/14 (499 dth).  The deal for this meter (400289) did not start until 9/15."},
+        {"msg": "farmer-d/logistics/1450", "quote": "Please verify if Duke deal #387571 should be on HPL meter #1040."}
+      ]
+    },
+    {
+      "name": "Pipeline/meter outage and interconnect notices",
+      "description": "Logistics staff relay third-party maintenance, plant outages and supply cuts that affect nominations at specific meters. They send FYI emails to the group, and an out-of-office email names who covers the interconnect nominations.",
+      "participants": ["mary.poorman@enron.com", "sabrae.zajac@enron.com", "mark.mccoy@enron.com", "daren.farmer@enron.com", "pat.clynes@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Notices are free-text emails to long distribution lists. Whoever handles the nominations has to read each one and adjust by hand.",
+      "automation": "Push outage notices into a shared nomination calendar keyed by meter, and alert the owner of each affected nomination.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/1418", "farmer-d/logistics/1419", "farmer-d/logistics/1816", "farmer-d/logistics/1422", "farmer-d/logistics/1443"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1418", "quote": "Duke Energy Field Services will be reworking the Wilcox Plant on 9/26 f rom 7am to 12 noon"},
+        {"msg": "farmer-d/logistics/1816", "quote": "This will begin @ 2:00 A.M. on the 28th but PG&E will keep the noms whole for the 28th."},
+        {"msg": "farmer-d/logistics/1422", "quote": "Oasis made cut to WGR sale to HPL on Sunday 9/24 & Monday 9/25 for 5.0 /day"},
+        {"msg": "farmer-d/logistics/1443", "quote": "In my absence Tom Acton will be handling the Oasis & Lonestar interconnects at Katy"}
+      ]
+    },
+    {
+      "name": "Meter replacement multi-step coordination (Tetco/HPL meter 986892)",
+      "description": "Clem Cernosek sends a numbered step list assigning each analyst a task, and Howard Camp relays completion and next steps. The tasks are zeroing noms, reallocating, verifying BAV with settlements, changing facility and DRN records, and scheduling the replacement meter in POPS. Coordination runs entirely by email with phone call-backs.",
+      "participants": ["clem.cernosek@enron.com", "howard.camp@enron.com", "romeo.d'souza@enron.com", "sherlyn.schumack@enron.com", "donna.consemiu@enron.com", "jackie.young@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Each step waits for a call or email confirming the previous step. The same long instruction email is forwarded repeatedly and non-zero BAV remains until allocation catches up.",
+      "automation": "A tracked checklist workflow with step owners and automatic hand-off notifications.",
+      "minutes_per_occurrence": 90,
+      "automatable_fraction": 0.3,
+      "messages": ["farmer-d/logistics/1439", "farmer-d/logistics/1442", "farmer-d/logistics/1444"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1439", "quote": "Please change the confirmed noms to zero for all contracts that have be nominated for period 1/1/00 thru 10/31/00 for the above meter."},
+        {"msg": "farmer-d/logistics/1442", "quote": "Step # 1 has been completed."},
+        {"msg": "farmer-d/logistics/1444", "quote": "Steps 2 - 4 have been done."}
+      ]
+    },
+    {
+      "name": "Nightly officialize of books, basis/index roll-off and control checks",
+      "description": "Risk book admins must calculate and officialize basis positions each night (sometimes twice around month roll) and load positions into TDS. Missed books are tracked on a daily list that goes to senior management. Controls such as a GERMS-vs-Excel position check, a planned query for officialized books, and weekly WeaponX database compacting are used and discussed.",
+      "participants": ["darron.giron@enron.com", "jeffrey.gossett@enron.com", "michael.moscoso@enron.com", "greg.couch@enron.com", "william.kelly@enron.com", "anne.bike@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Officializing is manual and depends on the admin remembering. The benchmark sign-off check misses books with no net position, so a forgotten book surfaced only after a reviewer flagged it.",
+      "automation": "Automatically verify every book is officialized each night, including zero-position post IDs, and send an exception list before end of day. Schedule the database compaction.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.5,
+      "messages": ["giron-d/sent/631", "giron-d/sent/595", "giron-d/sent/590", "giron-d/sent/586", "giron-d/sent/596", "giron-d/sent/585"],
+      "evidence": [
+        {"msg": "giron-d/sent/631", "quote": "Again this month, you are going to have to calculate your basis positions (officialize) twice."},
+        {"msg": "giron-d/sent/595", "quote": "If a postid has a net position and is not officialized, it will be caught using this procedure."},
+        {"msg": "giron-d/sent/586", "quote": "Please make sure we stay off the \"list\".  Thanks."},
+        {"msg": "giron-d/sent/596", "quote": "I would like each of your book admins using WeaponX to begin using the following procedures at least once/week"}
+      ]
+    },
+    {
+      "name": "Deal entry consistency and system linking (Tagg/Sitara/EOL/SCI)",
+      "description": "Giron reminds deal bookers to enter deals in a consistent format and to cross-link deal numbers across Tagg, Sitara, SCI and EOL. Confirms and risk reporting depend on this, and the same reminders are repeated to the team.",
+      "participants": ["darron.giron@enron.com", "kevin.radous@enron.com", "dawn.kenne@enron.com", "william.kelly@enron.com", "anne.bike@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Manual entry leaves the links missing, so corrections and reminders are needed after the fact. Deals booked in the wrong order cause failures in automated confirms.",
+      "automation": "Validate required cross-system references and leg order at entry, and auto-link the EOL, Tagg and Sitara numbers.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.6,
+      "messages": ["giron-d/sent/615", "giron-d/sent/591", "giron-d/sent/592", "giron-d/sent/360"],
+      "evidence": [
+        {"msg": "giron-d/sent/615", "quote": "It looks like we need to be consistent in booking the GD spread deals."},
+        {"msg": "giron-d/sent/591", "quote": "Please remember to link up all deals.  By this, I mean Tagg numbers in Sitara, Sitara numbers in Tagg, Tagg numbers in SCI"},
+        {"msg": "giron-d/sent/592", "quote": "It should reference the EOL number.  It looks af if Kevin did not link it up."},
+        {"msg": "giron-d/sent/360", "quote": "Goss said you may have a calc set up to identify these deals.  Any chance I could copy it?"}
+      ]
+    },
+    {
+      "name": "Invoice, price and payment discrepancy resolution",
+      "description": "Settlement and accounting staff email deal owners about invoices that do not match Sitara, missing deal numbers, shortfalls or unpaid invoices. Giron and Farmer research the cause, correct Sitara and reply. Each case involves several forwarded-email rounds.",
+      "participants": ["darron.giron@enron.com", "genaro.mendoza@enron.com", "steve.ross@enron.com", "melissa.ratnala@enron.com", "kevin.radous@enron.com", "daren.farmer@enron.com", "kristen.hanson@enron.com", "cynthia.hakemack@enron.com", "charles.jacobs@enron.com", "mechelle.stevens@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Questions sit unanswered for days or weeks and are chased with repeated forwards. Root causes are manual, such as Sitara not being updated or a deal number changing.",
+      "automation": "Match invoices to Sitara deal price and volume automatically and flag differences. Keep a case log so chasers do not need to be forwarded manually.",
+      "minutes_per_occurrence": 40,
+      "automatable_fraction": 0.35,
+      "messages": ["giron-d/sent/643", "giron-d/sent/636", "giron-d/sent/635", "giron-d/sent/630", "giron-d/sent/625", "giron-d/sent/605", "farmer-d/logistics/1420", "farmer-d/logistics/1438", "farmer-d/logistics/1440"],
+      "evidence": [
+        {"msg": "giron-d/sent/636", "quote": "The Sitara was not updated for Aug.  I just corrected Sitara.  So you can redraft in Unify."},
+        {"msg": "giron-d/sent/643", "quote": "The deal number in Sitara was changed because of an internal book name change."},
+        {"msg": "giron-d/sent/630", "quote": "I need to get the Sitara number if this has been set up so I can pay Peoples."},
+        {"msg": "farmer-d/logistics/1420", "quote": "it is our policy to withhold payment unless we are invoiced, payment was not made on this until now."},
+        {"msg": "giron-d/sent/625", "quote": "Dave at The New Power Group is wanting his money."}
+      ]
+    },
+    {
+      "name": "Month-end survey and budget data collection from managers",
+      "description": "Central groups (OPM, Business Analysis, budget) ask many managers to supply hours, volume explanations, salary or training estimates by deadlines. The groups send an announcement, a reminder and follow-up questions. Managers return spreadsheets or replies by email.",
+      "participants": ["james.scribner@enron.com", "suzanne.nicholie@enron.com", "daren.farmer@enron.com", "misti.day@enron.com", "david.baumbach@enron.com", "diane.cook@enron.com", "darron.giron@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Respondents miss deadlines and need reminders. Access problems and incomplete answers lead to follow-up questions.",
+      "automation": "Pre-populate surveys and variance explanations from existing data, and send automatic reminders to non-responders.",
+      "minutes_per_occurrence": 60,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/1415", "farmer-d/logistics/1436", "farmer-d/logistics/1445", "farmer-d/logistics/1447", "farmer-d/logistics/1437", "farmer-d/logistics/1416", "farmer-d/logistics/1409", "giron-d/sent/791"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1445", "quote": "As a reminder, today is the deadline for completion of the OPM Survey."},
+        {"msg": "farmer-d/logistics/1447", "quote": "you allocated 15 hours to the activity ES002 - Non Routine Trade Monitoring & Reporting.  What commercial team(s) was this 15 hours spent supporting?"},
+        {"msg": "farmer-d/logistics/1416", "quote": "provide explanations for all material changes (+/- 10%) for the year/year, quarter/quarter, and month/month variances."},
+        {"msg": "farmer-d/logistics/1409", "quote": "1) Make a list of your staff just their positions."}
+      ]
+    },
+    {
+      "name": "Imbalance and contract netting follow-up",
+      "description": "Ed Gottlob sends a long list of imbalance questions and contract netting requests, along with report quality complaints, to the logistics team. The team must answer them from the imbalance report and contract systems.",
+      "participants": ["edward.gottlob@enron.com", "pat.clynes@enron.com", "michael.walters@enron.com", "lauri.a.allen@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "The imbalance report has columns that do not add and missing data, so every question needs manual investigation.",
+      "automation": "Produce a reconciled imbalance report that flags netting candidates and ageing by counterparty.",
+      "minutes_per_occurrence": 120,
+      "automatable_fraction": 0.3,
+      "messages": ["farmer-d/logistics/1433"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1433", "quote": "I thought the imbalance report I got this Wed was pretty sad.  Some of the columns did not add and there seemed to be a lot of missing information."},
+        {"msg": "farmer-d/logistics/1433", "quote": "Can we net the Corpus Christi gas marketing and all the Tejas/ Coral/Gulf Energy/Shell imbalances down?"}
+      ]
+    }
+  ]
+}

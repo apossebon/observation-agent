@@ -1,0 +1,133 @@
+{
+ "slug": "bankruptcy-and-netco-separation-bulk-deal-moves",
+ "name": "Bankruptcy and Netco separation bulk deal moves",
+ "description": "After the bankruptcy filings and during the Netco separation, credit, legal and contracts staff repeatedly send spreadsheets of deals or counterparties that must be zeroed, killed or moved into bankruptcy books. The gas risk group (Love, Giron, Gossett) cross-checks each list against the books and sends move requests to IT (Cecilia Cheung), who runs book-move scripts and retranslates. Each move needs its parameters clarified by email.",
+ "stall_points": "Lists arrive as updates, stragglers and corrections, so versions must be reconciled. Requests lack book ids, commodity code or cutoff date, which forces clarification rounds. The impact on Unify paths is questioned only after thousands of deals are announced for killing.",
+ "automation": "A master deal-move list that is matched automatically against the books by counterparty and deal id, flagging gaps and duplicates. A parameterised move request would capture source and target book, commodity, cutoff date and Canadian or US logic once, and an impact check would run against Unify paths and volumes before the script executes, with completion sent automatically.",
+ "participants": [
+  "c..gossett@enron.com",
+  "c..kenne@enron.com",
+  "cecilia.cheung@enron.com",
+  "cyndie.balfour-flanagan@enron.com",
+  "elena.chilkina@enron.com",
+  "exchange.administrator@enron.com",
+  "jayant.krishnaswamy@enron.com",
+  "m..love@enron.com",
+  "mark.mcclure@enron.com",
+  "scott.palmer@enron.com"
+ ],
+ "economics": {
+  "messages_total": 40,
+  "messages_dated": 40,
+  "first_date": "2001-12-13",
+  "last_date": "2002-02-06",
+  "active_months": 3,
+  "occurrences_per_month": 13.33,
+  "minutes_per_occurrence": 45.0,
+  "automatable_fraction": 0.5,
+  "gross_hours_per_month": 10.0,
+  "hours_saved_per_month": 5.0,
+  "dollars_saved_per_month": 425.0,
+  "blended_rate": 85.0,
+  "formula": "dated_messages / active_months * minutes / 60 * automatable_fraction * 85"
+ },
+ "evidence": [
+  {
+   "msg": "farmer-d/logistics/5",
+   "line": 29,
+   "quote": "If a deal is killed it poses a problem for us in Unify if there are any paths associated with the deal; therefore, we request the deals be zeroed out.",
+   "date": "2001-12-13",
+   "sender": "tammy.jaquet@enron.com",
+   "subject": "RE: Killing ENA to ENA deals in Sitara"
+  },
+  {
+   "msg": "farmer-d/logistics/4",
+   "line": 38,
+   "quote": "I would like to meet with you guys and get more detail on why we are doing this and determine the impact?",
+   "date": "2001-12-13",
+   "sender": "mark.mcclure@enron.com",
+   "subject": "RE: Killing ENA to ENA deals in Sitara"
+  },
+  {
+   "msg": "farmer-d/logistics/1",
+   "line": 27,
+   "quote": "Here is a list of the 66 physical deals that were zeroed out from December 15 onwards",
+   "date": "2001-12-14",
+   "sender": "jayant.krishnaswamy@enron.com",
+   "subject": "RE: Killing ENA to ENA deals in Sitara"
+  },
+  {
+   "msg": "farmer-d/logistics/3",
+   "line": 23,
+   "quote": "More deals that will be moved to the Bankruptcy book in TAGG and zeroed out 12/01 forward in Sitara.",
+   "date": "2001-12-14",
+   "sender": "scott.palmer@enron.com",
+   "subject": "FW: auto-termination deal listing - part 3"
+  },
+  {
+   "msg": "giron-d/inbox/117",
+   "line": 26,
+   "quote": "With the bankruptcy filing of ENA Upstream yesterday, please find a listing of auto-terminating deals that need to be moved into the bankruptcy books.",
+   "date": "2002-01-18",
+   "sender": "scott.palmer@enron.com",
+   "subject": "FW: ENA Upstream deals to move"
+  },
+  {
+   "msg": "giron-d/inbox/116",
+   "line": 25,
+   "quote": "Please start forwarding these requests to myself and Darron Giron.",
+   "date": "2002-01-18",
+   "sender": "stacey.richardson@enron.com",
+   "subject": "RE: ENA Upstream deals to move"
+  },
+  {
+   "msg": "giron-d/inbox/115",
+   "line": 23,
+   "quote": "Based on that list, here are some deals that need to be moved into the bankruptcy books.",
+   "date": "2002-01-19",
+   "sender": "stacey.richardson@enron.com",
+   "subject": "more terminated deals to move"
+  },
+  {
+   "msg": "giron-d/inbox/105",
+   "line": 22,
+   "quote": "Here are more deals that need to be moved into the bankruptcy books.  Please skim across the spreadsheet to the column for the date reported to risk.",
+   "date": "2002-01-22",
+   "sender": "stacey.richardson@enron.com",
+   "subject": "deals to move"
+  },
+  {
+   "msg": "giron-d/inbox/95",
+   "line": 40,
+   "quote": "Is this the last list we are going to get?  Jeff Gossett wants to know if we are done so that we can assure Don Miller that all of the CP's have been taken care of.",
+   "date": "2002-01-23",
+   "sender": "m..love@enron.com",
+   "subject": "FW: Deals to be moved to Bankruptcy Books (From Russell's Exposure Report)"
+  },
+  {
+   "msg": "giron-d/inbox/93",
+   "line": 26,
+   "quote": "This evening, Cyndie Balfour-Flanagan will combine all our spreadsheets so that we are working off one document.",
+   "date": "2002-01-23",
+   "sender": "stacey.richardson@enron.com",
+   "subject": "More deals to move"
+  },
+  {
+   "msg": "giron-d/inbox/42",
+   "line": 20,
+   "quote": "can you tell me why EH6453.2 is not on the list?  We are moving EH6453.5, in the comments it says it is an unwind of leg 2.",
+   "date": "2002-01-31",
+   "sender": "m..love@enron.com",
+   "subject": "RE: Additional deals to move to Bankruptcy Books - Phy Gas"
+  },
+  {
+   "msg": "giron-d/inbox/84",
+   "line": 19,
+   "quote": "Please move only financial deals.  Please let me know when this is complete.  We need to have it done by the time we calc our books today - no exceptions.",
+   "date": "2002-01-24",
+   "sender": "m..love@enron.com",
+   "subject": "6 more counterparties to move"
+  }
+ ],
+ "output_prefix": "out/drafts/bankruptcy-and-netco-separation-bulk-deal-moves-"
+}

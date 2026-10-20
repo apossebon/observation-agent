@@ -1,0 +1,162 @@
+{
+  "batch": 4,
+  "processes": [
+    {
+      "name": "Deal ticket extension and missing deal requests to Daren Farmer",
+      "description": "Schedulers and logistics staff email Daren Farmer to extend, roll or create Sitara deal tickets so that flow or allocated volumes on a meter are covered. Each request names the meter, the deal number and the dates or volumes, and Daren replies 'Done' or creates the deal by hand.",
+      "participants": ["jackie.young@enron.com", "daren.farmer@enron.com", "janet.wallis@enron.com", "aimee.lannou@enron.com", "karen.lindley@enron.com", "mark.mccoy@enron.com", "rebecca.griffin@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Every request depends on one person (Daren) to key the change, and requesters resend or chase ('one more time', 'I can't remember if I'd already sent you this'). Protected deal tickets block self-service corrections.",
+      "automation": "A request form or ticket queue that validates meter, deal and dates and applies simple extensions or rolls for approval. Flow-without-deal exceptions could be flagged automatically from allocation data.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/1158", "farmer-d/logistics/1168", "farmer-d/logistics/1174", "farmer-d/logistics/1197", "farmer-d/logistics/1221", "farmer-d/logistics/1207", "farmer-d/logistics/1204", "farmer-d/logistics/199", "farmer-d/logistics/165"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1158", "quote": "98-6892 has a spill-over of 15 decatherms for 5/24/2000.  Can you please extend deal ticket 274443 for cover this?"},
+        {"msg": "farmer-d/logistics/1197", "quote": "I can't remember if I'd already sent you this request or not.  But can you please roll the above deal to cover flow for the 10th and 11th of May 2000?"},
+        {"msg": "farmer-d/logistics/1221", "quote": "meter 1429, IND Sterling Gas Plant has flow beginning 6/12.  It is a very small volume.  Could you please create a deal for this?"},
+        {"msg": "farmer-d/logistics/1204", "quote": "how do I correct this since the deal ticket is protected???"},
+        {"msg": "farmer-d/logistics/165", "quote": "Please add a deal in March for 17, 18, & 19th for 5,000 a day at HSC GD -.03"}
+      ]
+    },
+    {
+      "name": "Nomination changes and revised nominations needing approval",
+      "description": "Counterparty nomination changes and revisions arrive by email or phone and are forwarded to Daren Farmer for approval before schedulers update Unify, Sitara or POPS. Schedulers also query odd nominations on meters.",
+      "participants": ["robert.cotten@enron.com", "tom.acton@enron.com", "daren.farmer@enron.com", "aimee.lannou@enron.com", "stacey.neuweiler@enron.com", "charlotte.hawkins@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Pipeline will not confirm the requested volume, so the nomination is revised and approval is requested by email ('Please advise'). Each change is forwarded and re-keyed by hand.",
+      "automation": "Parse counterparty nomination emails into a structured change record with the old and new volume, and route it for one-click approval. Push approved changes into the scheduling system.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/1151", "farmer-d/logistics/1161", "farmer-d/logistics/1163", "farmer-d/logistics/1169", "farmer-d/logistics/1166", "farmer-d/logistics/1222"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1163", "quote": "Will you approve revising the volume in Unify down to 2,300?  Please advise.  Thanks."},
+        {"msg": "farmer-d/logistics/1161", "quote": "We have received a revised nomination as follows:"},
+        {"msg": "farmer-d/logistics/1169", "quote": "The C/P is Costilla Energy and the deal # is 125783.  Do you want me to adjust?  Please advise."},
+        {"msg": "farmer-d/logistics/1166", "quote": "Is there a reason there is a nom of 20.000/day at meter 385?  This is a non-allocatable meter."},
+        {"msg": "farmer-d/logistics/1151", "quote": "a nom change from 3,300 to 2,400 mmbtu/d at HPL Meter 98-6296 delivery @ HPL Thompsonville"}
+      ]
+    },
+    {
+      "name": "Pipeline cut and weekend activity reporting",
+      "description": "Schedulers email Daren and the group with gas cuts by pipelines such as El Paso and Oasis, and with weekend activity logs listing calls, cuts and balancing choices by meter. The cuts are entered in MOPS as estimates and the recipients are asked to check meters.",
+      "participants": ["mark.mccoy@enron.com", "robert.lloyd@enron.com", "daren.farmer@enron.com", "stacey.neuweiler@enron.com", "bill.williams@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Cuts are relayed by email after the fact and the weekend log is resent as a revision, so recipients must reread it. Cuts are keyed into MOPS manually as estimates.",
+      "automation": "Capture cuts from pipeline notices into a shared structured log, auto-update the estimates in the scheduling system, and send one digest. A cut template would stop repeated revisions.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/1182", "farmer-d/logistics/1201", "farmer-d/logistics/1218", "farmer-d/logistics/1171", "farmer-d/logistics/1177", "williams-w3/sent_items/369"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1182", "quote": "Some of the gas purchased from Dynegy on gas day 6/6 was cut:"},
+        {"msg": "farmer-d/logistics/1182", "quote": "I will enter in MOPS as estimates."},
+        {"msg": "farmer-d/logistics/1218", "quote": "FYI----------Here are the latest cuts:"},
+        {"msg": "farmer-d/logistics/1177", "quote": "Pleas  check  meters:  6780, 71, 68  for  weekend scheduling changes."},
+        {"msg": "williams-w3/sent_items/369", "quote": "The most important thing to remember is to document everything and call with questions."}
+      ]
+    },
+    {
+      "name": "Monthly Activity and Hours survey collection (Operations Pricing Model)",
+      "description": "Each month a survey is sent to all operations staff for completion and return to Shari Mao, with stat requests to individuals. Supervisors then chase the many late responders.",
+      "participants": ["james.scribner@enron.com", "shari.mao@enron.com", "brenda.herod@enron.com", "daren.farmer@enron.com", "lisa.cousino@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Few people respond by the deadline, which leads to reminder emails and a new deadline. People complain the survey burdens them, and driver stats are asked for separately by email.",
+      "automation": "Pull the driver counts from existing system reports instead of surveys, and send automatic reminders only to non-responders.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/1154", "farmer-d/logistics/1180", "farmer-d/logistics/1190", "farmer-d/logistics/1155", "farmer-d/logistics/1188"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1188", "quote": "The deadline was Friday, 6/2, and unfortunately, very few of you responded."},
+        {"msg": "farmer-d/logistics/1188", "quote": "you have expressed your concerns on the process burdening you."},
+        {"msg": "farmer-d/logistics/1180", "quote": "Please provide the number of Producer Services deals for the month of May (New vs. Existing)"},
+        {"msg": "farmer-d/logistics/1154", "quote": "If your group currently generates a standard report that captures the surveyed data, please send the report to Jennifer Reside."}
+      ]
+    },
+    {
+      "name": "Intercompany / interdesk reconciliation, allocation and invoice cleanup",
+      "description": "Logistics and allocation staff work lists of open meter, allocation and invoice issues (interconnect report, unfinaled invoices, Duke and CILCO deals). Each item is chased by email among schedulers, accounting and Daren, with deadlines set by management.",
+      "participants": ["howard.camp@enron.com", "lisa.csikos@enron.com", "fred.boas@enron.com", "daren.farmer@enron.com", "rita.wynne@enron.com", "charlotte.hawkins@enron.com", "pat.clynes@enron.com", "sherlyn.schumack@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Items sit waiting on one person's decision, and the same question is forwarded many times. Accounting cannot redraft invoices until the allocation is fixed and bridged the next day.",
+      "automation": "A tracked issue list with owner, due date and automatic reminders, plus variance detection between desk-to-desk volumes. This would replace the manually updated email lists.",
+      "minutes_per_occurrence": 60,
+      "automatable_fraction": 0.35,
+      "messages": ["farmer-d/logistics/1185", "farmer-d/logistics/1186", "farmer-d/logistics/1187", "farmer-d/logistics/1199", "farmer-d/logistics/1178", "farmer-d/logistics/1184", "farmer-d/logistics/1206", "farmer-d/logistics/1241", "farmer-d/logistics/1191", "farmer-d/logistics/1194", "farmer-d/logistics/1146"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1185", "quote": "Below is a list of the major items that are still outstanding on the interdesk/interconnect report for 1999 and 2000"},
+        {"msg": "farmer-d/logistics/1199", "quote": "the deadline for completing this work so that the invoices can be finaled is Friday, June 16, 2000."},
+        {"msg": "farmer-d/logistics/1178", "quote": "I never heard back from Aimee on which Transport contract to attach the deal 269123 to"},
+        {"msg": "farmer-d/logistics/1241", "quote": "There have been so many CILCO issues until I'm not sure which one you are referencing."},
+        {"msg": "farmer-d/logistics/1194", "quote": "The allocations are corrected with deal #92399 on the 215 contract taking the swing."}
+      ]
+    },
+    {
+      "name": "New trading book and portfolio setup requests",
+      "description": "Darron Giron requests new books and portfolios across Tagg, Sitara and Global Counterparty, and curve-mapping or subregion changes. Each request goes to a different group and the status is chased by email.",
+      "participants": ["darron.giron@enron.com", "imelda.frayre@enron.com", "ron.nolte@enron.com", "gary.stadler@enron.com", "kam.keiser@enron.com", "russ.severson@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "The routing is unclear. A Tagg book must first be added in Global Counterparty, so the request is re-sent, and Darron cannot see whether a Sitara book exists until he asks.",
+      "automation": "One intake form that routes a new book to Global Counterparty, Tagg and Sitara together and shows its status. Book-to-pipe mappings could be reused from existing business units.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.4,
+      "messages": ["giron-d/sent/778", "giron-d/sent/777", "giron-d/sent/776", "giron-d/sent/775", "giron-d/sent/772", "giron-d/sent/769", "giron-d/sent/755", "giron-d/sent/768", "giron-d/sent/773", "giron-d/sent/786", "giron-d/sent/784"],
+      "evidence": [
+        {"msg": "giron-d/sent/778", "quote": "We need to break out our Midcon region into two separate books starting with July production."},
+        {"msg": "giron-d/sent/769", "quote": "Befire a book can be added to TAGG, it has to be added to Global Counterparty."},
+        {"msg": "giron-d/sent/768", "quote": "Does this mean that the two new Sitara books I requested are complete?  I looked in Sitara and could not find the new names."},
+        {"msg": "giron-d/sent/775", "quote": "Please change the subregion code for all ANR ML5 deals from Market to Midcon."},
+        {"msg": "giron-d/sent/755", "quote": "I wanted to show you when I sent this and how long it took to set it up."}
+      ]
+    },
+    {
+      "name": "Origination and transport invoice reconciliation on the Central desk",
+      "description": "Daily origination recognised by books is reconciled by the P&L analyst, who emails Darron with differences, and Darron checks which book granted it. Finance also asks him to update Sitara deals for finalized transport invoices.",
+      "participants": ["gabriel.monroy@enron.com", "darron.giron@enron.com", "audrey.cook@enron.com", "b.palmer@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Small unexplained dollar differences ($468) are carried across several emails. Darron has to look through books manually to find who granted the amount.",
+      "automation": "Auto-reconcile origination granted against recognised by book and flag only residual differences. Apply invoice amounts to Sitara deals from a feed.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.5,
+      "messages": ["giron-d/sent/765", "giron-d/sent/763", "giron-d/sent/762"],
+      "evidence": [
+        {"msg": "giron-d/sent/765", "quote": "IM CENTRAL failed to recognize 468 (dollars) of the 9,488 that were granted to them by FT-Central on 06/15"},
+        {"msg": "giron-d/sent/763", "quote": "you recognized 3.975 (thousand) of orig, and I did not see that coming out of any book. Could you let me know who granted that."},
+        {"msg": "giron-d/sent/762", "quote": "Can you update for transport?  Sitara #131389 (North Shore) and #131405 (Peoples)."}
+      ]
+    },
+    {
+      "name": "Monthly volumetric and fuel variance explanations and reports",
+      "description": "Business analysts ask commercial and logistics staff for explanations of volume variances, accrual breakdowns, fuel estimates and monthly reports. Replies are assembled by hand from separate reports and spreadsheets.",
+      "participants": ["misti.day@enron.com", "david.baumbach@enron.com", "pat.clynes@enron.com", "rita.wynne@enron.com", "brenda.herod@enron.com", "heidi.withers@enron.com", "robert.cotten@enron.com", "kenny.soignet@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Requesters do not know the source of figures, for example 'What is the source of the numbers for the fuel'. Analysts must go back to logistics for each explanation, and deadlines are tight.",
+      "automation": "Generate the variance report and flag +/-10% changes automatically with drill-down. Pre-populate the transport tickets and accrual breakdowns.",
+      "minutes_per_occurrence": 60,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/1210", "farmer-d/logistics/1215", "farmer-d/logistics/1313", "farmer-d/logistics/1144", "farmer-d/logistics/1145", "farmer-d/logistics/1162", "farmer-d/logistics/1170"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1210", "quote": "provide explanations for all material changes (+/- 10%) for the year/year, quarter/quarter, and month/month variances."},
+        {"msg": "farmer-d/logistics/1313", "quote": "Pat, could you shed a little light on how we get the CPR Fuels number?"},
+        {"msg": "farmer-d/logistics/1144", "quote": "I updated the June transport usage tickets today through HPL, and will be finishing these tickets tomorrow."},
+        {"msg": "farmer-d/logistics/1162", "quote": "Both reports were derived from the Volume Management module of UNIFY."}
+      ]
+    },
+    {
+      "name": "Mid-year PRC feedback and accomplishments collection",
+      "description": "Managers chase staff for performance feedback, accomplishment lists and headcount names ahead of PRC meetings. People respond by email, and reminders are sent when deadlines slip.",
+      "participants": ["brenda.herod@enron.com", "hector.mcloughlin@enron.com", "jeffrey.gossett@enron.com", "darron.giron@enron.com", "bryce.baxter@enron.com", "ami.chokshi@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Feedback is requested repeatedly with deadlines before the system closes, and agenda clarifications are sent in long forwarded chains.",
+      "automation": "Automated reminders and a single collection form for accomplishments. Pre-fill names for the PRC list.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.3,
+      "messages": ["farmer-d/logistics/1173", "farmer-d/logistics/3216", "farmer-d/logistics/1195", "giron-d/sent/794", "giron-d/sent/783", "farmer-d/logistics/1193"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1173", "quote": "I need your feedback by FRIDAY, 6/9 so that I can use the week-end to get ready."},
+        {"msg": "giron-d/sent/794", "quote": "You were identified as a reviewer for Audrey Cook.  If possible, could you complete her feedback by end of business Wednesday?"},
+        {"msg": "giron-d/sent/783", "quote": "Please send me a list of your accomplishments for the last six months by Friday."},
+        {"msg": "farmer-d/logistics/1195", "quote": "Please review the names below and let me know if there are any other names that need to be added or subtracted from your group for PRC purposes."}
+      ]
+    }
+  ]
+}

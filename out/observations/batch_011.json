@@ -1,0 +1,144 @@
+{
+  "batch": 11,
+  "processes": [
+    {
+      "name": "Strangers Gas Contract meter flow: deal or write-off approval requests",
+      "description": "Clem Cernosek emails Daren Farmer one message per HPL meter where flow is booked to the Strangers Gas Contract. Each asks for a deal extension, a new deal, or a printed and signed write-off approval, and Logistics (Bob Cotten) then moves the volumes to a write-off contract.",
+      "participants": ["clem.cernosek@enron.com", "daren.farmer@enron.com", "robert.cotten@enron.com", "mary.poorman@enron.com", "mark.mccoy@enron.com", "edward.terry@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Each request is a hand-written near-identical email that needs a printed, signed, returned original. Replies are slow, e.g. the trader still had to renegotiate and Mark McCoy was chasing for an answer.",
+      "automation": "Generate these requests from the meter/Strangers Gas report and route a one-click approve, extend or new-deal response with the write-off contract move logged automatically.",
+      "minutes_per_occurrence": 25,
+      "automatable_fraction": 0.6,
+      "messages": ["farmer-d/logistics/2012", "farmer-d/logistics/2013", "farmer-d/logistics/2014", "farmer-d/logistics/2016", "farmer-d/logistics/2017", "farmer-d/logistics/2018", "farmer-d/logistics/2020", "farmer-d/logistics/2024", "farmer-d/logistics/2027", "farmer-d/logistics/2033", "farmer-d/logistics/2034", "farmer-d/logistics/2036", "farmer-d/logistics/2040", "farmer-d/logistics/2044", "farmer-d/logistics/2045"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/2013", "quote": "HPL Logistics needs either a deal to record these volumes which have flowed into HPL's pipeline or Logistics needs approval to write-off these volumes to Unaccounted for Gas."},
+        {"msg": "farmer-d/logistics/2014", "quote": "Logistics needs approval to write-off this volume to Unaccounted for Gas.  (Please print, sign, and return original to Clem Cernosek)."},
+        {"msg": "farmer-d/logistics/2045", "quote": "has been moved from the Strangers Gas Contract to 012-41500-02-004 for write-off purposes."},
+        {"msg": "farmer-d/logistics/2040", "quote": "The trader said this deal needed to be renegotiated, and I am waiting to hear what happened"}
+      ]
+    },
+    {
+      "name": "Meter flow without a deal: ask to extend or create deal",
+      "description": "Volume schedulers and analysts (Aimee Lannou, Mary Poorman, Karen Lindley, Mike Olsen) find flow at meters with no nomination or expired deal. They email Daren Farmer to extend the deal or create a new one, often for a few days only. The flow lands on stranger's gas or the UA4 variance list until someone acts.",
+      "participants": ["aimee.lannou@enron.com", "daren.farmer@enron.com", "mary.poorman@enron.com", "karen.lindley@enron.com", "michael.olsen@enron.com", "danny.conner@enron.com", "kimberly.vaughn@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Everything funnels through Daren Farmer, who replies by email. Requests sit until he extends the deal, and one meter was queried again days later because the deal expired on day 3.",
+      "automation": "Auto-detect meters with flow and no live deal at month end, and give the deal owner a one-click extend-or-create task with the meter history prefilled.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/2030", "farmer-d/logistics/2031", "farmer-d/logistics/2038", "farmer-d/logistics/2039", "farmer-d/logistics/2042", "farmer-d/logistics/2047", "farmer-d/logistics/2049", "farmer-d/logistics/2052", "farmer-d/logistics/2054", "farmer-d/logistics/2055"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/2031", "quote": "Could you please look at this and let me know if you put a deal in for these days?"},
+        {"msg": "farmer-d/logistics/2038", "quote": "Could you please extend this deal for these 3 days or create a new one?  Please let me know."},
+        {"msg": "farmer-d/logistics/2049", "quote": "Deal 150325 expired on day 3.  Could you please extend this deal or create a new one?  Thanks."},
+        {"msg": "farmer-d/logistics/2052", "quote": "The above deal number expired at the end of November 2000 and needs to either be extended through December, or a new deal inputted."},
+        {"msg": "farmer-d/logistics/2054", "quote": "I have flow at the meter everyday without a deal in Dec.  It is on the UA4 and needs a ticket."}
+      ]
+    },
+    {
+      "name": "Arthur Andersen monthly P&L and origination support requests",
+      "description": "Each month the Arthur Andersen auditor emails the West desk lead for P&L top pages by region and for deal tickets and confirmations on selected deals. Darron Giron does not produce them himself. He forwards the request to Chris Walker, Jason Wolfe, Carole Frank and others and then chases to confirm they responded.",
+      "participants": ["darron.giron@enron.com", "mark.austin@enron.com", "chris.walker@enron.com", "jason.wolfe@enron.com", "carole.frank@enron.com", "jennifer.bagwell@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "The requester asks who to contact and Giron is out of town, so the request waits and is forwarded several times. The auditor asks again within hours.",
+      "automation": "Keep a standing owner map of desks to P&L preparers. Auto-route auditor requests to the right owner and track completion, with top pages pulled from the P&L system.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.4,
+      "messages": ["giron-d/sent/327", "giron-d/sent/326", "giron-d/sent/325", "giron-d/sent/324", "giron-d/sent/322", "giron-d/sent/317", "giron-d/sent/299", "giron-d/sent/332", "giron-d/sent/201"],
+      "evidence": [
+        {"msg": "giron-d/sent/327", "quote": "We are requesting that you supply the P & L top pages for the last day of the month for those regions that are applicable to you."},
+        {"msg": "giron-d/sent/326", "quote": "Could you please read this request and get back to Mark with the info ASAP?  Thanks."},
+        {"msg": "giron-d/sent/324", "quote": "AA is all over me today.  Please get this for Mark.  Thanks."},
+        {"msg": "giron-d/sent/299", "quote": "Please contact Mark and provide him with the documentation he needs.  Thanks."},
+        {"msg": "giron-d/sent/322", "quote": "I forwarded this to Carole to take care of Northwest as she was running it Nov and Dec."}
+      ]
+    },
+    {
+      "name": "Deal rate, counterparty and booking corrections in Sitara/TAGG",
+      "description": "Back-office and risk colleagues email Darron Giron to change a rate, rebook a counterparty, update pricing or confirm deal details on specific deals. He makes the change by hand and replies with a one-line confirmation. Some of these arrive monthly for the same deal.",
+      "participants": ["darron.giron@enron.com", "tricia.truong@enron.com", "derek.bailey@enron.com", "lesli.campbell@enron.com", "genaro.mendoza@enron.com", "john.griffith@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Requests need a reminder before action, such as the Enervest rate change that took two weeks. The same deal is corrected every month.",
+      "automation": "Drive the recurring rate update from the monthly price source instead of by email. Give one change-request queue with status for rebooks and rate edits.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.5,
+      "messages": ["giron-d/sent/357", "giron-d/sent/351", "giron-d/sent/313", "giron-d/sent/301", "giron-d/sent/329", "giron-d/sent/300", "giron-d/sent/346", "giron-d/sent/334"],
+      "evidence": [
+        {"msg": "giron-d/sent/351", "quote": "Please rebook NW2862.8,.9 to Bank of America, National Association (BANKAMENAT)."},
+        {"msg": "giron-d/sent/313", "quote": "Could you please change rate on the above deal from $2.24246 to $2.156695 for days 2/21/00 - 2/29/00?"},
+        {"msg": "giron-d/sent/301", "quote": "As usual, could you please change rate on S# 27239 for 12/00 production to $5.811329?"},
+        {"msg": "giron-d/sent/346", "quote": "Can you please send to me the spreadsheet used to calculate the price for Agave?"},
+        {"msg": "giron-d/sent/357", "quote": "I was told that these should be The Peoples Gas Light & Coke Company."}
+      ]
+    },
+    {
+      "name": "Daily origination reporting and book/TDS mapping upkeep for the risk desks",
+      "description": "Giron forwards instructions from management to his risk team. They cover origination schedule entries for a daily report, new TDS desk and book setup, region-to-book mappings, and deals to flip to a new book. The team then updates the schedules and books manually.",
+      "participants": ["darron.giron@enron.com", "jeffrey.gossett@enron.com", "chris.walker@enron.com", "jason.wolfe@enron.com", "carole.frank@enron.com", "anne.bike@enron.com", "patrick.ryder@enron.com", "russ.severson@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Every instruction is relayed by forwarded email and depends on each recipient. Mistakes surface later, such as deals unwound in TAGG but not in Sitara.",
+      "automation": "Validate the required origination fields at entry. Reconcile TAGG and Sitara deal status automatically and keep book mappings in one maintained table.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.35,
+      "messages": ["giron-d/sent/343", "giron-d/sent/339", "giron-d/sent/337", "giron-d/sent/293", "giron-d/sent/292", "giron-d/sent/294", "giron-d/sent/309", "giron-d/sent/312"],
+      "evidence": [
+        {"msg": "giron-d/sent/343", "quote": "it is essential that all information is accurate on the origination schedule."},
+        {"msg": "giron-d/sent/339", "quote": "if his group does a deal where no origination is granted,  you will need to put all the relevant information into the origination file"},
+        {"msg": "giron-d/sent/337", "quote": "I need to have FT-DENVER set up in TDS.  The trader is Jay Reitmeyer."},
+        {"msg": "giron-d/sent/292", "quote": "Deals to be flipped to FT-US/CAND-ERMS book by Monday"},
+        {"msg": "giron-d/sent/294", "quote": "We have had a few recent instances where deals have been unwound in TAGG and not in Sitara."}
+      ]
+    },
+    {
+      "name": "Analyst recruiting, rotation and interview scheduling",
+      "description": "Giron coordinates with HR (Andrea Richards, Toni Graham, Molly Magee) on analyst rotations and candidate interviews. He sends location, cost center and supervisor details by email, names interviewers and negotiates headcount with peer managers.",
+      "participants": ["darron.giron@enron.com", "andrea.richards@enron.com", "toni.graham@enron.com", "molly.magee@enron.com", "david.baumbach@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "HR asks again for the same fields (location, department, cost center). Interview calendars need a separate assistant, and candidates chase HR.",
+      "automation": "Use a request form that captures analyst placement fields once. Add a shared interview scheduler for the panel.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.3,
+      "messages": ["giron-d/sent/358", "giron-d/sent/356", "giron-d/sent/350", "giron-d/sent/349", "giron-d/sent/340", "giron-d/sent/331", "giron-d/sent/330", "giron-d/sent/315"],
+      "evidence": [
+        {"msg": "giron-d/sent/356", "quote": "The locations are all the same because I'm not sure exactly where they will sit.  The Cost Center is for my desk (West)"},
+        {"msg": "giron-d/sent/330", "quote": "We will interview them two at a time.  Meaning two of the above referenced people will be in the room at the same time interviewing the candidates."},
+        {"msg": "giron-d/sent/340", "quote": "We would like to bring Sladana Anna Kulic into the Risk Management group.  The location may change."},
+        {"msg": "giron-d/sent/315", "quote": "I have been trying to get in touch with Toni Graham all day and have not had any luck."}
+      ]
+    },
+    {
+      "name": "Weekend on-call notes distribution",
+      "description": "Logistics staff write up what happened during their weekend on call (calls from gas control, nomination and confirmation issues, deal ticket fixes). They email the notes or an attachment to the whole scheduling team on Monday.",
+      "participants": ["mary.poorman@enron.com", "robert.cotten@enron.com", "daren.farmer@enron.com", "clem.cernosek@enron.com", "aimee.lannou@enron.com", "edward.terry@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Notes are written manually as narrative and sent to a long distribution list. Some arrive as attachments with no body text.",
+      "automation": "Use a structured on-call log that auto-publishes a weekly summary to the team.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/2021", "farmer-d/logistics/2115", "farmer-d/logistics/2050"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/2021", "quote": "Please see the attached file for On-Call Notes."},
+        {"msg": "farmer-d/logistics/2115", "quote": "Please find attached the On-Call Notes for the weekend of 3/10 & 11/01."},
+        {"msg": "farmer-d/logistics/2050", "quote": "Phone Lee in Gas Control regarding same."}
+      ]
+    },
+    {
+      "name": "Customer and pipeline nomination changes and confirmations",
+      "description": "Nominations and nomination changes arrive by email and spreadsheet from customers, TXU and pipelines (Valero monthly nominations, Rohm & Haas, HPL daily nom file). Schedulers re-key them into deal tickets and check with Daren Farmer. A shared HPL.Scheduling mailbox was set up to centralize them.",
+      "participants": ["aimee.lannou@enron.com", "daren.farmer@enron.com", "edward.terry@enron.com", "sabrae.zajac@enron.com", "mark.mccoy@enron.com", "mary.poorman@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Changes are re-keyed by hand from attachments and approved by email. Before the shared mailbox, a nomination change could be missed when an individual was out.",
+      "automation": "Ingest nomination spreadsheets automatically into deal tickets and flag differences from the current ticket. Alert on pipeline maintenance windows.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/2063", "farmer-d/logistics/2025", "farmer-d/logistics/2043", "farmer-d/logistics/2028", "farmer-d/logistics/2029", "farmer-d/logistics/2026"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/2063", "quote": "Can I change the tickets or will you?  Attached is the confirmation spreadsheet from Valero."},
+        {"msg": "farmer-d/logistics/2043", "quote": "A suggestion was made (by Carlos) to centralize transport nominations we receive by email."},
+        {"msg": "farmer-d/logistics/2043", "quote": "If the file is still in the \"inbox\", it has not been addressed."},
+        {"msg": "farmer-d/logistics/2028", "quote": "She has informed me that for this time period there should be no nominations at these points."}
+      ]
+    }
+  ]
+}

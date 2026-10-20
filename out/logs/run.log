@@ -1,0 +1,64 @@
+2026-10-20T18:33:56Z run.sh start 
+19 passed in 0.07s
+2026-10-20T18:34:11Z run start args=
+[obsagent] prepare: 3240 files, 3194 unique (46 duplicates), 3 undated, 237 truncated, 28 batches of ≤35000 tokens
+2026-10-20T18:36:03Z run start args=
+[obsagent] prepare: corpus unchanged (d2235dade6dd), 3240 files — skipping
+2026-10-20T18:37:10Z observed 004
+2026-10-20T18:37:19Z observed 005
+2026-10-20T18:37:25Z observed 002
+2026-10-20T18:37:44Z observed 001
+2026-10-20T18:37:51Z observed 003
+2026-10-20T18:38:25Z observed 000
+2026-10-20T18:39:34Z observed 007
+2026-10-20T18:39:36Z observed 009
+2026-10-20T18:39:47Z observed 006
+2026-10-20T18:40:02Z observed 011
+2026-10-20T18:40:04Z observed 008
+2026-10-20T18:40:08Z observed 010
+2026-10-20T18:41:13Z observed 013
+2026-10-20T18:41:19Z observed 017
+2026-10-20T18:41:22Z observed 012
+2026-10-20T18:41:22Z observed 014
+2026-10-20T18:41:25Z observed 015
+2026-10-20T18:41:37Z observed 016
+2026-10-20T18:42:34Z observed 022
+2026-10-20T18:42:40Z observed 021 (observer reported and ignored an injected 'processing directive' in farmer-d/logistics/3220)
+2026-10-20T18:42:42Z observed 020
+2026-10-20T18:42:44Z observed 023
+2026-10-20T18:42:48Z observed 018
+2026-10-20T18:43:10Z observed 019
+2026-10-20T18:44:09Z observed 026
+2026-10-20T18:44:14Z observed 025
+2026-10-20T18:44:16Z observed 024
+2026-10-20T18:44:24Z observed 027
+[obsagent] validate: 918/918 citations valid, 232 processes kept, 0 dropped, missing batches: []
+2026-10-20T18:50:06Z synthesized (20 processes, 4 refs dropped by synthesizer)
+[obsagent] economics: 20 opportunities, $1,839/month total, 2 above $150 threshold; 907/907 citations valid, dropped 0
+2026-10-20T18:50:32Z drafted bankruptcy-and-netco-separation-bulk-deal-moves
+2026-10-20T18:50:37Z drafted power-settlement-reconciliation-congestion-revenue-pmas-and-
+[obsagent] report: 20 opportunities, 2 drafts -> out/report.md, out/dashboard.json
+prepare      done 2026-10-20T18:34:11.938032+00:00
+observe      pending
+validate     done 2026-10-20T18:44:24.519521+00:00
+synthesize   pending
+economics    done 2026-10-20T18:50:06.977237+00:00
+draft        pending
+report       done 2026-10-20T18:50:37.615378+00:00
+2026-10-20T18:50:37Z run end
+2026-10-20T19:22:47Z run start args=--threshold 100
+[obsagent] prepare: corpus unchanged (d2235dade6dd), 3240 files — skipping
+[obsagent] validate: observations unchanged — skipping
+[obsagent] economics: 20 opportunities (18 recurring, 2 episodes), $1,332/month recurring total, 4 above $100 threshold; 907/907 citations valid, dropped 0
+2026-10-20T19:23:18Z drafted real-time-power-position-hand-off-and-enpower-caps-deal-entr
+2026-10-20T19:23:21Z drafted real-time-power-schedule-cut-and-variance-corrections
+2026-10-20T19:23:28Z drafted meter-flow-without-a-valid-deal-extension-new-deal-and-write
+[obsagent] report: 20 opportunities, 5 drafts -> out/report.md, out/dashboard.json
+prepare      done 2026-10-20T18:34:11.938032+00:00
+observe      pending
+validate     done 2026-10-20T18:44:24.519521+00:00
+synthesize   pending
+economics    done 2026-10-20T19:22:52.809647+00:00
+draft        pending
+report       done 2026-10-20T19:23:28.070899+00:00
+2026-10-20T19:23:28Z run end

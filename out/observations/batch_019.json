@@ -1,0 +1,138 @@
+{
+  "batch": 19,
+  "processes": [
+    {
+      "name": "Real-time desk standing instructions broadcast to shift group",
+      "description": "The Portland real-time desk lead emails the whole shift group rules and market changes (tag numbers, adjustment bid limits, Enpower/CAPS entry, BPA prices, counterparty approvals, new scheduling IDs). Each is a manual broadcast, often a forward with the attachment re-sent separately.",
+      "participants": ["bill.williams@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Attachments are sent in a second email (the Enpower memo went out without its attachment). The same notice is re-forwarded weeks later (Allegheny SCID on 10/01 and again 11/21).",
+      "automation": "Publish desk rules and counterparty or price changes on one shared page or distribution tool with acknowledgement tracking, rather than ad hoc emails.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.5,
+      "messages": ["williams-w3/sent_items/244", "williams-w3/sent_items/239", "williams-w3/sent_items/238", "williams-w3/sent_items/235", "williams-w3/sent_items/203", "williams-w3/sent_items/206", "williams-w3/sent_items/205", "williams-w3/sent_items/179", "williams-w3/sent_items/76"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/244", "quote": "Please remember to put the Tag # in the inc sheet. Every schedule should now be tagged if it is outside of the CAISO."},
+        {"msg": "williams-w3/sent_items/238", "quote": "And here is the attachment"},
+        {"msg": "williams-w3/sent_items/235", "quote": "When tiering adjustment bids, the CAISO system will not read more than 10 bids."},
+        {"msg": "williams-w3/sent_items/76", "quote": "Allegheny's SC is now APX 5. Contact numbers are below."}
+      ]
+    },
+    {
+      "name": "Short/long position hand-off to real-time shift",
+      "description": "Prescheduling and cash desks email the real-time shift distribution list that the book is long or short at a hub for a given day, with deal numbers. Real time must then buy or sell to fill, and the desk lead relays or acknowledges.",
+      "participants": ["bill.williams@enron.com", "kate.symes@enron.com", "cara.semperger@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Notices arrive late or with little notice (a long position emailed at 1:30 for the next day), and are relayed manually to the group.",
+      "automation": "Show prescheduled positions and linked deal numbers directly in the position manager, with an alert instead of an email.",
+      "minutes_per_occurrence": 8,
+      "automatable_fraction": 0.5,
+      "messages": ["williams-w3/sent_items/240", "williams-w3/sent_items/198", "williams-w3/sent_items/183"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/183", "quote": "Please Buy to fill this short at the MidC, for the STNW book."},
+        {"msg": "williams-w3/sent_items/198", "quote": "We are long at MIDC for Tuesday, 10/02/01.  HE 7-22 at 25mw, #797763.1."},
+        {"msg": "williams-w3/sent_items/240", "quote": "Please give this information to the group including Enpower information...etc."}
+      ]
+    },
+    {
+      "name": "Shift schedule changes and weekend coverage coordination",
+      "description": "The desk lead distributes the monthly shift schedule and arranges extra coverage (Enron Canada weekend desk, training slots). Staff swap days by email and must report changes to the leads and mark the schedule.",
+      "participants": ["bill.williams@enron.com", "bert.meyers@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Swaps depend on people emailing the leads and hand-marking the schedule. Coverage details arrive in several forwards and attachments.",
+      "automation": "A shared schedule tool with swap requests and automatic notification.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.4,
+      "messages": ["williams-w3/sent_items/237", "williams-w3/sent_items/233", "williams-w3/sent_items/225", "williams-w3/sent_items/222", "williams-w3/sent_items/202"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/237", "quote": "Please send Bert and I an email notifying us of the changes and be sure to write your changes on the schedule."},
+        {"msg": "williams-w3/sent_items/233", "quote": "All submissions will have to be faxed to the Power Pool as we do not have a working digital certificate."},
+        {"msg": "williams-w3/sent_items/222", "quote": "Please schedule 4 or 5 of them to go if possible."}
+      ]
+    },
+    {
+      "name": "Real-time deal documentation and dispute/revenue reconciliation",
+      "description": "Real-time staff reconstruct what happened on specific hours (resupply cuts, wheels missing from the inc sheet, a net-scheduling problem) and write it up for settlements, counterparties or the CAISO. Disputes arise because changes are not documented when made.",
+      "participants": ["bill.williams@enron.com", "kate.symes@enron.com", "darren.cavanaugh@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "About 30 disputes came from the first two days of EOL because deals were altered or zeroed with no notes. Missing inc-sheet entries are found only later against CAISO finals.",
+      "automation": "Require a reason field on any deal alteration, and auto-compare the inc sheet to CAISO awards to flag missing deals.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.4,
+      "messages": ["williams-w3/sent_items/226", "williams-w3/sent_items/196", "williams-w3/sent_items/194", "williams-w3/sent_items/182"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/226", "quote": "We have already received approximately 30 disputes filed by various counterparties regarding deals that flowed on the 20th and 21st."},
+        {"msg": "williams-w3/sent_items/226", "quote": "Type a short note into the Scheduling Comments section of deals you zero out or change"},
+        {"msg": "williams-w3/sent_items/194", "quote": "We had two wheels that were not in the inc sheet but were awarded by the CAISO and are in finals in CAPS."},
+        {"msg": "williams-w3/sent_items/196", "quote": "Deals entered real time to resupply are 714148 (Buy PGE @ Mid-C) and 714150 (BPA tranny Mid-C to Montana System)."}
+      ]
+    },
+    {
+      "name": "Group cell phone bill and cost review",
+      "description": "The desk lead and an admin trace monthly AT&T charges, set per-employee caps and per-person plans, and send usage emails to each member. Numbers are assembled by hand from bills.",
+      "participants": ["bill.williams@enron.com", "jill.chatterton@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Cost breakdown by person and by new phones needs going through all the bills by hand. Plan changes get reverted by the carrier rep.",
+      "automation": "Pull carrier billing data into a per-user usage report that is sent automatically.",
+      "minutes_per_occurrence": 60,
+      "automatable_fraction": 0.6,
+      "messages": ["williams-w3/sent_items/246", "williams-w3/sent_items/245", "farmer-d/logistics/57"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/246", "quote": "Could you send an email to each group member giving them their average usage since you started or the last 3 months"},
+        {"msg": "williams-w3/sent_items/246", "quote": "I can go through all the bills and let you know what was spent on new phones, it will take a while but I could figure it out."},
+        {"msg": "williams-w3/sent_items/245", "quote": "It looks like our AT&T rep switched him back to the group calling plan."},
+        {"msg": "farmer-d/logistics/57", "quote": "The following expense report is ready for approval:"}
+      ]
+    },
+    {
+      "name": "Misdirected mail from name collision and unwanted access requests",
+      "description": "Bill Williams III (trading) repeatedly receives mail meant for Bill Williams in Technical Assets (Longview project) or for security administrators. He forwards or replies asking to be removed and corrects the sender's lists.",
+      "participants": ["bill.williams@enron.com", "cindy.adams@enron.com", "catherine.clark@enron.com", "sandra.rodriguez@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Senders keep using the wrong address, and each misroute needs a manual reply or forward. Removal requests are repeated.",
+      "automation": "Fix the distribution lists and directory entries once, and route security access requests only to the approvers.",
+      "minutes_per_occurrence": 5,
+      "automatable_fraction": 0.7,
+      "messages": ["williams-w3/sent_items/243", "williams-w3/sent_items/241", "williams-w3/sent_items/214", "williams-w3/sent_items/213", "williams-w3/sent_items/212", "williams-w3/sent_items/189", "williams-w3/sent_items/188", "williams-w3/sent_items/184", "williams-w3/sent_items/207"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/213", "quote": "I think you intended to send this to Bill Williams in Technical Assets. Please note the difference in addresses and make the change."},
+        {"msg": "williams-w3/sent_items/184", "quote": "Please update your email list to read Bill Williams and not Bill Williams III."},
+        {"msg": "williams-w3/sent_items/243", "quote": "Please remove my name from whatever list you might have. I work in Portland and am not involved with security clearance or security access."},
+        {"msg": "williams-w3/sent_items/241", "quote": "I am not involved with security, in Houston or otherwise, and can not help you obtain a security badge."}
+      ]
+    },
+    {
+      "name": "Gas logistics path and contract issue resolution",
+      "description": "Logistics staff chase unresolved path or contract problems on past months with the deal owner by email. They also gather desk feedback on the Path Manager system.",
+      "participants": ["antoinette.beale@enron.com", "michael.olsen@enron.com", "victor.lamadrid@enron.com", "patti.sullivan@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Missing paths are found after the month is closed and need the original trader to explain. Feedback is gathered through long reply-all chains, each colour-coding comments.",
+      "automation": "Auto-flag deliveries without a path and route them with deal context to the owner. Collect system feedback in a structured form.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/53", "farmer-d/logistics/52", "farmer-d/logistics/48", "farmer-d/logistics/49"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/53", "quote": "A path is needed on Delivery 17054701 for 19087mmbtus with the Receipt point 175054701."},
+        {"msg": "farmer-d/logistics/52", "quote": "This deal was not transported on contract 1856, the 15,000 was sold to El Paso Merchant directly at that point."},
+        {"msg": "farmer-d/logistics/48", "quote": "On # 2, The scheduling position window IS the weakest link.....GOODBYE!"},
+        {"msg": "farmer-d/logistics/49", "quote": "The blue highlighted pipes are the critical ones for the EAST."}
+      ]
+    },
+    {
+      "name": "Collecting desk inputs for logistics reports and presentations",
+      "description": "Logistics admins ask every desk for inputs for a shared presentation or schedule, then send reminders and redistribute the final version.",
+      "participants": ["elizabeth.webb@enron.com", "richard.pinion@enron.com", "j..farmer@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Needs a reminder before the deadline. Revised schedules are sent with requests to forward to people missed on the list.",
+      "automation": "A shared document with per-desk owners and automatic deadline reminders.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/51", "farmer-d/logistics/23", "farmer-d/logistics/55"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/51", "quote": "This is just a friendly reminder that I need the information for the Gas Logistics PowerPoint presentation by tomorrow, Friday, October 12th."},
+        {"msg": "farmer-d/logistics/55", "quote": "Please forward to those I have left off the mail list."},
+        {"msg": "farmer-d/logistics/23", "quote": "Attached is a general Logistics PowerPoint presentation that can be presented to customers or whoever you need to present information about Enron North America Gas Logistics to."}
+      ]
+    }
+  ]
+}

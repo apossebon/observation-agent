@@ -1,0 +1,140 @@
+{
+  "batch": 13,
+  "processes": [
+    {
+      "name": "Daily credit report forwarding to West desk analyst",
+      "description": "Credit group (Veronica Espinoza and others) emails a daily credit report listing counterparties to rebook or pending credit. Darron Giron forwards each one, unchanged, to a desk analyst (Carole Frank or Patrick Ryder) so rebooks and pending items can be worked.",
+      "participants": ["darron.giron@enron.com", "carole.frank@enron.com", "patrick.ryder@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Pure manual forwarding; when Giron is out the reports pile up and have to be re-forwarded in a batch later.",
+      "automation": "Auto-route the credit report to the desk distribution list or parse its rebook table into a task list per desk.",
+      "minutes_per_occurrence": 4,
+      "automatable_fraction": 0.8,
+      "messages": ["giron-d/sent/189","giron-d/sent/182","giron-d/sent/174","giron-d/sent/171","giron-d/sent/169","giron-d/sent/167","giron-d/sent/165","giron-d/sent/162","giron-d/sent/154","giron-d/sent/153","giron-d/sent/152","giron-d/sent/151","giron-d/sent/150","giron-d/sent/149","giron-d/sent/144","giron-d/sent/138","giron-d/sent/129","giron-d/sent/128","giron-d/sent/125","giron-d/sent/121","giron-d/sent/119","giron-d/sent/106","giron-d/sent/104"],
+      "evidence": [
+        {"msg": "giron-d/sent/154", "quote": "I don't know if you got any of these while I was out."},
+        {"msg": "giron-d/sent/153", "quote": "Amoco Oil Company    qW3725.1 Rebook to BP Amoco Corporation"},
+        {"msg": "giron-d/sent/149", "quote": "PG&E Energy Trading, Canada Co qX4420.1  Rebook ENA to ECC, under the ISDA"}
+      ]
+    },
+    {
+      "name": "Deal rebooks and book flips in TAGG",
+      "description": "Settlements, credit and EOL staff email the West desk asking that specific deals be rebooked to another counterparty or flipped to another book (for example to FT-US/CAND-ERMS). Giron makes the change in TAGG, replies Done, and forwards the request to analysts.",
+      "participants": ["darron.giron@enron.com", "stacey.vallejo@enron.com", "jeffrey.gossett@enron.com", "julie.brewer@enron.com", "lesli.campbell@enron.com", "carole.frank@enron.com", "ryan.o'rourke@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Requests are urgent and arrive piecemeal (one more deal found each time); deals sit in unknown books so the requester cannot list them, and settlement or liquidation runs wait to be re-run.",
+      "automation": "A bulk deal-attribute change request form or script that takes a list of deal numbers and target book or counterparty and applies and confirms it.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.5,
+      "messages": ["giron-d/sent/168","giron-d/sent/164","giron-d/sent/173","giron-d/sent/127","giron-d/sent/126","giron-d/sent/124","giron-d/sent/117","giron-d/sent/116","giron-d/sent/114","giron-d/sent/110","giron-d/sent/108","giron-d/sent/141"],
+      "evidence": [
+        {"msg": "giron-d/sent/164", "quote": "Deal QP6086.1 in the WEST SJ book needs to be flipped"},
+        {"msg": "giron-d/sent/168", "quote": "This is causing problems with the February Liquidations as I settled this deal with Aquila, but it isn't coming"},
+        {"msg": "giron-d/sent/117", "quote": "Please rebook to W&T Offshore, Inc. short name is W&TOFFSHORE."},
+        {"msg": "giron-d/sent/108", "quote": "I'm missing at least 10 deals from the April 2001 Nymex invoice"},
+        {"msg": "giron-d/sent/173", "quote": "Could you make sure that these seven deals are changed in Tagg to ENA I would"}
+      ]
+    },
+    {
+      "name": "Monthly gas curve validation follow-up",
+      "description": "Risk analyst Jennifer Nguyen sends monthly lists of validated curves with unexplained shape or level changes. Giron and traders on the West desk research and write an explanation back, often after a chaser.",
+      "participants": ["darron.giron@enron.com", "jennifer.nguyen@enron.com", "jeffrey.gossett@enron.com", "o'neal.winfree@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Question is forwarded through several people and the analyst must chase before an answer comes.",
+      "automation": "Auto-generate curve change commentary with prior-month comparison and route open questions to the owning desk with a due date.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.4,
+      "messages": ["giron-d/sent/170","giron-d/sent/133","giron-d/sent/132"],
+      "evidence": [
+        {"msg": "giron-d/sent/170", "quote": "Please get responses for these back to Jennifer today."},
+        {"msg": "giron-d/sent/132", "quote": "Can you or anyone in your group follow up on the curves below?"},
+        {"msg": "giron-d/sent/132", "quote": "NGI-PGE/TOPOCK is an internal curve used to value transport and is equal to NGI-SOCAL."}
+      ]
+    },
+    {
+      "name": "Liquidation support requests",
+      "description": "Jim Little requests deal-level support for monthly liquidation values by region and asks for it saved to a shared ERMS directory. Giron forwards to Patrick Ryder or sends a volumes file.",
+      "participants": ["darron.giron@enron.com", "jim.little@enron.com", "patrick.ryder@enron.com", "phillip.love@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Support is rebuilt manually each month and requested again for earlier months not saved to the directory.",
+      "automation": "Generate liquidation support extracts per region automatically and file them to the standard directory each month.",
+      "minutes_per_occurrence": 60,
+      "automatable_fraction": 0.5,
+      "messages": ["giron-d/sent/187","giron-d/sent/163","giron-d/sent/105"],
+      "evidence": [
+        {"msg": "giron-d/sent/187", "quote": "You may save the support to ERMS/1Intra/FRED Liquidations/\"year\"/\"month\""},
+        {"msg": "giron-d/sent/187", "quote": "I WILL ALSO NEED SUPPORT FOR THE  DECEMBER AND JANUARY VALUES FOR ALL OF YOUR REGIONS"},
+        {"msg": "giron-d/sent/105", "quote": "In need liquidation support for the December Liquidation values below=20"}
+      ]
+    },
+    {
+      "name": "Flow without deal ticket: extend or create deals",
+      "description": "Logistics schedulers find meters with flow but no deal, or missing monthly transport tickets, and email Daren Farmer asking him to extend or create the deal. They then check MOPS, POPS or Unify to see whether the change landed.",
+      "participants": ["daren.farmer@enron.com", "michael.olsen@enron.com", "aimee.lannou@enron.com", "tom.acton@enron.com", "mark.mccoy@enron.com", "rebecca.griffin@enron.com", "gary.lamphier@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Each is a one-off email thread waiting on one person; the requester has to ask again whether the deal appeared in the system.",
+      "automation": "A daily exception report of meters with flow and no active deal, with a one-click extend request routed to the deal owner.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/2109","farmer-d/logistics/2111","farmer-d/logistics/2113","farmer-d/logistics/2122","farmer-d/logistics/2123","farmer-d/logistics/221","farmer-d/logistics/2124","farmer-d/logistics/209","farmer-d/logistics/2125","farmer-d/logistics/2129"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/2125", "quote": "Daren I have three meters that have flow in Feb but no deal."},
+        {"msg": "farmer-d/logistics/2122", "quote": "Can this deal be extended to cover the January and February flow?"},
+        {"msg": "farmer-d/logistics/2123", "quote": "This has not yet shown up in Unify.  Did you use the same deal ticket?"},
+        {"msg": "farmer-d/logistics/2113", "quote": "Let me know if you extend the deal or create a new one."}
+      ]
+    },
+    {
+      "name": "On-call notes and intraday operational notices",
+      "description": "Schedulers email weekend on-call notes and intraday change notices to the logistics group and Daren Farmer. These cover cut nominations, changed confirms, and moved deals. During imbalance risk Mary Poorman also compiles lists from the others.",
+      "participants": ["michael.olsen@enron.com", "mary.poorman@enron.com", "mark.mccoy@enron.com", "daren.farmer@enron.com", "carlos.rodriguez@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Information lives in free-text email, so the compiled list has to be rebuilt from RTU variance and imbalance reports and verified by each desk.",
+      "automation": "Structured on-call log tied to nominations and confirms, with a generated imbalance list from variance data.",
+      "minutes_per_occurrence": 25,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/2108","farmer-d/logistics/2110","farmer-d/logistics/210","farmer-d/logistics/2126","farmer-d/logistics/2127","farmer-d/logistics/2128","farmer-d/logistics/2130"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/2110", "quote": "I changed the confirm in Pops to reflect it."},
+        {"msg": "farmer-d/logistics/2126", "quote": "Please email me a list of any meters/contracts that you are aware of."},
+        {"msg": "farmer-d/logistics/2127", "quote": "Please verify, add or update the information based on your desk's activities."},
+        {"msg": "farmer-d/logistics/2108", "quote": "so I moved the deals to reflect this on WGR (Aquila Header )."}
+      ]
+    },
+    {
+      "name": "Contract assignment/termination report and termination letters",
+      "description": "Contract administration (Cheryl Dudley) compiles and mails a periodic HPL Assignment, Termination and Expiration report to a long distribution list. Commercial staff separately ask for termination letters, which are checked in Sitara and the Global Contracts System.",
+      "participants": ["cheryl.dudley@enron.com", "amelia.alland@enron.com", "elsa.villarreal@enron.com", "kimberlee.bennick@enron.com", "daren.farmer@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "The report was missed once and had to be revised late; termination requests need back-and-forth between systems and contract language before anyone knows what is needed.",
+      "automation": "Scheduled report generation from the contracts system and a distribution list managed by subscription; contract term and evergreen lookup surfaced in one place.",
+      "minutes_per_occurrence": 60,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/2114","farmer-d/logistics/211","farmer-d/logistics/2119","farmer-d/logistics/2120","farmer-d/logistics/2121","farmer-d/logistics/223"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/2114", "quote": "I accidentally failed to do the report for March 2001."},
+        {"msg": "farmer-d/logistics/211", "quote": "If you do not need to receive this report or if you know of someone else that should receive it, please let me know"},
+        {"msg": "farmer-d/logistics/2120", "quote": "I have re-checked Sitara & verified that the above deal was a Term, Firm"},
+        {"msg": "farmer-d/logistics/2121", "quote": "A termination letter is being prepared to be faxed to Exxon with an original to follow for their records."}
+      ]
+    },
+    {
+      "name": "Ad hoc finance and audit data requests to the West desk",
+      "description": "Accounting, risk and auditors send one-off requests for penalties, MTM values, storage inventory schedules, PMAs and deal support. Giron collects the answers from analysts and forwards or replies, sometimes late.",
+      "participants": ["darron.giron@enron.com", "bryce.baxter@enron.com", "lisa.valderrama@enron.com", "carole.frank@enron.com", "jeffrey.gossett@enron.com", "mark.c.austin@us.andersen.com", "kristen.clause@enron.com", "david.baumbach@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Requests are forwarded down a chain and chased; one audit request went unseen during vacation and had to be re-sent.",
+      "automation": "A request tracker with owner and due date, and queries for MTM or deal ticket support producing the answer without manual compilation.",
+      "minutes_per_occurrence": 40,
+      "automatable_fraction": 0.3,
+      "messages": ["giron-d/sent/179","giron-d/sent/178","giron-d/sent/176","giron-d/sent/137","giron-d/sent/136","giron-d/sent/120","giron-d/sent/118","giron-d/sent/91","giron-d/sent/185","farmer-d/logistics/2116","farmer-d/logistics/228"],
+      "evidence": [
+        {"msg": "giron-d/sent/120", "quote": "Could you please let me know the status on this information as soon as"},
+        {"msg": "giron-d/sent/118", "quote": "I was on vacation when you sent the first request and somehow didn't see it"},
+        {"msg": "giron-d/sent/137", "quote": "Please provide the total MTM value for that date within your region."},
+        {"msg": "giron-d/sent/178", "quote": "Is it ready?  Mike Grigsby, who is the head physical trader on the desk asked"},
+        {"msg": "farmer-d/logistics/228", "quote": "Please provide the information requested below as soon as possible."}
+      ]
+    }
+  ]
+}

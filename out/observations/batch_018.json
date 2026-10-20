@@ -1,0 +1,139 @@
+{
+  "batch": 18,
+  "processes": [
+    {
+      "name": "Sitara deal price/volume corrections and missing-deal chasers",
+      "description": "Schedulers and settlements analysts email Daren Farmer's logistics group when Sitara deals have wrong prices or volumes, or when a counterparty invoices a deal that cannot be found. Each case is a thread of manual lookups, spreadsheet re-sends and 'let me know when changed' follow-ups.",
+      "participants": ["valerie.vela@enron.com", "joseph.smith@enron.com", "j..farmer@enron.com", "joy.werner@enron.com", "megan.parker@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Requester must wait for someone else to edit Sitara and then notify back; volumes spreadsheet is re-sent; root cause (who added a meter or deal) needs multi-party digging across companies.",
+      "automation": "A deal-correction request form feeding a tracked ticket with deal number, field, old and new value, and automatic notification on completion; a deal-audit lookup that shows who changed a ticket and when.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/74", "farmer-d/logistics/73", "farmer-d/logistics/72", "farmer-d/logistics/70", "farmer-d/logistics/69", "farmer-d/logistics/67"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/74", "quote": "Deal 895691 - swing deal - currently has 234,000 in the scheduled column and it should be 441,000 based on the spreadsheet I sent."},
+        {"msg": "farmer-d/logistics/73", "quote": "And I was told that Sitara could not handle this pricing structure, that it had to be calculated and entered as a fixed price."},
+        {"msg": "farmer-d/logistics/72", "quote": "We are not able to find out July deal for TGLO in the system."},
+        {"msg": "farmer-d/logistics/70", "quote": "Conoco is saying that we did not buy that gas from them."},
+        {"msg": "farmer-d/logistics/67", "quote": "ENA was invoiced by Coral Energy for two deals on Tejas for June 2001 that I do not see in the system."}
+      ]
+    },
+    {
+      "name": "Late pathing, bridgeback errors and transport ticket requests",
+      "description": "Volume management and logistics staff ask schedulers to path deals, create transport usage tickets or fix late-pathed deals so pool balances and bridgeback to Sitara clear. Requests are forwarded and re-forwarded until the owner acts.",
+      "participants": ["sherlyn.schumack@enron.com", "michael.olsen@enron.com", "j..farmer@enron.com", "stephen.swisher@enron.com", "hakeem.ogunbunmi@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Requests sit with the owner for weeks and are re-sent as chasers; the original email has to be forwarded again to the person who needs it.",
+      "automation": "A shared exception queue of unbalanced pools and bridgeback errors with owner, age and automatic reminders instead of forwarded emails.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/63", "farmer-d/logistics/59", "farmer-d/logistics/58", "farmer-d/logistics/62", "farmer-d/logistics/60"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/63", "quote": "This deal expired 12/31/00, and the late pathing has caused a bridgeback error for January and February 2001."},
+        {"msg": "farmer-d/logistics/59", "quote": "Have you had a chance to look at this yet?"},
+        {"msg": "farmer-d/logistics/58", "quote": "It has been taken care of.  Let me know if you need anythign further."},
+        {"msg": "farmer-d/logistics/62", "quote": "I need a transport usage ticket to clear these balances"}
+      ]
+    },
+    {
+      "name": "West hourly desk EOL deal entry and book allocation rules",
+      "description": "The short-term West hourly desk enters EOL trades in Enpower/CAPS under rules the manager keeps restating by group email (which book, one deal per strip, inter-desk deals by night shift, INC sheets). Unmatched broker deals are also chased by back office.",
+      "participants": ["bill.williams@enron.com", "kate.symes@enron.com", "evelyn.metoyer@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "The same entry rules are re-explained in several emails because volumes outgrew the process; deals go missing in Enpower and back office finds mismatches weeks later.",
+      "automation": "Auto-create EOL deals in Enpower with book and strip defaults and run a daily match of broker deals to Enpower to flag gaps.",
+      "minutes_per_occurrence": 60,
+      "automatable_fraction": 0.5,
+      "messages": ["williams-w3/sent_items/275", "williams-w3/sent_items/268", "williams-w3/sent_items/254", "williams-w3/sent_items/273"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/275", "quote": "A standardization in our process will benefit the entire group and will allow us to make consistent improvements as time goes on."},
+        {"msg": "williams-w3/sent_items/268", "quote": "INC SHEETS MUST BE MAINTAINED, DEALS ENTERED AND ROUTED EACH HOUR--only way to stay ahead"},
+        {"msg": "williams-w3/sent_items/254", "quote": "The night shift will average the sales price and make one strip for the on-peak piece."},
+        {"msg": "williams-w3/sent_items/273", "quote": "Please find attached an excel spreadsheet of Bloomberg deals I can't seem to match up with our deals in Enpower."}
+      ]
+    },
+    {
+      "name": "Counterparty dispute and settlement reconciliation (tapes, imbalance, profit splits)",
+      "description": "Disputes with El Paso Electric, SRP and MPC are resolved by requesting trade tapes, listening, and drafting emails to counterparties, with the manager reviewing wording. Back-office staff also ask the manager to explain or decide historic deal splits and annuities.",
+      "participants": ["bill.williams@enron.com", "kate.symes@enron.com", "virginia.thompson@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Tape access is limited and requests go through another person; disputes drag for months (five months on MPC March) and need the manager to make the call.",
+      "automation": "A dispute tracker linking each disputed deal to its tape request, evidence and decision, with templated counterparty emails.",
+      "minutes_per_occurrence": 60,
+      "automatable_fraction": 0.3,
+      "messages": ["williams-w3/sent_items/289", "williams-w3/sent_items/283", "williams-w3/sent_items/280", "williams-w3/sent_items/278", "williams-w3/sent_items/277", "williams-w3/sent_items/276", "williams-w3/sent_items/272", "williams-w3/sent_items/271"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/278", "quote": "In an effort to curb El Paso settlements issues, I've requested several sets of tapes over the past few days."},
+        {"msg": "williams-w3/sent_items/276", "quote": "As we have been back and forth for 5 months now, there has to be a decision made on the Montana Imbalance piece for March 2001."},
+        {"msg": "williams-w3/sent_items/280", "quote": "I requested tapes for 8/17 to verify the amount we purchased from SRP, and attached wave files that have Bert buying firm power"},
+        {"msg": "williams-w3/sent_items/283", "quote": "Please be aware that every move with regards to marketing and running their system is under EXTREME scrutiny."}
+      ]
+    },
+    {
+      "name": "Short/long position notices to the scheduling shift",
+      "description": "The desk manager or scheduler emails the shift analyst the megawatts, hours, price and counterparties for a short or long position, with notes to check price with other traders. Each notice is typed by hand.",
+      "participants": ["bill.williams@enron.com", "kate.symes@enron.com", "bert.meyers@enron.com", "eric.linder@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Details such as price and counterparty are deferred to 'check with' other people; shift staff must interpret free-text emails and re-key into deal systems.",
+      "automation": "A structured position-change form that writes directly into the deal sheet and notifies the shift.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.5,
+      "messages": ["williams-w3/sent_items/295", "williams-w3/sent_items/267"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/295", "quote": "25 mws on peak Monday at @$45 in SP-15 (check with Kysa)"},
+        {"msg": "williams-w3/sent_items/267", "quote": "We are short for HE 21 through HE 23 at Malin."}
+      ]
+    },
+    {
+      "name": "Standing trading-procedure reminders to the real-time group",
+      "description": "The desk manager repeatedly emails the whole group procedure reminders (tiered bids, congestion bidding, generation waivers, weekend California scheduling, congestion allocation). Each is a manual broadcast.",
+      "participants": ["bill.williams@enron.com", "darren.cavanaugh@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Rules live in emails, so new staff make the same errors and the manager re-sends reminders; wrong tiered bids cost real money.",
+      "automation": "A single maintained procedure page with checks (for example tier-bid validation) rather than repeated broadcast emails.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.4,
+      "messages": ["williams-w3/sent_items/261", "williams-w3/sent_items/250", "williams-w3/sent_items/262", "williams-w3/sent_items/270", "williams-w3/sent_items/288"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/261", "quote": "we must begin adjust bidding for congestion at ALL tie points."},
+        {"msg": "williams-w3/sent_items/250", "quote": "We have developed a process for tiering our bids and should do so going forward."},
+        {"msg": "williams-w3/sent_items/262", "quote": "we should notify the services desk if it is during the day, and should email the services desk (and me) if it is after normal work hours."},
+        {"msg": "williams-w3/sent_items/270", "quote": "please allocate all Hour-Ahead Congestion charges or revenues to the ECTRT group."}
+      ]
+    },
+    {
+      "name": "Month-end close and ISO revenue true-up",
+      "description": "Month-end involves a published close schedule with a no-changes cutoff, collection of reports and exception notes from schedulers, and a reconciliation of daily ISO revenue/expenses against volume management totals.",
+      "participants": ["richard.pinion@enron.com", "j..farmer@enron.com", "kate.symes@enron.com", "fran.chang@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Schedulers were confused about when changes were allowed; true-up covered only July variances while August variances were unaccounted and needed manual follow-up.",
+      "automation": "Automated cutoff reminders and a variance report comparing daily ISO flash to month-end totals.",
+      "minutes_per_occurrence": 90,
+      "automatable_fraction": 0.35,
+      "messages": ["farmer-d/logistics/68", "williams-w3/sent_items/266"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/68", "quote": "At 6PM Friday (or before if you are ready) I will be by to pick up the reports and exceptions dialogue."},
+        {"msg": "farmer-d/logistics/68", "quote": "Last month there was some confusion from several schedulers I spoke to about when changes could be made to (August) after the cut off"},
+        {"msg": "williams-w3/sent_items/266", "quote": "It looks as though the only ISO true-up information Risk received was regarding our July variance of $86,743."}
+      ]
+    },
+    {
+      "name": "IT, telecom and equipment requests and chasers",
+      "description": "Staff request desktops, turrets, phones and cellular plan changes through email or an automatic notification system, and then chase status and supply details.",
+      "participants": ["bill.williams@enron.com", "david.steiner@enron.com", "j..farmer@enron.com", "tommy.garza@enron.com", "jill.chatterton@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Delivery gets rescheduled and the requester must chase and answer follow-up questions by email.",
+      "automation": "A request portal with status tracking and pre-collected setup details.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.4,
+      "messages": ["williams-w3/sent_items/284", "williams-w3/sent_items/265", "williams-w3/sent_items/258", "williams-w3/sent_items/249", "williams-w3/sent_items/247", "williams-w3/sent_items/248", "farmer-d/logistics/66", "farmer-d/logistics/65", "farmer-d/logistics/64"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/284", "quote": "We need to get a third turret in the mix at RT."},
+        {"msg": "williams-w3/sent_items/258", "quote": "Any word from PGE regarding a phone for Kate?"},
+        {"msg": "farmer-d/logistics/65", "quote": "I'm working on the PC you requested.  Can you provide me with the following information so I can start imaging your pc:"},
+        {"msg": "williams-w3/sent_items/249", "quote": "I would like to cap per employee costs at $50 per month on the group calling plan."}
+      ]
+    }
+  ]
+}

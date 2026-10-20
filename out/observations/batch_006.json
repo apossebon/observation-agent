@@ -1,0 +1,156 @@
+{
+  "batch": 6,
+  "processes": [
+    {
+      "name": "Meter flow with no deal: logistics asks Daren Farmer to set up, extend or reassign deals",
+      "description": "Logistics schedulers (Mary Poorman, Aimee Lannou, Sherlyn Schumack, Sabrae Zajac) find volumes on a meter with no matching deal ticket, parked on the Strangers agreement, or on an expired evergreen. They email Daren Farmer one meter at a time asking him to create, extend or re-path a deal, and he or a deal owner fixes it in Sitara.",
+      "participants": ["mary.poorman@enron.com", "aimee.lannou@enron.com", "daren.farmer@enron.com", "julie.meyers@enron.com", "sherlyn.schumack@enron.com", "sabrae.zajac@enron.com", "clem.cernosek@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Each request is a one-off email to one person and waits for him to reply. Evergreen deals that did not roll are only found after flow has started.",
+      "automation": "A daily exception report of meters with flow and no active ticket could create a work item for the deal owner with the last ticket number attached. Evergreen roll failures could be flagged at month end.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/1342", "farmer-d/logistics/1347", "farmer-d/logistics/1349", "farmer-d/logistics/1372", "farmer-d/logistics/1374", "farmer-d/logistics/1386", "farmer-d/logistics/1404", "farmer-d/logistics/1406", "farmer-d/logistics/1403", "farmer-d/logistics/1346", "farmer-d/logistics/1398", "farmer-d/logistics/1796"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1347", "quote": "There are two purchases at the above referenced meter for the 28th of Oct., 1999."},
+        {"msg": "farmer-d/logistics/1349", "quote": "These volumes are currently on the Strangers Agmt, but,  I feel that a sales deal should be out there."},
+        {"msg": "farmer-d/logistics/1386", "quote": "can you get a deal set up for meter 1459 for 8/00?"},
+        {"msg": "farmer-d/logistics/1406", "quote": "This deal was not put in right.  The primary term of the contract goes out to 9/30/00."},
+        {"msg": "farmer-d/logistics/1346", "quote": "Logistics needs either a deal to record these volumes which have flowed into HPL's Pipeline or  Logistics need approval to writeoff these volumes to Unaccounted for Gas."}
+      ]
+    },
+    {
+      "name": "Feedback monitor error on meter 984132 passed between groups",
+      "description": "A feedback/bridge error in POPS for one meter and day is chased by email through Karen Lindley, Jackie Young, Gary Lamphier, Sherlyn Schumack and finally Daren Farmer. The same question is forwarded with long quoted chains, and the answer arrives about two weeks later.",
+      "participants": ["karen.lindley@enron.com", "jackie.young@enron.com", "gary.lamphier@enron.com", "sherlyn.schumack@enron.com", "daren.farmer@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "The issue is forwarded between people and each forward re-quotes the whole chain. Jackie has to chase for status and the decision took from 8/21 to 9/5.",
+      "automation": "A ticket or case record for each feedback error with an owner and status would replace the forward chain. The tool could pull the POPS and MOPS values for the meter and day into the case.",
+      "minutes_per_occurrence": 90,
+      "automatable_fraction": 0.3,
+      "messages": ["farmer-d/logistics/1351", "farmer-d/logistics/1357", "farmer-d/logistics/1359", "farmer-d/logistics/1362", "farmer-d/logistics/1377", "farmer-d/logistics/1387", "farmer-d/logistics/1352", "farmer-d/logistics/1353", "farmer-d/logistics/1354", "farmer-d/logistics/1356", "farmer-d/logistics/1333"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1352", "quote": "Volume is allocating to deal number 51862 on 1/16/99 on meter 984132, however the deal does not have this day on it."},
+        {"msg": "farmer-d/logistics/1356", "quote": "I am uncomfortable putting a deal out there without more details."},
+        {"msg": "farmer-d/logistics/1377", "quote": "Can you give us a status on this request?"},
+        {"msg": "farmer-d/logistics/1387", "quote": "10,000 should be allocated to Adonis #51862 on the 5th only."}
+      ]
+    },
+    {
+      "name": "Sitara price and demand-charge corrections by email",
+      "description": "Settlements and risk staff report a wrong price, duplicate deal or demand charge on a Sitara deal. The deal owner (Darron Giron or Daren Farmer) is asked by email to correct it or approve the change. Requests are repeated when there is no answer.",
+      "participants": ["darron.giron@enron.com", "elizabeth.hernandez@enron.com", "jane.saladino@enron.com", "kevin.drachenberg@enron.com", "stephanie.gomes@enron.com", "daren.farmer@enron.com", "michael.mousteiko@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "The corrector will not change a deal without the owner's agreement, so requests sit and are re-sent. The same OA difference carried over into a second month.",
+      "automation": "A correction-request queue with the deal number, old and new price, and owner approval status would remove the forwarding and chasing. A price check against the index publication could catch the error earlier.",
+      "minutes_per_occurrence": 25,
+      "automatable_fraction": 0.35,
+      "messages": ["giron-d/sent/680", "giron-d/sent/673", "giron-d/sent/655", "farmer-d/logistics/1381"],
+      "evidence": [
+        {"msg": "giron-d/sent/680", "quote": "This is on open OA difference and will continue to be until you handle it."},
+        {"msg": "giron-d/sent/673", "quote": "The deal was entered twice.  I killed 279644.  I spoke with Michael, and he knows the deal has been killed."},
+        {"msg": "giron-d/sent/655", "quote": "Barbara Dillard's worksheet shows the full 10,000 MMBtu for 8/1/00 - 8/2/00 as SIQ"},
+        {"msg": "farmer-d/logistics/1381", "quote": "I believe the system is pulling in the wrong price for WAHA.WTX.IF.M.I.. for 5/00 production."}
+      ]
+    },
+    {
+      "name": "Daily origination P&L variance follow-up",
+      "description": "Binh Pham emails each evening when a desk's P&L recognised origination that was not granted on the origination schedule. Darron Giron forwards it to a colleague or asks the ticket owner whether the amount was granted, and Binh checks again the next day.",
+      "participants": ["binh.pham@enron.com", "darron.giron@enron.com", "luchas.johnson@enron.com", "b.palmer@enron.com", "kam.keiser@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "The grant arrives a day late or not at all, so the same variance is reported again and Darron has to ask again.",
+      "automation": "A daily comparison of claimed against granted origination by desk could produce the variance list and flag ones still open.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.5,
+      "messages": ["giron-d/sent/695", "giron-d/sent/677", "giron-d/sent/675"],
+      "evidence": [
+        {"msg": "giron-d/sent/695", "quote": "Intracentral recognized $11,812 origination on their P&L that was not granted on the origination schedule."},
+        {"msg": "giron-d/sent/677", "quote": "Central origination claimed $750 more than what was granted to them."},
+        {"msg": "giron-d/sent/675", "quote": "Did you grant the $750 in orig from the ticket I gave you yesterday?"}
+      ]
+    },
+    {
+      "name": "Weekend, outage and meter notices distributed to the logistics team",
+      "description": "Gas control and logistics staff send notes by email to a long distribution list. These cover weekend on-call notes, pipeline maintenance that cuts capacity, meter outages and returns, and new meter assignments. Recipients read them and adjust nominations.",
+      "participants": ["mary.poorman@enron.com", "robert.lloyd@enron.com", "gary.hanks@enron.com", "sabrae.zajac@enron.com", "pat.clynes@enron.com", "jackie.young@enron.com", "mark.mccoy@enron.com", "daren.farmer@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Each notice is typed and sent by hand to a list of 15 to 40 people, and the same notice is forwarded again later (new meter, back-up notice). A reader has to find the right notice at nomination time.",
+      "automation": "A shared outage and meter-change log that nominators check, with notices auto-sent from it, would replace the manual lists.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/1332", "farmer-d/logistics/1334", "farmer-d/logistics/1344", "farmer-d/logistics/1369", "farmer-d/logistics/1786", "farmer-d/logistics/1793", "farmer-d/logistics/1396", "farmer-d/logistics/1430", "farmer-d/logistics/1393", "farmer-d/logistics/1341", "farmer-d/logistics/1405"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1332", "quote": "This is a reduction in total capacity from 528,000 to 400,000 at Station 809."},
+        {"msg": "farmer-d/logistics/1334", "quote": "On Call Notes for Weekend Dated ; August 12th thru 13th"},
+        {"msg": "farmer-d/logistics/1369", "quote": "Here are my notes, please let me know if you have any questions."},
+        {"msg": "farmer-d/logistics/1786", "quote": "She has informed me that for this time period there should be no nominations at these points."},
+        {"msg": "farmer-d/logistics/1793", "quote": "Meters 6040 and 584 are back up.  Intradays for 9/12/00 can be done."}
+      ]
+    },
+    {
+      "name": "Monthly customer gas nomination intake and swing adjustment",
+      "description": "Customers such as Enron Methanol and Calpine send monthly and daily nomination requirements by email, often as Word attachments. Daren Farmer reads the monthly nomination, adds swing volume from recent history and tells the trader.",
+      "participants": ["michael.mitcham@enron.com", "daren.farmer@enron.com", "lee.papayoti@enron.com", "rickya@calpine.com", "rlloyd@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "The nomination is retyped into the deal system by hand. The swing add-on is a manual judgment from last month's flow.",
+      "automation": "Nomination emails or documents could be parsed into deal-system entries. The swing could be suggested from prior-month actuals.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/1367", "farmer-d/logistics/1368", "farmer-d/logistics/1370"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1367", "quote": "Enron Methanol nominates the following natural gas requirements for the Methanol Plant for September 2000:"},
+        {"msg": "farmer-d/logistics/1368", "quote": "So, I added 5,000 for September (#139057 @ GD) in addition to the 34,000 they nom'd."},
+        {"msg": "farmer-d/logistics/1370", "quote": "Calpine Daily and Monthly Gas Nomination"}
+      ]
+    },
+    {
+      "name": "System access request submission and approval",
+      "description": "New-hire and application access requests are submitted through the SRRS tool. Confirmation and approval emails go to the manager (Daren Farmer), who must click through to approve.",
+      "participants": ["yvette.connevey@enron.com", "daren.farmer@enron.com", "information.management@enron.com", "arsystem@ect.enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Several automated emails per request (submitted, more information, approval needed) and the approver has to open each one. The same new hire has two separate requests.",
+      "automation": "A single request thread with auto-routing to the manager and a standard bundle of access for each role would cut the emails.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/1339", "farmer-d/logistics/1361", "farmer-d/logistics/1407"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1339", "quote": "You will be notified via eMail when your request has been processed."},
+        {"msg": "farmer-d/logistics/1407", "quote": "Please review and act upon this request. You have received this email because the requester specified you as their Manager."},
+        {"msg": "farmer-d/logistics/1361", "quote": "Additional Information for Security Resource Request  DJFR-4NGPA6 has been provided by Security."}
+      ]
+    },
+    {
+      "name": "Enovate DPR distribution and Hub deal reconciliation",
+      "description": "Darron Giron asks Daniel Falcone for an unprotected copy of the daily Enovate DPR for others. He also tries to reconcile the Hub deals booked in Tagg against Steve Richman's list, and sets up new books and a new counterparty for Enovate.",
+      "participants": ["darron.giron@enron.com", "daniel.falcone@enron.com", "steve.richman@enron.com", "kevin.radous@enron.com", "mark.mixon@enron.com", "richard.tomaski@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Copies of the DPR are protected, so each recipient has to ask for a new version. The deal lists do not tie, and the request for terms is repeated over three weeks.",
+      "automation": "The DPR could be sent in a shareable format at distribution time. A tool could match booked deals to the counterparty's list and show the differences.",
+      "minutes_per_occurrence": 40,
+      "automatable_fraction": 0.35,
+      "messages": ["giron-d/sent/691", "giron-d/sent/666", "giron-d/sent/688", "giron-d/sent/686", "giron-d/sent/665", "giron-d/sent/654", "giron-d/sent/651", "giron-d/sent/640", "giron-d/sent/656", "giron-d/sent/653"],
+      "evidence": [
+        {"msg": "giron-d/sent/691", "quote": "But the copies we receive have some sort of protection which I'm sure you are aware of."},
+        {"msg": "giron-d/sent/666", "quote": "Will you please send Richard Tomaski a version of yesterday's DPR that can be printed or forwarded."},
+        {"msg": "giron-d/sent/651", "quote": "He sent me a spreadsheet with deals but I cannot even come close to tying them out to what we have booked in Tagg."},
+        {"msg": "giron-d/sent/640", "quote": "I think the best thing to do is to simply start over and book the deals you tell me to."}
+      ]
+    },
+    {
+      "name": "Annual budget and staffing data collection",
+      "description": "Diane Cook asks each manager for 2001 staffing worksheets and a budget questionnaire by email, with deadlines. She re-sends the same email and a follow-up with corrections to people who have not replied.",
+      "participants": ["diane.cook@enron.com", "daren.farmer@enron.com", "darron.giron@enron.com", "david.baumbach@enron.com", "dutch.quigley@enron.com", "kam.keiser@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "The same message is re-sent as a chaser and extra rules are added in follow-ups. Replies come back as attachments to be keyed in.",
+      "automation": "A shared form with deadlines and automatic reminders for non-responders could replace the emails and attachments.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/1392", "farmer-d/logistics/1399", "farmer-d/logistics/1401"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1392", "quote": "The first draft of the 2001 budget is due on September 18th."},
+        {"msg": "farmer-d/logistics/1392", "quote": "PLEASE TURN IN YOUR 2001 STAFFING BY SEPTEMBER 11, END OF BUSINESS."},
+        {"msg": "farmer-d/logistics/1401", "quote": "IF YOU HAVE NOT TURNED IN YOUR STAFFING FOR 2001, PLEASE TURN THAT IN TODAY."}
+      ]
+    }
+  ]
+}

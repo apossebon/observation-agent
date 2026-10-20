@@ -1,0 +1,112 @@
+{
+  "batch": 14,
+  "processes": [
+    {
+      "name": "Daily credit report forwarding",
+      "description": "Credit group (Veronica Espinoza, Russell Diamond, Darren Vanek) emails a daily credit report or pendings list to a long distribution list. Darron Giron forwards each one to a colleague (Carole Frank, later Ryan O'Rourke), apparently so his group sees counterparty rebook and pending actions.",
+      "participants": ["darron.giron@enron.com", "carole.frank@enron.com", "ryan.o'rourke@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Forwarded manually, often hours or days later (the 4/2 report is forwarded on 4/6, the 4/13 report on 4/16). The forward carries no added content, only the original attachment or body.",
+      "automation": "Auto-route the credit report to the group's shared mailbox or a distribution list at send time, and extract the counterparty rebook and pending actions into a tracked list.",
+      "minutes_per_occurrence": 3,
+      "automatable_fraction": 0.8,
+      "messages": ["giron-d/sent/100", "giron-d/sent/97", "giron-d/sent/94", "giron-d/sent/86", "giron-d/sent/85", "giron-d/sent/79", "giron-d/sent/76", "giron-d/sent/75", "giron-d/sent/70", "giron-d/sent/67", "giron-d/sent/62", "giron-d/sent/61", "giron-d/sent/59", "giron-d/sent/53", "giron-d/sent/50", "giron-d/sent/43", "giron-d/sent/41", "giron-d/sent/39", "giron-d/sent/33", "giron-d/sent/31", "giron-d/sent/28", "giron-d/sent/24"],
+      "evidence": [
+        {"msg": "giron-d/sent/100", "quote": "From: Veronica Espinoza/ENRON@enronXgate on 04/03/2001 09:25 AM To: Janie Aguayo/HOU/ECT@ECT, Diane Anderson/NA/Enron@Enron"},
+        {"msg": "giron-d/sent/75", "quote": "Bank of America Corporation   v28205.1  Rebook to Bank of America, NA"},
+        {"msg": "giron-d/sent/61", "quote": "Idaho Power Company   v39821.A   Rebook to Idacorp Energy Solutions LP"},
+        {"msg": "giron-d/sent/85", "quote": "From: Veronica Espinoza/ENRON@enronXgate on 04/02/2001 09:29 AM To: Janie Aguayo/HOU/ECT@ECT, Diane Anderson/NA/Enron@Enron"}
+      ]
+    },
+    {
+      "name": "Sitara deal price and rate corrections",
+      "description": "Settlement/accounting staff compare counterparty invoices or confirmations against Sitara deal tickets and email the deal owner (Daren Farmer, Julie Meyers, Darron Giron) to verify and change the price or rate. The owner edits the ticket and replies, and billing then redrafts or invoices.",
+      "participants": ["katherine.herrera@enron.com", "julie.meyers@enron.com", "daren.farmer@enron.com", "elizabeth.hernandez@enron.com", "rebecca.griffin@enron.com", "cynthia.hakemack@enron.com", "darron.giron@enron.com", "genaro.mendoza@enron.com", "scott.dozier@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Requests wait on the one person who can edit the ticket. When Daren or Julie is out, the request is re-sent to a backup and the fix slips a day, against an invoice deadline.",
+      "automation": "Auto-compare invoice or confirmation price against the deal ticket and raise a price-mismatch task routed to the ticket owner or an on-duty backup, with the evidence attached.",
+      "minutes_per_occurrence": 25,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/179", "farmer-d/logistics/178", "farmer-d/logistics/177", "farmer-d/logistics/176", "farmer-d/logistics/174", "farmer-d/logistics/164", "farmer-d/logistics/181", "farmer-d/logistics/151", "giron-d/sent/83", "giron-d/sent/81", "giron-d/sent/82", "giron-d/sent/57"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/177", "quote": "I think Daren is out for the remainder of the day and I need to send out my invoice this afternoon."},
+        {"msg": "farmer-d/logistics/176", "quote": "I was not aware that Julie was out yesterday.  I left early yesterday and this did not get done till this morning."},
+        {"msg": "farmer-d/logistics/181", "quote": "Conoco invoiced HPL at $5.87 for 03/23 at PGEV/Waha and deal ticket 685350 shows $4.87.  Can you confirm the price?"},
+        {"msg": "giron-d/sent/83", "quote": "Can you please update the deal in Sitara to reflect the correct price for 03/01?"},
+        {"msg": "farmer-d/logistics/174", "quote": "Could you verify the pricing on TXU Gas Distribution deal #589007 for the following days?"}
+      ]
+    },
+    {
+      "name": "Deal ticket and meter fixes for volume management",
+      "description": "Logistics and volume-management staff correct deal tickets in Sitara and Unify (expired deals, zero-volume tickets, wrong desk entity, volume off by one) so volumes can be drafted, pathed and allocated. Each fix is raised by email to Daren Farmer or a peer.",
+      "participants": ["michael.olsen@enron.com", "mary.poorman@enron.com", "katherine.herrera@enron.com", "julie.meyers@enron.com", "daren.farmer@enron.com", "lauri.allen@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Work stops when a deal ticket is expired, zero-volume or on the wrong entity, so people ask the owner for permission and wait. The same kind of ticket error recurs across months.",
+      "automation": "Flag expired, zero-volume or mismatched-entity tickets that have flow against them, and propose the ticket edit for the owner to approve with one click.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/195", "farmer-d/logistics/194", "farmer-d/logistics/190", "farmer-d/logistics/189", "farmer-d/logistics/188", "farmer-d/logistics/183", "farmer-d/logistics/182", "farmer-d/logistics/173"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/195", "quote": "Pls let me know ,so that I can redraft the sale through Unify."},
+        {"msg": "farmer-d/logistics/182", "quote": "The above deal has a zero volume in it, creating an allocation exception at that point."},
+        {"msg": "farmer-d/logistics/173", "quote": "Not to be picky, but this deal is in for 5322 and I confirmed 5323, do you mind if I up it one giant decatherm."},
+        {"msg": "farmer-d/logistics/190", "quote": "Please update the ticket to reflect that HPL is receiving these volumes from ENA - IM Central.  This is having and adverse impact on our pathing."},
+        {"msg": "farmer-d/logistics/188", "quote": "I just needed the point to show up in Unify for Volume Managment to assign a track ID."}
+      ]
+    },
+    {
+      "name": "Production vs nomination imbalance investigation",
+      "description": "Mary Poorman and colleagues compare month-to-date production with nominations and meter statements, find where volumes are over or under nominated, and fix nominations, trade zones or tickets. Imbalances also show up as OA variances that accounting then asks about.",
+      "participants": ["mary.poorman@enron.com", "thu.nguyen@enron.com", "rita.wynne@enron.com", "mark.mccoy@enron.com", "tom.acton@enron.com", "sean.maki@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Needs meter statements from the pipeline (faxed on request) and answers from several people. The same Big Cowboy gap recurs monthly and accounting questions the variance after the fact.",
+      "automation": "Automatically load pipeline meter statements and compare them with nominations and deal-ticket volumes each period, flagging meters with unmatched flow and the cumulative imbalance.",
+      "minutes_per_occurrence": 60,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/170", "farmer-d/logistics/160", "farmer-d/logistics/159", "farmer-d/logistics/163", "farmer-d/logistics/161", "farmer-d/logistics/157", "farmer-d/logistics/166", "farmer-d/logistics/191"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/170", "quote": "We need to update our forward position and our nomination by 4,000/day to stay in balance to entitlements."},
+        {"msg": "farmer-d/logistics/160", "quote": "We have an ongoing issue every month between what we nominate from GEPL into HGPL and on to King Ranch"},
+        {"msg": "farmer-d/logistics/163", "quote": "However, we are booking an imbalance every month on the parking and lending contract."},
+        {"msg": "farmer-d/logistics/159", "quote": "I think that I have found the missing volumes on Big Cowboy."},
+        {"msg": "farmer-d/logistics/157", "quote": "I have created the following tickets to account for the physical and economic impact of the ENA Texas PLE00004 agreement"}
+      ]
+    },
+    {
+      "name": "Counterparty nominations, outages and on-call notes",
+      "description": "Logistics receives estimated actuals, nomination breakdowns, maintenance outages and on-call logs from counterparties (TXU, Equistar, Duke, Swift), and has to turn them into deal numbers and noms. The on-call log is emailed to the group.",
+      "participants": ["juliann.kemp@enron.com", "daren.farmer@enron.com", "mary.poorman@enron.com", "mark.mccoy@enron.com", "mjones7@txu.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Counterparty data arrives late or by email, in free text, and has to be matched to deal numbers by asking Daren. Estimated actuals get superseded once the real numbers come in.",
+      "automation": "Parse nomination and actuals emails into structured rows, match them to deal numbers, and prompt only for exceptions.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/193", "farmer-d/logistics/152", "farmer-d/logistics/150", "farmer-d/logistics/153", "farmer-d/logistics/158", "farmer-d/logistics/180"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/193", "quote": "As soon as we get a e-mail from Duke I will send it to you."},
+        {"msg": "farmer-d/logistics/152", "quote": "Can you give me deal numbers so I can confirm it."},
+        {"msg": "farmer-d/logistics/150", "quote": "What would you like to do with the two day outage on May 8th and 9th."},
+        {"msg": "farmer-d/logistics/158", "quote": "FYI, check the purchase from Swift at the Tailgate (Meter 9643) and make sure to nom the correct quantity."},
+        {"msg": "farmer-d/logistics/180", "quote": "Notified by gas control that the Freeport delivery to Dow was increased to 10.0."}
+      ]
+    },
+    {
+      "name": "Desk-lead information requests and chasers",
+      "description": "Auditors and support groups (Arthur Andersen quarter testing, curve validation, risk training topics, trader web-site access, exception reporting, headcount needs) email the gas desk leads for lists, explanations or status. Giron answers or forwards each request to his own team.",
+      "participants": ["darron.giron@enron.com", "jeffrey.gossett@enron.com", "jennifer.nguyen@enron.com", "greg.couch@enron.com", "shirley.mcdowell@enron.com", "christy.lobusch@enron.com", "mark.c.austin@us.andersen.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Requests go unanswered until a second reminder (Couch: only one response so far; McDowell: deadline already missed). Giron has to re-forward the same request to his group, and answers are sent back and then questioned again.",
+      "automation": "Track each request with owner and due date, auto-remind, and keep reusable answers (for example curve move explanations) so they are not re-asked.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.3,
+      "messages": ["giron-d/sent/90", "giron-d/sent/89", "giron-d/sent/88", "giron-d/sent/49", "giron-d/sent/48", "giron-d/sent/47", "giron-d/sent/60", "giron-d/sent/63", "giron-d/sent/74", "giron-d/sent/65"],
+      "evidence": [
+        {"msg": "giron-d/sent/90", "quote": "Please forward the requested information as soon as possible as it needed to complete our 1st quarter testing for Earnings Release."},
+        {"msg": "giron-d/sent/60", "quote": "Just a reminder to each of you that I requested this info by tomorrow.  I've received only one response so far."},
+        {"msg": "giron-d/sent/47", "quote": "However, we are looking for specific reasons as to why this is so."},
+        {"msg": "giron-d/sent/63", "quote": "Please forward to me your region's access criteria no later than 11:00 am, Monday, March 19"},
+        {"msg": "giron-d/sent/88", "quote": "I won't blame you if you don't get that requested info to me."}
+      ]
+    }
+  ]
+}

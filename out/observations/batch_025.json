@@ -1,0 +1,155 @@
+{
+  "batch": 25,
+  "processes": [
+    {
+      "name": "Bankruptcy book deal-list intake and cross-check",
+      "description": "Credit, legal and global contracts staff repeatedly email spreadsheets of deals or counterparties that must be moved into the bankruptcy books. The gas risk group (Love, Giron, Gossett) cross-references each list against forward detail of the price book and replies Done or asks why a deal is missing. Lists arrive in several overlapping versions almost daily.",
+      "participants": ["stacey.richardson@enron.com", "cyndie.balfour-flanagan@enron.com", "m..love@enron.com", "c..giron@enron.com", "c..gossett@enron.com", "diane.anderson@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Lists are re-sent as updates, stragglers and corrections, so the risk team must reconcile versions and ask whether a list is final. Some deals cannot be matched to Sitara numbers and need supplemental lists.",
+      "automation": "Maintain one master deal list and match it automatically against the book by counterparty and deal id, flagging gaps and legs such as unwinds. Send a completion receipt without manual replies.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.5,
+      "messages": ["giron-d/inbox/108", "giron-d/inbox/94", "giron-d/inbox/105", "giron-d/inbox/103", "giron-d/inbox/95", "giron-d/inbox/93", "giron-d/inbox/91", "giron-d/inbox/88", "giron-d/inbox/85", "giron-d/inbox/72", "giron-d/inbox/61", "giron-d/inbox/57", "giron-d/inbox/55", "giron-d/inbox/46", "giron-d/inbox/42", "giron-d/inbox/76", "giron-d/inbox/53"],
+      "evidence": [
+        {"msg": "giron-d/inbox/105", "quote": "Here are more deals that need to be moved into the bankruptcy books.  Please skim across the spreadsheet to the column for the date reported to risk."},
+        {"msg": "giron-d/inbox/95", "quote": "Is this the last list we are going to get?  Jeff Gossett wants to know if we are done so that we can assure Don Miller that all of the CP's have been taken care of."},
+        {"msg": "giron-d/inbox/93", "quote": "This evening, Cyndie Balfour-Flanagan will combine all our spreadsheets so that we are working off one document."},
+        {"msg": "giron-d/inbox/42", "quote": "can you tell me why EH6453.2 is not on the list?  We are moving EH6453.5, in the comments it says it is an unwind of leg 2."}
+      ]
+    },
+    {
+      "name": "Counterparty deal moves between books with IT/risk confirmation",
+      "description": "Giron and Love send counterparty lists to Cecilia Cheung to move financial deals from NG-PRICE or NG-PR-OPT into the bankruptcy or ENA-FT-WT-SOCAL books, then wait for retranslation. Cecilia replies with clarifying questions before running the move and confirms by deal count afterwards.",
+      "participants": ["m..love@enron.com", "c..giron@enron.com", "cecilia.cheung@enron.com", "s..theriot@enron.com", "elena.chilkina@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Requests arrive without book ids, commodity code or cutoff date, forcing a clarification round trip. Large moves of thousands of deals take hours of retranslation and risk waits for them before calculating books.",
+      "automation": "Use a request form or template carrying counterparty short names, source and target book, commodity code and cutoff date. Run the move script and send the confirmation automatically.",
+      "minutes_per_occurrence": 40,
+      "automatable_fraction": 0.5,
+      "messages": ["giron-d/inbox/84", "giron-d/inbox/83", "giron-d/inbox/82", "giron-d/inbox/67", "giron-d/inbox/65", "giron-d/inbox/58", "giron-d/inbox/78", "giron-d/inbox/77"],
+      "evidence": [
+        {"msg": "giron-d/inbox/84", "quote": "Please move only financial deals.  Please let me know when this is complete.  We need to have it done by the time we calc our books today - no exceptions."},
+        {"msg": "giron-d/inbox/82", "quote": "2923 deals with NG-PRICE book attached have been moved to the Bankruptcy bookand retranslated successfully."},
+        {"msg": "giron-d/inbox/67", "quote": "5. Please provide the cutoff date to determine active deals (e.g. instr_end_dt > ? 1-jan-2002?)"},
+        {"msg": "giron-d/inbox/58", "quote": "The deals have been moved to ENA-FT-WT-SOCAL and retranslated successfully."}
+      ]
+    },
+    {
+      "name": "Netco/UBS transition setup: access lists and P&L file maintenance",
+      "description": "As the Netco desks move to UBS, the central desk supplies lists of users and traders for Sitara access, and fixes shared P&L and hedgestrip workbooks after sheets, books and desk names are renamed. Each change is passed around by email among the regional desk leads.",
+      "participants": ["russ.severson@enron.com", "kam.keiser@enron.com", "c..giron@enron.com", "d..winfree@enron.com", "m..love@enron.com", "scott.palmer@enron.com", "s..shively@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Access lists are chased more than once (the January 22 follow-up repeats the January 8 request). Each renaming silently breaks macros and links in several regional workbooks that people discover one by one.",
+      "automation": "Collect access lists with a single form that feeds the access request, and use a shared book/desk name mapping to update workbook links centrally.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.35,
+      "messages": ["giron-d/inbox/114", "giron-d/inbox/112", "giron-d/inbox/111", "giron-d/inbox/66", "giron-d/inbox/59", "giron-d/inbox/50", "giron-d/inbox/49", "giron-d/inbox/48", "giron-d/inbox/47", "giron-d/inbox/45"],
+      "evidence": [
+        {"msg": "giron-d/inbox/114", "quote": "I still need a list of people who need Netco Sitara access for the East and Central Regions."},
+        {"msg": "giron-d/inbox/50", "quote": "you may need to edit your Copy Physical Macro in your P&L's that are saved in the Netco/Regions folder"},
+        {"msg": "giron-d/inbox/49", "quote": "all physical weapon-X tabs are linking to an old east book.  I didn't touch that tab yet"},
+        {"msg": "giron-d/inbox/66", "quote": "Send me a final list of who will be trading on your desk.  Thanks."}
+      ]
+    },
+    {
+      "name": "EPE schedule and prescheduling error correction",
+      "description": "The Portland real-time group builds the El Paso Electric schedules in Excel and emails the daily EPE model to the customer. Traders flag deal changes and errors to Bill Williams by email, and managers consider moving the prescheduling to real time.",
+      "participants": ["albert.meyers@enron.com", "bill.williams@enron.com", "lester.rawson@enron.com", "cara.semperger@enron.com", "kpeterso@epelectric.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Schedules are wrong for days before anyone notices (tag, lending and SPS values). Ownership between prescheduling and real time is unclear, and paper dispatch sheets are filed by hand.",
+      "automation": "Generate the EPE schedule from tags and deals and validate it against the tags automatically. Send the daily model from a scheduled job.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.4,
+      "messages": ["williams-w3/inbox/103", "williams-w3/sent_items/17", "williams-w3/inbox/94", "williams-w3/inbox/79", "williams-w3/sent_items/10", "williams-w3/inbox/76", "williams-w3/sent_items/8"],
+      "evidence": [
+        {"msg": "williams-w3/inbox/79", "quote": "Lending is wrong in the EPE schedules (it is 75mw from PSCO instead of 50mw)."},
+        {"msg": "williams-w3/inbox/79", "quote": "SPS is wrong for HE 08 (it is 130mw instead of 100mw)."},
+        {"msg": "williams-w3/inbox/76", "quote": "Bill and I are considering having Real time do the EPE preschedules since they are the ones that live and die by them anyway."},
+        {"msg": "williams-w3/sent_items/8", "quote": "Please put all information from the previous day (ie printed dispatch, EPE preschedulng sheet) into the appropriate folder on Kate Symes' old desk."}
+      ]
+    },
+    {
+      "name": "Real-time data scrape and finals failures and notices",
+      "description": "Real-time shift staff depend on the El Paso data scrape and ISO day-ahead and hour-ahead finals downloads. When Netscape or the scrape host fails, shift people email Bill Williams, and the data team broadcasts new URLs to the shift list.",
+      "participants": ["john.anderson@enron.com", "john.oh@enron.com", "bill.williams@enron.com", "albert.meyers@enron.com", "david.steiner@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Failures were found on weekends and reported through Houston, so finals were not created for several days. The scrape URL changed four times in a week, each announced by a separate email.",
+      "automation": "Monitor the scrape and finals import with automated alerts, and publish one stable address instead of repeated email notices.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.4,
+      "messages": ["williams-w3/inbox/102", "williams-w3/inbox/93", "williams-w3/inbox/100", "williams-w3/inbox/98", "williams-w3/inbox/81", "williams-w3/inbox/80", "williams-w3/inbox/78"],
+      "evidence": [
+        {"msg": "williams-w3/inbox/102", "quote": "I was not able to download HA finals from the ISO and finals were not created."},
+        {"msg": "williams-w3/inbox/93", "quote": "there were no DA or HA finals created for 1/27 or the 1/28."},
+        {"msg": "williams-w3/inbox/81", "quote": "The new URL for the El Paso data scrape is:"},
+        {"msg": "williams-w3/inbox/78", "quote": "Last night as I was trying to log onto the ADS machine I kept getting a server error."}
+      ]
+    },
+    {
+      "name": "Real-time shift schedule changes and swaps",
+      "description": "The monthly real-time shift schedule is posted and traders are told to swap among themselves. Each swap must be both emailed to Bill Williams and written on the schedule.",
+      "participants": ["albert.meyers@enron.com", "bill.williams@enron.com", "john.anderson@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Every change is recorded twice, by email and on the posted schedule, and the manager chases people to do both.",
+      "automation": "Use a shared schedule where swaps are entered once and the manager is notified automatically.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.5,
+      "messages": ["williams-w3/sent_items/13", "williams-w3/inbox/95"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/13", "quote": "Please be sure to send me an email regarding changes, and write them on the schedule."},
+        {"msg": "williams-w3/inbox/95", "quote": "Traded 1/29 day shift for 2/1 night shift.  See schedule for details."}
+      ]
+    },
+    {
+      "name": "Peoples valuation summary and review",
+      "description": "Darron Giron produces a valuation spreadsheet of Peoples positions and Deirdre McCaffrey reviews it, challenging figures and requesting a different valuation date or curve. The cycle repeats by email with attached xls files.",
+      "participants": ["c..giron@enron.com", "deirdre.mccaffrey@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Values are questioned after delivery and the review needs a meeting. The valuation date differs from the other deals and must be redone.",
+      "automation": "Parameterise the valuation by as-of date and curve so reruns and comparisons with the prior run are automatic.",
+      "minutes_per_occurrence": 60,
+      "automatable_fraction": 0.3,
+      "messages": ["giron-d/inbox/104", "giron-d/inbox/100", "giron-d/inbox/96"],
+      "evidence": [
+        {"msg": "giron-d/inbox/104", "quote": "This looks way too high - can we get together in the morning."},
+        {"msg": "giron-d/inbox/96", "quote": "could we get the supply deal valued as of 1/16/01.  That's the date the other deals were valued from."},
+        {"msg": "giron-d/inbox/100", "quote": "His list does not include any of the transport positions.  It also includes some deals with the Chicago office that should not be included in the deal value."}
+      ]
+    },
+    {
+      "name": "Transwestern capacity and California deliveries reporting",
+      "description": "Michelle Lokay sends the TW team a weekly California capacity report with deliveries, utilization and Gas Daily prices. She also forwards the EBB available-capacity link to customers when bids are due.",
+      "participants": ["michelle.lokay@enron.com", "kimberly.watson@enron.com", "lorraine.lindberg@enron.com", "mark.mcconnell@enron.com", "pabercrombie@txu.com", "rvhamman@aep.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Figures are compiled and typed into an email by hand each week, and the capacity link is re-sent to each recipient separately.",
+      "automation": "Pull deliveries and prices from the EBB and price sources into a scheduled report and distribute it to a list.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.6,
+      "messages": ["lokay-m/sent_items/30", "lokay-m/sent_items/36", "lokay-m/sent_items/35", "lokay-m/sent_items/34"],
+      "evidence": [
+        {"msg": "lokay-m/sent_items/30", "quote": "Transwestern's average deliveries to California were 933 MMBtu/d (86%), with San Juan lateral throughput at 864 MMBtu/d."},
+        {"msg": "lokay-m/sent_items/30", "quote": "California Capacity Report for Week of 01/21-01/25"},
+        {"msg": "lokay-m/sent_items/35", "quote": "Due today at 5:00...hope you guys bid!"},
+        {"msg": "lokay-m/sent_items/34", "quote": "Bids are due today at 5:00...hope you guys bid!"}
+      ]
+    },
+    {
+      "name": "Meeting scheduling and resend of invites",
+      "description": "Meeting invitations and postponements are handled by email, including misaddressed invitations that have to be redirected and attachments that must be resent. Examples are the customer assignment meeting, the group meeting and the CAS system meeting.",
+      "participants": ["bill.williams@enron.com", "mollie.gustafson@enron.com", "f..calger@enron.com", "michelle.lokay@enron.com", "mansoor.abdmoulaie@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "An invite sent to the wrong Bill Williams was passed around, then the attachment had to be requested again. Conflicts are settled by reply emails.",
+      "automation": "Use calendar invites with attachments linked and resolved to the correct addressee, and automatic conflict detection.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.4,
+      "messages": ["williams-w3/inbox/85", "williams-w3/inbox/84", "williams-w3/sent_items/11", "williams-w3/inbox/73", "williams-w3/sent_items/16", "lokay-m/sent_items/21"],
+      "evidence": [
+        {"msg": "williams-w3/inbox/85", "quote": "I'm sure this was meant for you rather than me.  Response required."},
+        {"msg": "williams-w3/sent_items/11", "quote": "Could you resend me the original with the attachment?"},
+        {"msg": "williams-w3/sent_items/16", "quote": "The meeting this afternoon will be delayed until next week."},
+        {"msg": "lokay-m/sent_items/21", "quote": "TW has a weekly gas control meeting every Friday at 3:00.  Can your meeting be finished by 3:00, or should we start earlier?"}
+      ]
+    }
+  ]
+}

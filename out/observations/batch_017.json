@@ -1,0 +1,155 @@
+{
+  "batch": 17,
+  "processes": [
+    {
+      "name": "Real-time congestion revenue flash notifications",
+      "description": "After CAISO awards congestion relief, the Portland RT desk lead emails the California flash/settlement group with hours, MWs, price and expected revenue so it can be checked against the next-morning flash. Missing or mismatched amounts are chased by email, and a running monthly exposure sheet is kept.",
+      "participants": ["bill.williams@enron.com", "jim.reyes@enron.com", "darren.cavanaugh@enron.com", "kate.symes@enron.com", "p..o'neil@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Amounts have to be hand-calculated and emailed, then someone confirms they appear in the flash; when a path variance or missing hour appears, a follow-up email is needed.",
+      "automation": "Generate the congestion revenue summary from CAISO award data and auto-compare it with the flash, alerting only on mismatches.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.6,
+      "messages": ["williams-w3/sent_items/383", "williams-w3/sent_items/322", "williams-w3/sent_items/321", "williams-w3/sent_items/311", "williams-w3/sent_items/318", "williams-w3/sent_items/317", "williams-w3/sent_items/308", "williams-w3/sent_items/302", "williams-w3/sent_items/300"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/383", "quote": "We were awarded 218 mws of congestion relief by the CAISO.  This should equal $54059.64 in congestion revenue to ECTRT."},
+        {"msg": "williams-w3/sent_items/321", "quote": "As indicated, we got that exact amount in the flash today."},
+        {"msg": "williams-w3/sent_items/317", "quote": "We tally up our exposure each day based on the California flash."},
+        {"msg": "williams-w3/sent_items/302", "quote": "We are missing the congestion revenue from HE 7 on Saturday morning (10 mws at $99.00) in the flash we received yesterday."}
+      ]
+    },
+    {
+      "name": "El Paso Electric lending deal setup and schedule instructions",
+      "description": "For each lending day, deal numbers, prices, books and schedules for the EPE lending agreement are written up by hand and emailed to the shift group, then corrected when prescheduling sheets or revenue summaries are wrong. Results must tie to the CARP report and El Paso model.",
+      "participants": ["bill.williams@enron.com", "kate.symes@enron.com", "lisa.gang@enron.com", "heather.dunton@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Prices and deal numbers are re-keyed per day and corrected afterwards (price changes, duplicate schedules, phantom revenue on the deal summary).",
+      "automation": "Template the lending deal set and auto-reconcile the El Paso model against the CARP report, flagging differences.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.5,
+      "messages": ["williams-w3/sent_items/380", "williams-w3/sent_items/375", "williams-w3/sent_items/374", "williams-w3/sent_items/370", "williams-w3/sent_items/367", "williams-w3/sent_items/366", "williams-w3/sent_items/365", "williams-w3/sent_items/340", "williams-w3/sent_items/310", "williams-w3/sent_items/314", "williams-w3/sent_items/354", "williams-w3/sent_items/315", "williams-w3/sent_items/304"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/380", "quote": "We are lending from El Paso Electric on Monday."},
+        {"msg": "williams-w3/sent_items/374", "quote": "Please work with the preschedulers to get the sheet correct (Friday's sheet for Monday had a duplicate 10 mw schedule in it)."},
+        {"msg": "williams-w3/sent_items/340", "quote": "You will know you've done this correctly when the CARP report EXACTLY matches the El Paso model."},
+        {"msg": "williams-w3/sent_items/366", "quote": "I should not receive the $25524.54 as revenue shown in the new deal summary."}
+      ]
+    },
+    {
+      "name": "Position manager / Enpower variance corrections",
+      "description": "Traders find variances in position manager, SAR or the CAPS report and fix them by adding or changing Enpower deals, or ask colleagues to find missing deals. Each is handled by one-off email.",
+      "participants": ["bill.williams@enron.com", "cara.semperger@enron.com", "bert.meyers@enron.com", "geir.solberg@enron.com", "heather.dunton@enron.com", "jim.reyes@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Variances are found after the fact and require manual detective work and extra balancing deals.",
+      "automation": "Automated variance detection that points to the missing or mismatched deal hour and suggests the correcting entry.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.4,
+      "messages": ["williams-w3/sent_items/373", "williams-w3/sent_items/372", "williams-w3/sent_items/291", "williams-w3/sent_items/312", "williams-w3/sent_items/308", "williams-w3/sent_items/309"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/373", "quote": "We are short 14 mws at the Portland General System in position manager for Friday, July 20th."},
+        {"msg": "williams-w3/sent_items/372", "quote": "I fixed it, no idea where those megawiggles went"},
+        {"msg": "williams-w3/sent_items/291", "quote": "We are off in position manager at Mid Columbia because of Enron Canada."},
+        {"msg": "williams-w3/sent_items/308", "quote": "I have added deals to Enpower to flatten the report, these deals are only necessary for the sake of the report."},
+        {"msg": "williams-w3/sent_items/312", "quote": "We had a variance in the SAR for the West BOM Book on Friday night."}
+      ]
+    },
+    {
+      "name": "Hourly generator checkout and ancillary services logging",
+      "description": "Traders call generators and BPA every hour to report actual output and sign off in the services book, and record ancillary service dispatches on the service sheet then email settlements.",
+      "participants": ["bill.williams@enron.com", "kate.symes@enron.com", "settlements.ees@enron.com", "lester.rawson@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Manual phone calls every hour, with missed calls drawing a complaint from BPA, and revised sheets sent afterward.",
+      "automation": "Pull metered generator output automatically and populate the services sheet and settlement email.",
+      "minutes_per_occurrence": 5,
+      "automatable_fraction": 0.5,
+      "messages": ["williams-w3/sent_items/357", "williams-w3/sent_items/356", "williams-w3/sent_items/335", "williams-w3/sent_items/330", "williams-w3/sent_items/325"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/357", "quote": "We must call Grays Harbor and Frontier at the top of EVERY hour."},
+        {"msg": "williams-w3/sent_items/357", "quote": "Then we need to call BPA and communicate the ACTUAL energy generated, not an estimate."},
+        {"msg": "williams-w3/sent_items/325", "quote": "Spin was exercised for HE 9 and HE 10 at 08:35 and 09:35 respectively."},
+        {"msg": "williams-w3/sent_items/330", "quote": "We should do this in the Service Sheet and then record the amount dispatched on the sheet to EES on Tuesday morning as well."}
+      ]
+    },
+    {
+      "name": "Colstrip cut handling procedure",
+      "description": "When Colstrip goes down, traders follow a multi-step manual Enpower procedure (index buy, BPA transmission, linking deals), then re-enter cuts in a Lotus Notes cuts database, the discussion forum and by email.",
+      "participants": ["bill.williams@enron.com", "kate.symes@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "The same cut is recorded in several places, and the Lotus Notes entry is the most time consuming part.",
+      "automation": "One form that creates deals and logs the cut once to the database, forum and notifications.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.5,
+      "messages": ["williams-w3/sent_items/338", "williams-w3/sent_items/336"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/338", "quote": "When Colstrip goes down we will be short at Montana system and long at PGE System."},
+        {"msg": "williams-w3/sent_items/336", "quote": "Make cuts in Lotus Notes Cuts Database (this is the most time consuming portion of this procedure)."},
+        {"msg": "williams-w3/sent_items/336", "quote": "After yesterdays cuts there have been some changes in the Colstrip Cut Procedures."}
+      ]
+    },
+    {
+      "name": "System access and ID requests",
+      "description": "Staff request trader IDs, directory permissions, timekeeping access and application access through email or ticket systems, then follow up when access is incomplete.",
+      "participants": ["kate.symes@enron.com", "bill.williams@enron.com", "david.steiner@enron.com", "jill.chatterton@enron.com", "j..farmer@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Waits on approvers; security requests are slow and incomplete grants need a second request.",
+      "automation": "A single access request workflow with status tracking and automatic reminders for approvers.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.5,
+      "messages": ["williams-w3/sent_items/350", "williams-w3/sent_items/323", "williams-w3/sent_items/368", "farmer-d/logistics/87", "williams-w3/sent_items/355"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/350", "quote": "I received a message from Todd Bland over the weekend saying he is still unable to save deals using his own name."},
+        {"msg": "williams-w3/sent_items/323", "quote": "I would like only the members of the real-time group to have access."},
+        {"msg": "williams-w3/sent_items/368", "quote": "FYI- security requests are averaging 14 business days."},
+        {"msg": "farmer-d/logistics/87", "quote": "You have received this email because you are listed as a data approver."}
+      ]
+    },
+    {
+      "name": "Gas logistics deal, meter and volume corrections",
+      "description": "Gas logistics and settlements staff email Daren Farmer to add meters to deals, fix pricing, allocate swing volumes and correct actualized volumes, then chase answers across teams.",
+      "participants": ["j..farmer@enron.com", "megan.parker@enron.com", "valerie.vela@enron.com", "antoinette.beale@enron.com", "buddy.majorwitz@enron.com", "marlene.hilliard@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Each issue needs an owner found, and answers come back in follow-up emails.",
+      "automation": "Automated checks for scheduled versus actualized volume and price mismatches, routed to the deal owner.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.3,
+      "messages": ["farmer-d/logistics/94", "farmer-d/logistics/93", "farmer-d/logistics/91", "farmer-d/logistics/89", "farmer-d/logistics/86", "farmer-d/logistics/85", "farmer-d/logistics/83", "farmer-d/logistics/82", "farmer-d/logistics/79", "farmer-d/logistics/78", "farmer-d/logistics/77", "farmer-d/logistics/75"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/94", "quote": "We need to add TGPL meter 52-1087 to deal 895951.  We have some swing gas for May that we need to allocate."},
+        {"msg": "farmer-d/logistics/91", "quote": "I have a price issue with MGI Supply for January 2001."},
+        {"msg": "farmer-d/logistics/78", "quote": "On day 18, did you intentionally enter 50,000 days or was it a slip of the fingers?"},
+        {"msg": "farmer-d/logistics/86", "quote": "I input the purchase and sale deals that were not in the system."}
+      ]
+    },
+    {
+      "name": "CAISO derate and market notice forwarding",
+      "description": "CAISO hour-ahead notices on path derates and market outages are forwarded manually to the whole real-time group so schedules can be adjusted.",
+      "participants": ["bill.williams@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Forwarding depends on one person seeing each notice and sending it on.",
+      "automation": "Auto-route CAISO notices to the desk distribution list.",
+      "minutes_per_occurrence": 3,
+      "automatable_fraction": 0.8,
+      "messages": ["williams-w3/sent_items/363", "williams-w3/sent_items/361", "williams-w3/sent_items/327"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/363", "quote": "After the Day ahead market ran, the branch group ISO Share (PNOB) TTC in the"},
+        {"msg": "williams-w3/sent_items/361", "quote": "Correction to COI rerate message:"}
+      ]
+    },
+    {
+      "name": "Daily desk position and schedule heads-up emails",
+      "description": "The desk lead emails the shift group each day with the shorts and longs by book and hub, and schedules that will flow in real time, so traders can cover them.",
+      "participants": ["bill.williams@enron.com", "kate.symes@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Position details are typed by hand and repeated across emails; questions are handled by phone.",
+      "automation": "Auto-generate the next-day position summary from the book positions and distribute it to the shift.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.6,
+      "messages": ["williams-w3/sent_items/365", "williams-w3/sent_items/345", "williams-w3/sent_items/296", "williams-w3/sent_items/362", "williams-w3/sent_items/310"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/365", "quote": "We are short 50 mws for tomorrow at PV through lending with EPE."},
+        {"msg": "williams-w3/sent_items/345", "quote": "STWBOM is short tomorrow (07/31/01) on Peak in SP-15."},
+        {"msg": "williams-w3/sent_items/296", "quote": "There will be a 100 mw schedule delivered at COB to NCPA going on NCPA rights into NP-15."}
+      ]
+    }
+  ]
+}

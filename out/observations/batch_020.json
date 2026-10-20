@@ -1,0 +1,138 @@
+{
+  "batch": 20,
+  "processes": [
+    {
+      "name": "Real-time short/long position handoff to settlements/support",
+      "description": "The real-time trader emails support staff each day with the pieces the desk is short or long (product, MW, price, deal number) so they can adjust position sheets and Position Manager. Positions and deal numbers are typed into free-text emails and repeated across consecutive days.",
+      "participants": ["bill.williams@enron.com", "kate.symes@enron.com", "kysa.alport@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "The same shorts (e.g. the SP-15 BOM pieces) and the same deal numbers are re-sent day after day, and support has to re-key them into sheets by hand.",
+      "automation": "Pull open short/long positions and deal numbers straight from the position manager into a daily summary to support, instead of free-text emails.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.5,
+      "messages": ["williams-w3/sent_items/175", "williams-w3/sent_items/171", "williams-w3/sent_items/168", "williams-w3/sent_items/164", "williams-w3/sent_items/148"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/175", "quote": "We are short 2 pieces of BOM at SP-15 7-22."},
+        {"msg": "williams-w3/sent_items/171", "quote": "We are short 3 pieces tomorrow at $27.20, $28.00, and a piece at the ST-CALI index."},
+        {"msg": "williams-w3/sent_items/164", "quote": "St-WBOM is long again for HE 2 through HE 5 at PV from PNM at a price of $15.50."},
+        {"msg": "williams-w3/sent_items/168", "quote": "we are still short the two BOM pieces in SP-15 for a total of 50 mws each hour on peak-Friday and Saturday"}
+      ]
+    },
+    {
+      "name": "Month-end prior month adjustment (PMA) review for P&L",
+      "description": "Risk sends preliminary prior month adjustments by desk book before month-end. The trading support analyst reviews each charge and the desk head queries items before they hit the P&L. Items like El Paso annuities are decided month by month.",
+      "participants": ["bill.williams@enron.com", "kate.symes@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "The attachment is preliminary and may change before month-end, and charges are queried by email one at a time. Timing decisions (take now or next month) wait on replies.",
+      "automation": "Auto-generate a PMA variance list against prior trueups with flagged unexplained charges, and send it to reviewers when settlements posts.",
+      "minutes_per_occurrence": 90,
+      "automatable_fraction": 0.35,
+      "messages": ["williams-w3/sent_items/145", "williams-w3/sent_items/135", "williams-w3/sent_items/134"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/135", "quote": "Just need to know why there will be a BOM charge of $5331.90?"},
+        {"msg": "williams-w3/sent_items/134", "quote": "I will, as usual, review each charge and determine its validity before anything hits these books."},
+        {"msg": "williams-w3/sent_items/145", "quote": "I have received documents from Settlements indicating the annuities per your 10/10 email"},
+        {"msg": "williams-w3/sent_items/135", "quote": "Please also note the attached file is preliminary.  There could be more to come from Settlements between now and month-end."}
+      ]
+    },
+    {
+      "name": "CAISO congestion award and price discrepancy checks",
+      "description": "The real-time desk checks congestion awards and prices from CAISO and its own scheduler against the inc sheet. Discrepancies are chased with CAISO contacts by email and phone.",
+      "participants": ["bill.williams@enron.com", "darren.cavanaugh@enron.com", "jim.reyes@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Awarded congestion value does not match what flowed, and CAISO has trouble reading bids, so the desk waits on CAISO explanations and re-checks.",
+      "automation": "Reconcile awarded congestion MW and prices from CAISO files against the desk's inc sheet automatically and flag mismatches.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.4,
+      "messages": ["williams-w3/sent_items/169", "williams-w3/sent_items/159"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/169", "quote": "I am concerned that our bids to relieve congestion were awarded but that the respective dollar value for those bids was incorrect."},
+        {"msg": "williams-w3/sent_items/159", "quote": "The CISO is again having difficulties reading our bids."}
+      ]
+    },
+    {
+      "name": "Trading group deal entry and scheduling rule broadcasts",
+      "description": "The real-time manager emails the whole group standing rules for deal entry, scheduling and counterparty handling (time zone, delivery points, fee structure, MST entry). The rules are repeated by email because mistakes recur.",
+      "participants": ["bill.williams@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Rules live only in email and are restated after errors (wrong time zone, wrong delivery point), producing disputes and rework.",
+      "automation": "Encode these rules as validation checks in deal entry and scheduling, so wrong time zones or delivery points are flagged on entry.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.4,
+      "messages": ["williams-w3/sent_items/174", "williams-w3/sent_items/172", "williams-w3/sent_items/166", "williams-w3/sent_items/146", "williams-w3/sent_items/138", "williams-w3/sent_items/137"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/137", "quote": "These deals should be scheduled in MST on the deal scheduling portion of Enpower as well."},
+        {"msg": "williams-w3/sent_items/146", "quote": "Please specify Pacific time zone in your summary of your deal at the end of each phone call"},
+        {"msg": "williams-w3/sent_items/172", "quote": "ONLY schedule the energy to or from the originally prescheduled delivery point."},
+        {"msg": "williams-w3/sent_items/166", "quote": "Please do not fill any sale to EnMax with MPC energy."}
+      ]
+    },
+    {
+      "name": "Logistics meter, deal and counterparty corrections",
+      "description": "Gas logistics, accounting and settlement staff send the logistics manager requests to fix meters, set up or change deals in Sitara, and correct counterparty names. Requests arrive by forwarded email, often with missing data to chase.",
+      "participants": ["j..farmer@enron.com", "michael.olsen@enron.com", "buddy.majorwitz@enron.com", "stephen.swisher@enron.com", "richard.deming@enron.com", "ryan.sheeren@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Fixes depend on a specific person making the change, and cancelled or expired contracts block the setup, so requests are forwarded and re-asked.",
+      "automation": "Route meter and deal correction requests into a tracked queue with the needed fields, and validate counterparty names against a master list.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.3,
+      "messages": ["farmer-d/logistics/43", "farmer-d/logistics/40", "farmer-d/logistics/39", "farmer-d/logistics/38", "farmer-d/logistics/33", "farmer-d/logistics/31", "farmer-d/logistics/41"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/43", "quote": "If you need a copy of the statement, let me know."},
+        {"msg": "farmer-d/logistics/40", "quote": "Each has a relatively recent deal booked to it that need to be changed as described above"},
+        {"msg": "farmer-d/logistics/39", "quote": "this meter needs to be set up for May 2001 just as it was for April 2001."},
+        {"msg": "farmer-d/logistics/33", "quote": "Please set up a valid deal for March 2000 just like either one of these deals"},
+        {"msg": "farmer-d/logistics/38", "quote": "Please be advised that we have discrepancies with the  State and County information for the meter No. (s) listed on the attached spreadsheet."}
+      ]
+    },
+    {
+      "name": "TGLO settlement and origination deduct status",
+      "description": "Accounting, risk and logistics staff exchange status emails on TGLO sales, open invoices and GL entries. Open questions such as the origination deduct and cost center roll-ups are asked by reply-all and forwarded for a decision.",
+      "participants": ["megan.parker@enron.com", "jim.coffey@enron.com", "j..farmer@enron.com", "laynie.east@enron.com", "d..winfree@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Items remain unresolved through several forwards while it is unclear whether Unify or Gas Accounting captures an entry.",
+      "automation": "Reconcile TGLO volumes, deductions and GL postings into one status sheet so open items are visible without email threads.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.3,
+      "messages": ["farmer-d/logistics/34", "farmer-d/logistics/28"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/34", "quote": "it still looks like the volumes for gas delivered to TX GLO do not have Linda Robert's origination fee deducted."},
+        {"msg": "farmer-d/logistics/34", "quote": "I reviewed the gas deals on Franks' spreadsheet and they agree with what is in Sitara."},
+        {"msg": "farmer-d/logistics/28", "quote": "We will handle this via the OA process, where I'm working with the OA group"}
+      ]
+    },
+    {
+      "name": "Meeting scheduling by email",
+      "description": "Meetings and calendar changes are coordinated by email with date options, reply-all availability and repeated reschedule notices.",
+      "participants": ["audrey.robertson@enron.com", "michelle.lokay@enron.com", "c..giron@enron.com", "janet.bowers@enron.com", "bill.williams@enron.com", "kathryn.sheppard@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Times are rescheduled several times with each notice sent again to the full list, and availability replies come one by one.",
+      "automation": "Use a shared availability poll or calendar invitations so the date is set and updated in one place.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.5,
+      "messages": ["lokay-m/inbox/17", "giron-d/inbox/264", "giron-d/inbox/265", "williams-w3/sent_items/163"],
+      "evidence": [
+        {"msg": "lokay-m/inbox/17", "quote": "Okay, let's move Steve's Strategy Meeting to 8:30a on the 23rd."},
+        {"msg": "giron-d/inbox/264", "quote": "Please let me know (and reply all in your response) if one or both dates"},
+        {"msg": "giron-d/inbox/265", "quote": "But I would prefer an afternoon or a late morning (10:30 a.m. or after) meeting."},
+        {"msg": "williams-w3/sent_items/163", "quote": "I could meet with Britt at 3PM or at 9 AM."}
+      ]
+    },
+    {
+      "name": "Transwestern weekly capacity report and monthly rate matrix distribution",
+      "description": "The commercial group compiles and emails a weekly California capacity and price report. The tariff team separately circulates the monthly TW rate matrix to be posted, with an extra copy kept up in another format.",
+      "participants": ["michelle.lokay@enron.com", "rita.bianchi@enron.com", "elizabeth.brown@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Numbers are compiled by hand from several sources, and rate files are forwarded repeatedly, with one version maintained separately by hand.",
+      "automation": "Generate the weekly deliveries and price summary from pipeline and price data, and publish rate matrices from one source.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.5,
+      "messages": ["lokay-m/inbox/10", "lokay-m/inbox/8", "lokay-m/inbox/7"],
+      "evidence": [
+        {"msg": "lokay-m/inbox/10", "quote": "Transwestern's average deliveries to California were 945 MMBtu/d (87%), with San Juan lateral throughput at 865 MMBtu/d."},
+        {"msg": "lokay-m/inbox/8", "quote": "Please post the attached TW rate matrix, MATRIX200111.doc, effective 11/1/2001."},
+        {"msg": "lokay-m/inbox/7", "quote": "There is a new tab for each change in Current Shipper Rates."}
+      ]
+    }
+  ]
+}

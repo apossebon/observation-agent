@@ -1,0 +1,125 @@
+{
+ "slug": "power-settlement-reconciliation-congestion-revenue-pmas-and-",
+ "name": "Power settlement reconciliation: congestion revenue, PMAs and counterparty disputes",
+ "description": "The Portland real-time desk hand-calculates CAISO congestion relief revenue and emails it to the flash and settlement group to check against the next morning's flash. Volume Management recalculates it by hour. At month-end, desk heads and support review prior-month adjustments line by line and query mismatches with Settlements. They also reconcile ISO revenue against volume management and work counterparty disputes (El Paso Electric, SRP, MPC), which means requesting trade tapes and reconstructing what happened on specific hours.",
+ "stall_points": "Amounts are hand-calculated, and hours go missing from both sides' calculations and from the CAISO site. One-sided PMAs, such as revenue reversed with no cost reversed, stay open across several emails. Disputes drag for months, and tape access goes through another person. About 30 disputes arose from EOL deals altered without notes. Sheets go to the wrong recipients.",
+ "automation": "Compute hourly congestion revenue from CAISO award files and schedules, and reconcile it automatically against the flash, the inc sheet and settlement entries, alerting only on mismatches. PMA lines would be matched to Enpower deal changes so one-sided adjustments are flagged, and a dispute tracker would link each disputed deal to its tape, evidence and decision, with a required reason field on deal alterations.",
+ "participants": [
+  "bill.williams@enron.com",
+  "richard.pinion@enron.com"
+ ],
+ "economics": {
+  "messages_total": 47,
+  "messages_dated": 47,
+  "first_date": "2001-06-28",
+  "last_date": "2001-11-15",
+  "active_months": 6,
+  "occurrences_per_month": 7.83,
+  "minutes_per_occurrence": 45.0,
+  "automatable_fraction": 0.4,
+  "gross_hours_per_month": 5.88,
+  "hours_saved_per_month": 2.35,
+  "dollars_saved_per_month": 199.75,
+  "blended_rate": 85.0,
+  "formula": "dated_messages / active_months * minutes / 60 * automatable_fraction * 85"
+ },
+ "evidence": [
+  {
+   "msg": "williams-w3/sent_items/442",
+   "line": 21,
+   "quote": "Why does a change in counterparty result in a loss of revenue?",
+   "date": "2001-07-03",
+   "sender": "bill.williams@enron.com",
+   "subject": "PMA's"
+  },
+  {
+   "msg": "williams-w3/sent_items/435",
+   "line": 21,
+   "quote": "We should only lose $40 (the net difference). Any ideas?",
+   "date": "2001-07-03",
+   "sender": "bill.williams@enron.com",
+   "subject": "RE: PMA's"
+  },
+  {
+   "msg": "williams-w3/sent_items/424",
+   "line": 20,
+   "quote": "I am still having a problem with the WBOM $108,000 as you are aware.",
+   "date": "2001-07-06",
+   "sender": "bill.williams@enron.com",
+   "subject": "PMA's"
+  },
+  {
+   "msg": "williams-w3/sent_items/426",
+   "line": 17,
+   "quote": "We could pull tapes? Ask the person who did the deal? There is nothing in notebooks.",
+   "date": "2001-07-06",
+   "sender": "bill.williams@enron.com",
+   "subject": "RE: please check"
+  },
+  {
+   "msg": "williams-w3/sent_items/388",
+   "line": 21,
+   "quote": "ST-Whourly will pay LT-NW our average hourly price per mw for that energy.",
+   "date": "2001-07-19",
+   "sender": "bill.williams@enron.com",
+   "subject": "RE: Annuity Deal changed #664324"
+  },
+  {
+   "msg": "williams-w3/sent_items/456",
+   "line": 26,
+   "quote": "the people who need the sheet are still not getting it - namely, Brooklyn Couch and Ainsley Gaddis.",
+   "date": "2001-06-28",
+   "sender": "bill.williams@enron.com",
+   "subject": "RE: EES for 06/27/01"
+  },
+  {
+   "msg": "williams-w3/sent_items/456",
+   "line": 26,
+   "quote": "This can be remedied by sending the sheet to EES Power Settlements.",
+   "date": "2001-06-28",
+   "sender": "bill.williams@enron.com",
+   "subject": "RE: EES for 06/27/01"
+  },
+  {
+   "msg": "williams-w3/sent_items/456",
+   "line": 17,
+   "quote": "now about those MPC numbers...we need to go through the inc sheets and service sheets from last year",
+   "date": "2001-06-28",
+   "sender": "bill.williams@enron.com",
+   "subject": "RE: EES for 06/27/01"
+  },
+  {
+   "msg": "williams-w3/sent_items/383",
+   "line": 24,
+   "quote": "We were awarded 218 mws of congestion relief by the CAISO.  This should equal $54059.64 in congestion revenue to ECTRT.",
+   "date": "2001-07-20",
+   "sender": "bill.williams@enron.com",
+   "subject": "RT congestion for 07/19"
+  },
+  {
+   "msg": "williams-w3/sent_items/321",
+   "line": 26,
+   "quote": "As indicated, we got that exact amount in the flash today.",
+   "date": "2001-08-07",
+   "sender": "bill.williams@enron.com",
+   "subject": "RE: Congestion"
+  },
+  {
+   "msg": "williams-w3/sent_items/317",
+   "line": 22,
+   "quote": "We tally up our exposure each day based on the California flash.",
+   "date": "2001-08-08",
+   "sender": "bill.williams@enron.com",
+   "subject": "RE: Congestion for 08-07"
+  },
+  {
+   "msg": "williams-w3/sent_items/302",
+   "line": 21,
+   "quote": "We are missing the congestion revenue from HE 7 on Saturday morning (10 mws at $99.00) in the flash we received yesterday.",
+   "date": "2001-08-15",
+   "sender": "bill.williams@enron.com",
+   "subject": "Congestion for Saturday"
+  }
+ ],
+ "output_prefix": "out/drafts/power-settlement-reconciliation-congestion-revenue-pmas-and--"
+}

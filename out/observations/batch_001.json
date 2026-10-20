@@ -1,0 +1,144 @@
+{
+  "batch": 1,
+  "processes": [
+    {
+      "name": "Sitara deal ticket requests from Producer Services to the ticket-entry desk",
+      "description": "Producer Services (Vance Taylor, Susan Smith, Melissa Graves) emails Tom Acton the counterparty, meter, volume and price for each new well or spot deal. Tom keys it into Sitara and replies with the new ticket number. Corrections follow by reply when pricing is wrong.",
+      "participants": ["vance.taylor@enron.com", "tom.acton@enron.com", "susan.smith@enron.com", "melissa.graves@enron.com", "carlos.rodriguez@enron.com", "daren.farmer@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Details are re-typed from email into Sitara and errors (wrong price) need a second email. Requesters wait for the ticket number reply and must ask for it explicitly.",
+      "automation": "A structured request form that writes the ticket draft and returns the ticket number automatically. Validate price and meter against the contract.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/706", "farmer-d/logistics/707", "farmer-d/logistics/712", "farmer-d/logistics/765", "farmer-d/logistics/777", "farmer-d/logistics/789", "farmer-d/logistics/798", "farmer-d/logistics/857"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/706", "quote": "Please create a spot ticket for gas that commence flowing on 1/14/00 at 8:30"},
+        {"msg": "farmer-d/logistics/707", "quote": "Oooops!  How about 100% IF/HSC LESS $0.10"},
+        {"msg": "farmer-d/logistics/777", "quote": "The new Sitara ticket # is 165331"},
+        {"msg": "farmer-d/logistics/789", "quote": "Please supply the sitara number once entered.  If you have any questions, please give me a call."},
+        {"msg": "farmer-d/logistics/857", "quote": "Just send me a lotus note with all the info that I will need,  then I can put"}
+      ]
+    },
+    {
+      "name": "Expired or missing deal extensions and accounting arrangements for flowing meters",
+      "description": "Schedulers and allocators find gas flowing at a meter with no valid Sitara deal (expired, wrong dates, wrong meter). They email Daren Farmer or Stacey Neuweiler to extend or create a deal, then ask Anita Luong or Fred Boas to set up an accounting arrangement and reallocate.",
+      "participants": ["jackie.young@enron.com", "aimee.lannou@enron.com", "fred.boas@enron.com", "anita.luong@enron.com", "stella.morris@enron.com", "sherlyn.schumack@enron.com", "daren.farmer@enron.com", "stacey.neuweiler@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Every case waits on one person (Daren) to extend or create the deal. Requesters send reminders and the same meter reappears in later months.",
+      "automation": "Flag allocation exceptions where flow has no active deal. Propose a deal extension for one-click approval and auto-create the accounting arrangement.",
+      "minutes_per_occurrence": 25,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/726", "farmer-d/logistics/741", "farmer-d/logistics/748", "farmer-d/logistics/749", "farmer-d/logistics/750", "farmer-d/logistics/751", "farmer-d/logistics/755", "farmer-d/logistics/770", "farmer-d/logistics/801", "farmer-d/logistics/898", "farmer-d/logistics/806", "farmer-d/logistics/814", "farmer-d/logistics/804", "farmer-d/logistics/838", "farmer-d/logistics/875", "farmer-d/logistics/886", "farmer-d/logistics/859", "farmer-d/logistics/815"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/755", "quote": "Can you please extend the deal thru 2-1-00 to cover this small volume?"},
+        {"msg": "farmer-d/logistics/749", "quote": "There is a bridgeback error at the above referenced meter and month.  The"},
+        {"msg": "farmer-d/logistics/751", "quote": "volume management wants a deal set up so they won't have to set up an accounting arrangement"},
+        {"msg": "farmer-d/logistics/748", "quote": "If you had fogotten, this can serve as reminder."},
+        {"msg": "farmer-d/logistics/898", "quote": "Could you please extend deal #169625 for meter 1520 for"}
+      ]
+    },
+    {
+      "name": "Monthly and intra-month nomination changes from customers and producers into Sitara/POPS",
+      "description": "Customers and producers (Enron Methanol, KCS Josey Ranch, Mobil, Equistar, EOG, Yates) send monthly nominations or revisions by email. Logistics staff re-enter volumes in Sitara or POPS and tell risk owners to fix risk assignment.",
+      "participants": ["lee.papayoti@enron.com", "michael.mitcham@enron.com", "susan.trevino@enron.com", "tom.acton@enron.com", "robert.lloyd@enron.com", "daren.farmer@enron.com", "bryan.hull@enron.com", "eric.bass@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Each change is re-keyed by hand and downstream owners are notified by separate email. Entry mistakes such as 18,500 vs 18,000 are found later and need another email.",
+      "automation": "Parse nomination emails into a structured change list and apply it to the ticket. Notify risk owners automatically with the diff.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.45,
+      "messages": ["farmer-d/logistics/717", "farmer-d/logistics/718", "farmer-d/logistics/719", "farmer-d/logistics/721", "farmer-d/logistics/723", "farmer-d/logistics/724", "farmer-d/logistics/731", "farmer-d/logistics/762", "farmer-d/logistics/800", "farmer-d/logistics/803", "farmer-d/logistics/830", "farmer-d/logistics/834", "farmer-d/logistics/850", "farmer-d/logistics/866", "farmer-d/logistics/805", "farmer-d/logistics/802"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/719", "quote": "Enron Methanol nominates the following requirements for the Methanol Plant"},
+        {"msg": "farmer-d/logistics/723", "quote": "I've changed the sitara ticket .... but one of you"},
+        {"msg": "farmer-d/logistics/762", "quote": "For Feb 6 to 29 on ticket 93199, I entered 18,500/d .... and it should have"},
+        {"msg": "farmer-d/logistics/803", "quote": "Daren I since you were at the offsite I went ahead and changed the volume"},
+        {"msg": "farmer-d/logistics/866", "quote": "They would like to drop the volume again to 4400."}
+      ]
+    },
+    {
+      "name": "Pipeline nomination spreadsheets forwarded to schedulers",
+      "description": "Ami Chokshi receives daily nomination, change and availability spreadsheets from Reliant, TXU and Devon and forwards them unchanged to the scheduling team. Schedulers then open the attachments and apply the changes.",
+      "participants": ["ami.chokshi@enron.com", "troy_a_benoit@reliantenergy.com", "timpowell@txu.com", "carlos.rodriguez@enron.com", "george.grant@enron.com", "daren.farmer@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Attachments with blank subjects are forwarded by hand each time. Recipients must open each spreadsheet to find the change.",
+      "automation": "Auto-ingest the attachment and post a summary of changed volumes per meter to the scheduling queue.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.6,
+      "messages": ["farmer-d/logistics/714", "farmer-d/logistics/716", "farmer-d/logistics/728", "farmer-d/logistics/764", "farmer-d/logistics/767", "farmer-d/logistics/816", "farmer-d/logistics/820", "farmer-d/logistics/773"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/716", "quote": "HPL Nomination for January 26, 2000"},
+        {"msg": "farmer-d/logistics/816", "quote": "COPANO CHANGES FOR THE 19TH"},
+        {"msg": "farmer-d/logistics/767", "quote": "(See attached file: egmnom-Feb.xls)"},
+        {"msg": "farmer-d/logistics/820", "quote": "Attached are some revised volumes for March, 2000.  Please let me know if I"}
+      ]
+    },
+    {
+      "name": "Sitara vs MOPS/POPS volume discrepancy research",
+      "description": "Volume, allocation or nomination mismatches are found at month close (Torch/El Sordo split, Shoreline sale, gathering BAV, meter 9769). Questions are forwarded up to Daren Farmer. Daren researches both systems and the answer goes back through several forwards.",
+      "participants": ["daren.farmer@enron.com", "charlotte.hawkins@enron.com", "stella.morris@enron.com", "kimberly.vaughn@enron.com", "sherlyn.schumack@enron.com", "heidi.withers@enron.com", "thu.nguyen@enron.com", "tom.acton@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Questions sit unanswered and are chased several times. Problems are escalated to Daren rather than solved by logistics, and the resolution takes multi-hop forwarding.",
+      "automation": "Daily comparison of MOPS vs POPS nominated and confirmed volumes per path, with exceptions surfaced before close.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/782", "farmer-d/logistics/784", "farmer-d/logistics/792", "farmer-d/logistics/785", "farmer-d/logistics/826", "farmer-d/logistics/861", "farmer-d/logistics/791", "farmer-d/logistics/771", "farmer-d/logistics/790", "farmer-d/logistics/796"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/792", "quote": "In MOPS, the\npath was nominated for 1/26 only.  However, in POPS the path was nominated"},
+        {"msg": "farmer-d/logistics/861", "quote": "Daren..  Have you had a chance to look at this yet?"},
+        {"msg": "farmer-d/logistics/785", "quote": "POPS shows a daily BAV of"},
+        {"msg": "farmer-d/logistics/784", "quote": "Charlotte, please get with Daren."}
+      ]
+    },
+    {
+      "name": "Monthly cost-center, survey and allocation data collection from Energy Operations managers",
+      "description": "Finance and strategic operations staff email the management distribution each month asking for hours surveys, activity driver surveys, allocation percentages and RC report checks. Managers fill in spreadsheets by hand and return them by a deadline.",
+      "participants": ["shari.mao@enron.com", "lisa.cousino@enron.com", "jennifer.blay@enron.com", "brian.heinrich@enron.com", "daren.farmer@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Each month the same spreadsheets are re-completed manually with tight Friday deadlines. Errors in RC charges are found only by managers reviewing reports.",
+      "automation": "Pre-populate the surveys from the previous month and prior allocations. Flag RC charges that differ from the Org Database headcount.",
+      "minutes_per_occurrence": 60,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/854", "farmer-d/logistics/856", "farmer-d/logistics/836", "farmer-d/logistics/863", "farmer-d/logistics/862", "farmer-d/logistics/825"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/854", "quote": "Please provide a\ncompleted \"Hours\" survey for each position within your group."},
+        {"msg": "farmer-d/logistics/854", "quote": "Please return these surveys by end of day Friday, March 3rd."},
+        {"msg": "farmer-d/logistics/836", "quote": "Please continue to check your RC report\neach month going forward."},
+        {"msg": "farmer-d/logistics/862", "quote": "Please send changes by Friday, March 3."}
+      ]
+    },
+    {
+      "name": "Meeting and calendar coordination for logistics and management teams",
+      "description": "Assistants and managers schedule project, offsite and lunch meetings by email, rescheduling and re-asking for availability. They also collect calendars from each manager.",
+      "participants": ["mary.weatherstone@enron.com", "yvette.connevey@enron.com", "robert.superty@enron.com", "brenda.herod@enron.com", "daren.farmer@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Meetings are cancelled and rescheduled, with availability polled by reply. Each invite is a separate manual email.",
+      "automation": "Shared calendar scheduling with availability polling and automatic reschedule notices.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.6,
+      "messages": ["farmer-d/logistics/705", "farmer-d/logistics/788", "farmer-d/logistics/808", "farmer-d/logistics/829", "farmer-d/logistics/835", "farmer-d/logistics/841", "farmer-d/logistics/842", "farmer-d/logistics/795"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/705", "quote": "Please let me know if you would be available for the above mtg on Tuesday,"},
+        {"msg": "farmer-d/logistics/842", "quote": "Please hold Thursday, March 9th 11:30 - 5:00 pm as Tentative for the Follow"},
+        {"msg": "farmer-d/logistics/788", "quote": "As you might already know we had to reschedule our second meeting that was"},
+        {"msg": "farmer-d/logistics/829", "quote": "please provide me with your\nmonthly calendars showing your vital business days"}
+      ]
+    },
+    {
+      "name": "Monthly flow, storage and industrial report distribution",
+      "description": "Staff compile monthly or month-to-date reports and email them as attachments: HL&P flow volumes to Janet Wallis, storage withdrawals to Cilco, and the industrial buyback report that Robert Lloyd inherited from Ken Seaman.",
+      "participants": ["kimberly.vaughn@enron.com", "janet.wallis@enron.com", "robert.lloyd@enron.com", "julie.meyers@enron.com", "lisa.kinsey@enron.com", "kenneth.seaman@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Reports are rebuilt and emailed by hand, with a file requested from another person each time. Knowledge sits with individuals who are leaving.",
+      "automation": "Schedule the report from the source data and send to a fixed distribution list.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.6,
+      "messages": ["farmer-d/logistics/740", "farmer-d/logistics/760", "farmer-d/logistics/821", "farmer-d/logistics/860", "farmer-d/logistics/742", "farmer-d/logistics/852", "farmer-d/logistics/757", "farmer-d/logistics/759"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/760", "quote": "Attached are the month to date flow volumes."},
+        {"msg": "farmer-d/logistics/821", "quote": "I have updated the flow volumes for HL&P"},
+        {"msg": "farmer-d/logistics/852", "quote": "Can you please forward me the \"Buyback/Deficiency\"  Deals  for March' 2000."},
+        {"msg": "farmer-d/logistics/742", "quote": "Attached is the worksheet showing your withdrawals for the month of January"}
+      ]
+    }
+  ]
+}

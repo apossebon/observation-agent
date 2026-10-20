@@ -1,0 +1,139 @@
+{
+  "batch": 26,
+  "processes": [
+    {
+      "name": "Counterparty book-move scripts for Netco separation",
+      "description": "Gas risk staff send lists of counterparties or books to IT/Cecilia Cheung, who runs a script to move financial deals between books and retranslates. Requirements are clarified by email over several rounds and each new book needs a fresh request.",
+      "participants": ["m..love@enron.com", "cecilia.cheung@enron.com", "c..giron@enron.com", "kam.keiser@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Parameters (which book, commodity, cutoff date, Canadian vs US logic) are clarified by back-and-forth emails before the script runs; the same instructions are re-sent for each new book.",
+      "automation": "A parameterised book-move request form with the book, commodity and cutoff fields captured once and a status notification when the script completes.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.4,
+      "messages": ["giron-d/inbox/44", "giron-d/inbox/39", "giron-d/inbox/37", "giron-d/inbox/43", "giron-d/inbox/5"],
+      "evidence": [
+        {"msg": "giron-d/inbox/44", "quote": "should be the exact same script as yesterday, just substitute FT_TERMIN-GD for the two books you were looking for yesterday."},
+        {"msg": "giron-d/inbox/39", "quote": "The list has 140 counterparties on it.  Please let me know if you are not going to be able to move these today by 3:30."},
+        {"msg": "giron-d/inbox/44", "quote": "Which Bankruptcy book you want to move the deals to? BANKRUPTCY (166660) or BANKRUPTCY-CAD (166762)?"},
+        {"msg": "giron-d/inbox/43", "quote": "Please fill out the book and trader name."}
+      ]
+    },
+    {
+      "name": "Trader and staff system access and environment migration setup (UBSW)",
+      "description": "IT and desk leads chase each trader or user for how they access Stack Manager, issue production IDs, and circulate curve-file, URL and access-tool changes. Each change is sent by email and users reply individually.",
+      "participants": ["daniel.diamond@enron.com", "bill.williams@enron.com", "russ.severson@enron.com", "c..giron@enron.com", "claudia.clark@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Users do not reply to the first survey so a second chaser goes out; curve file and URL changes must be re-communicated by email to each desk.",
+      "automation": "A tracked checklist or form that records each user's access method and automatically reminds non-responders, plus a single maintained page for curve-file and URL changes.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.5,
+      "messages": ["williams-w3/inbox/71", "williams-w3/inbox/70", "williams-w3/inbox/56", "williams-w3/sent_items/3", "williams-w3/inbox/14", "giron-d/inbox/6", "giron-d/inbox/38", "giron-d/inbox/32", "giron-d/inbox/12", "giron-d/inbox/11", "giron-d/inbox/10", "giron-d/inbox/9", "giron-d/inbox/22", "giron-d/inbox/17", "giron-d/inbox/14"],
+      "evidence": [
+        {"msg": "williams-w3/inbox/56", "quote": "If you're receiving this email its because we're still waiting on a response from you.  Please reply to this message ASAP."},
+        {"msg": "williams-w3/inbox/71", "quote": "Please reply to this message with either a corresponding \"1\" or a \"2\" in the subject field."},
+        {"msg": "giron-d/inbox/32", "quote": "The curve files for Netco will need to be modified before they are used in the new environment."},
+        {"msg": "giron-d/inbox/38", "quote": "You have received this email because you are listed as a data approver."},
+        {"msg": "giron-d/inbox/12", "quote": "There is a new directory for the curve files.  I am trying to request access to this for the traders so they can't see the rest of our files."}
+      ]
+    },
+    {
+      "name": "Daily Energy Market Report and gas/power daily PDF distribution",
+      "description": "Each trading day an assistant forwards the Energy Market Report to the traders and Theresa Villeggiante sends the Gas Daily and Power Daily PDFs. Distribution lists are maintained by hand and members ask to be added.",
+      "participants": ["jill.chatterton@enron.com", "theresa.villeggiante@enron.com", "bill.williams@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Distribution list changes are handled by email with a name list requested; when Gas Daily is not loaded yet the sender has to check back and re-send.",
+      "automation": "An automated scheduled distribution from a maintained list that sends the report when published and tracks list membership.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.8,
+      "messages": ["williams-w3/inbox/62", "williams-w3/inbox/57", "williams-w3/inbox/49", "williams-w3/inbox/35", "williams-w3/inbox/23", "williams-w3/sent_items/7", "williams-w3/sent_items/6", "williams-w3/inbox/67", "williams-w3/sent_items/5", "williams-w3/inbox/50"],
+      "evidence": [
+        {"msg": "williams-w3/inbox/62", "quote": "FW: Energy Market Report - 01/30/02"},
+        {"msg": "williams-w3/sent_items/7", "quote": "Could you add DL-Portland Shift to this distribution. I would like the guys in Real-Time to be able to see this information when they come in."},
+        {"msg": "williams-w3/inbox/50", "quote": "They do not have Gas daily loaded yet, I will check back periodically, if and when it becomes available I will send it."},
+        {"msg": "williams-w3/inbox/67", "quote": "No problem, is it possible for you to give me a list of names as I am not sure who does what just yet."}
+      ]
+    },
+    {
+      "name": "Expense report approvals in Concur/XMS",
+      "description": "The approver receives an automatic Concur email for each expense report submitted on behalf of team members and approves it via link. Pre-closing expenses are being pushed through before the UBSW transaction.",
+      "participants": ["enron_update@concureworkplace.com", "bill.williams@enron.com", "georgeanne.hodges@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Each report arrives as a separate email needing a manual click-through approval; reports from the same people recur frequently.",
+      "automation": "Rule-based auto-approval of small reports within policy with a single digest for exceptions.",
+      "minutes_per_occurrence": 4,
+      "automatable_fraction": 0.6,
+      "messages": ["williams-w3/inbox/66", "williams-w3/inbox/63", "williams-w3/inbox/55", "williams-w3/inbox/28", "giron-d/inbox/15"],
+      "evidence": [
+        {"msg": "williams-w3/inbox/66", "quote": "The following expense report is ready for approval:"},
+        {"msg": "williams-w3/inbox/63", "quote": "To approve this expense report, click on the following link for Concur Expense."},
+        {"msg": "giron-d/inbox/15", "quote": "Note to approvers - please approve these expense reports quickly."}
+      ]
+    },
+    {
+      "name": "Onboarding and HR compliance chasers for UBS transition",
+      "description": "HR and admins send reminders, forms and attendance requests (drug tests, UBS applications, orientation RSVPs, migration compliance certificates), often per individual, and collect replies by email.",
+      "participants": ["amy.fitzpatrick@enron.com", "julie.clyatt@enron.com", "julie.kearney@enron.com", "neil.davies@enron.com", "cara.semperger@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "The same reminder is sent repeatedly to non-responders and individual records are updated by hand.",
+      "automation": "A tracker of required onboarding items per person with automatic reminders and RSVP capture.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.5,
+      "messages": ["williams-w3/inbox/64", "williams-w3/inbox/30", "williams-w3/inbox/29", "williams-w3/inbox/42", "williams-w3/inbox/47", "williams-w3/inbox/27", "williams-w3/inbox/15", "giron-d/inbox/2", "giron-d/inbox/7", "williams-w3/inbox/140"],
+      "evidence": [
+        {"msg": "williams-w3/inbox/30", "quote": "Our records indicate that you have not taken your pre-employment drug test for UBS."},
+        {"msg": "williams-w3/inbox/64", "quote": "Records indicate that there are a significant number of employees who have yet to have a drug test."},
+        {"msg": "giron-d/inbox/2", "quote": "PLEASE RSVP (BY REPLYING TO THIS E-MAIL) - IF YOU HAVEN'T DONE SO ALREADY"},
+        {"msg": "williams-w3/inbox/42", "quote": "Some information is missing on your UBS application.  Please swing by to complete."}
+      ]
+    },
+    {
+      "name": "NSS and PGL month-end P&L clean-up and restatement",
+      "description": "Gas desk and accounting staff reconcile booked deals, annuities and options against contracts after January close, then restate P&L files and circulate the findings by email.",
+      "participants": ["richard.tomaski@enron.com", "c..giron@enron.com", "robin.rodrigue@enron.com", "lynn.pikofsky@enron.com", "laura.luce@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Errors in how deals were killed or annuities booked are found after close, requiring reversing entries, restated files and extra calls.",
+      "automation": "Automated tie-out of booked deal volumes and annuities to contract terms and a restatement diff before close.",
+      "minutes_per_occurrence": 120,
+      "automatable_fraction": 0.3,
+      "messages": ["giron-d/inbox/28", "giron-d/inbox/27", "giron-d/inbox/25", "giron-d/inbox/31", "giron-d/inbox/21", "giron-d/inbox/19", "giron-d/inbox/36", "giron-d/inbox/40"],
+      "evidence": [
+        {"msg": "giron-d/inbox/25", "quote": "when we killed all forward PGL deals in TAGG for the inventory transfer, we killed Jan activity even though most of this gas flowed."},
+        {"msg": "giron-d/inbox/27", "quote": "we booked basedload summer sell of 95,000.  ENA calls of 50,000 and ENA puts of 30,000 for PGL"},
+        {"msg": "giron-d/inbox/21", "quote": "We have restated our p&l for 1/31/02.  The file is called 013102final2.xls."},
+        {"msg": "giron-d/inbox/40", "quote": "The positions file for last night is saved out to o_dropbox and is attached."}
+      ]
+    },
+    {
+      "name": "Estate account exception requests",
+      "description": "Portland real-time and scheduling managers must identify which UBS staff need extended estate (EST) accounts and request each extension by email to IT with a business reason and duration. Discussion occurs over multiple replies.",
+      "participants": ["david.steiner@enron.com", "p..o'neil@enron.com", "tim.belden@enron.com", "bill.williams@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Decision-makers debate by reply-all chain and the actual request must be written per user.",
+      "automation": "A single request form with named users, business reason and duration routed to IT approvers.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.4,
+      "messages": ["williams-w3/inbox/21", "williams-w3/inbox/20", "williams-w3/inbox/19", "williams-w3/inbox/18", "williams-w3/inbox/17", "giron-d/inbox/4"],
+      "evidence": [
+        {"msg": "williams-w3/inbox/21", "quote": "I need to know now who will need an exception to this. ASAP."},
+        {"msg": "williams-w3/inbox/18", "quote": "What do we need to do to make sure these accounts stay active past Sunday?"},
+        {"msg": "giron-d/inbox/4", "quote": "Could you please let me know if there are any procedures that any UBS people are still running that should be run by the estate team?"}
+      ]
+    },
+    {
+      "name": "CAISO market notices and real-time schedule checkouts",
+      "description": "Real-time and scheduling staff receive a steady flow of CAISO notices and reports and perform schedule checkouts with counterparties when the EPE schedule sheet is incomplete.",
+      "participants": ["crcommunications@caiso.com", "albert.meyers@enron.com", "bill.williams@enron.com", "geir.solberg@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "The EPE schedule sheet repeatedly misses tags because counterparties omit the PSE, so schedules are found by manual calls.",
+      "automation": "Automated reconciliation of tags in the schedule sheet against dispatcher schedules with alerts on missing tags.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.5,
+      "messages": ["williams-w3/inbox/52", "williams-w3/inbox/24", "williams-w3/inbox/48", "williams-w3/inbox/54", "williams-w3/inbox/34"],
+      "evidence": [
+        {"msg": "williams-w3/inbox/52", "quote": "For yet another day we seem to be having problems including all the schedules in our EPE schedule sheet."},
+        {"msg": "williams-w3/inbox/52", "quote": "I think part of the problem is some counterparties are not including EPMIWE as a PSE."},
+        {"msg": "williams-w3/inbox/24", "quote": "Due to the migration I am unable to send the EPE model to Kathy (file for Feb. did not pull into the M: drive)."}
+      ]
+    }
+  ]
+}

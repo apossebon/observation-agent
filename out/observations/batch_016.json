@@ -1,0 +1,128 @@
+{
+  "batch": 16,
+  "processes": [
+    {
+      "name": "Real-time position and schedule instructions to trading group for Enpower/CAPS entry",
+      "description": "The West Hourly desk manager emails the real-time group each time the desk is short, long, or must carry losses or congestion, giving MW, hours, price and which book to use. Traders then key the buys, sales and schedules into Enpower and CAPS by hand, and corrections follow as extra emails.",
+      "participants": ["bill.williams@enron.com", "kate.symes@enron.com", "bert.meyers@enron.com", "craig.dean@enron.com", "eric.linder@enron.com", "geir.solberg@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Instructions are sent piecemeal (the same short notice was re-forwarded three times as more APX purchases were made) and rely on each trader keying deals into the correct book. Missing deals are found afterwards.",
+      "automation": "Generate the deal tickets in Enpower/CAPS directly from a structured position sheet instead of free-text emails. Validate book, counterparty and hours on entry.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.4,
+      "messages": ["williams-w3/sent_items/463", "williams-w3/sent_items/433", "williams-w3/sent_items/414", "williams-w3/sent_items/405", "williams-w3/sent_items/404", "williams-w3/sent_items/403", "williams-w3/sent_items/392", "williams-w3/sent_items/390", "williams-w3/sent_items/425", "williams-w3/sent_items/416"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/463", "quote": "We need to make a buy from EPE under ST-Whourly in Enpower, and a sale to APS at zero in Enpower."},
+        {"msg": "williams-w3/sent_items/414", "quote": "St-Cali is short 50 mws in SP-15 for HE 7-22. All deals should be under St-Cali in Enpower and CAPS."},
+        {"msg": "williams-w3/sent_items/403", "quote": "We have also bought HE 21 and HE 22 from the APX. We bought 20 mws at $32 for HE 21 and 23 mws at $30 for HE 22."},
+        {"msg": "williams-w3/sent_items/390", "quote": "We are missing an ID-S from ST-WBOM to ST-CALI for Saturday."},
+        {"msg": "williams-w3/sent_items/416", "quote": "Total volume was 96 mws at $248, revenue should be $23808."}
+      ]
+    },
+    {
+      "name": "Prior month adjustment (PMA) and settlement dispute chasing",
+      "description": "The desk manager reviews month-end PMA sheets, finds revenue or cost mismatches against Enpower, and emails Settlements to explain or correct them. Disputes and annuity corrections go back and forth over days, with Settlements chasing Houston for the other side of a deal.",
+      "participants": ["bill.williams@enron.com", "virginia.thompson@enron.com", "fran.chang@enron.com", "heather.dunton@enron.com", "kate.symes@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "The offsetting side of a deal is missing from Settlements' processes. The $108,000 WBOM PMA stayed open across several emails, and the only fallback is pulling tapes.",
+      "automation": "Auto-match PMA lines to Enpower deal changes and flag one-sided adjustments (e.g. revenue reversed with no cost reversed) before the sheet reaches the desk.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.4,
+      "messages": ["williams-w3/sent_items/442", "williams-w3/sent_items/435", "williams-w3/sent_items/424", "williams-w3/sent_items/419", "williams-w3/sent_items/441", "williams-w3/sent_items/426", "williams-w3/sent_items/421", "williams-w3/sent_items/420", "williams-w3/sent_items/388", "williams-w3/sent_items/387"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/442", "quote": "Why does a change in counterparty result in a loss of revenue?"},
+        {"msg": "williams-w3/sent_items/435", "quote": "We should only lose $40 (the net difference). Any ideas?"},
+        {"msg": "williams-w3/sent_items/424", "quote": "I am still having a problem with the WBOM $108,000 as you are aware."},
+        {"msg": "williams-w3/sent_items/426", "quote": "We could pull tapes? Ask the person who did the deal? There is nothing in notebooks."},
+        {"msg": "williams-w3/sent_items/388", "quote": "ST-Whourly will pay LT-NW our average hourly price per mw for that energy."}
+      ]
+    },
+    {
+      "name": "Daily SAR/INC reconciliation and EPE reconciliation sheet",
+      "description": "After the DPR arrives, the desk runs a SAR against the INC sheet and the CAPS/Enpower position to find variances, then zeroes duplicate deals or logs variances. A shared EPE reconciliation sheet has to be completed every day, even when there are no variances.",
+      "participants": ["bill.williams@enron.com", "kate.symes@enron.com", "mark.guzman@enron.com", "v..porter@enron.com", "heather.dunton@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Real-time cuts are not in CAPS, so the SAR and INC only match once the manager adds them by hand. The shift skipped the EPE sheet, and Houston treats a blank sheet as if the CARP was not run.",
+      "automation": "Run the SAR, INC and CARP comparison automatically each morning and write the reconciliation sheet, including a 'no variance' entry. List unexplained deltas for review.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.5,
+      "messages": ["williams-w3/sent_items/453", "williams-w3/sent_items/418", "williams-w3/sent_items/417", "williams-w3/sent_items/391"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/417", "quote": "Even if there are no variances, please complete the July EPE Reconciliation sheet going forward."},
+        {"msg": "williams-w3/sent_items/417", "quote": "Houston will assume that no one ran the CARP if the sheet has no entries."},
+        {"msg": "williams-w3/sent_items/391", "quote": "The SAR and INC sheet are matching if the 42 mw purchase from the imbalance at $44 is factored in"},
+        {"msg": "williams-w3/sent_items/453", "quote": "We had some double deal-entry last night under the ST-WBOM book."},
+        {"msg": "williams-w3/sent_items/418", "quote": "we show no variances between the Real Time El Paso model and our CARP report."}
+      ]
+    },
+    {
+      "name": "Forwarding CAISO/FERC market notices and rule changes to the real-time group",
+      "description": "The desk manager forwards CAISO notices, price-cap clarifications, outage protocols and transmission tips to the real-time group or individual traders. He adds interpretation and asks people to read and apply them. Each notice is re-forwarded by hand to different lists.",
+      "participants": ["bill.williams@enron.com", "kate.symes@enron.com", "ryan.slinger@enron.com", "alan.comnes@enron.com", "donna.sheidun@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "The same notice is forwarded separately to several people (the judge's summary and the FAQ went to Kate and Ryan separately). Rules change repeatedly, such as the cap and the new OASIS site, and each change needs a new broadcast.",
+      "automation": "Route CAISO market notices to a shared distribution list with an auto-summary and an acknowledgement tracker, instead of manual forwards.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.6,
+      "messages": ["williams-w3/sent_items/443", "williams-w3/sent_items/449", "williams-w3/sent_items/423", "williams-w3/sent_items/415", "williams-w3/sent_items/408", "williams-w3/sent_items/409", "williams-w3/sent_items/401", "williams-w3/sent_items/397", "williams-w3/sent_items/400", "williams-w3/sent_items/402", "williams-w3/sent_items/399", "williams-w3/sent_items/422", "williams-w3/sent_items/438"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/449", "quote": "The current price cap is $91.87. We should continue our practice of not selling over the cap"},
+        {"msg": "williams-w3/sent_items/423", "quote": "Important, CAISO computers down at 2 PM. Submit HE 17 and HE 18 before 2 PM."},
+        {"msg": "williams-w3/sent_items/401", "quote": "The CAISO has a new website. The link below should take you there."},
+        {"msg": "williams-w3/sent_items/397", "quote": "I would like you to find this information and distill the relevant information from it."},
+        {"msg": "williams-w3/sent_items/422", "quote": "we fill out an outage report and send it to the Generation Outage Desk."}
+      ]
+    },
+    {
+      "name": "Gas deal entry, extension and release requests in Sitara/Unify (Houston logistics)",
+      "description": "Schedulers and settlements staff email Daren Farmer or Houston Pipe Line contacts to add deals, extend terms, release deals or fix pricing in Sitara and Unify. Requests move through several intermediaries before someone with the right access acts.",
+      "participants": ["j..farmer@enron.com", "d..winfree@enron.com", "megan.parker@enron.com", "michael.olsen@enron.com", "tnray@aep.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Requesters do not know who owns the deal or system access, so mails bounce between people (the same ask is repeated after no answer). A deal sits unreleased in Sitara and the invoice waits.",
+      "automation": "Provide a single deal-change request queue that routes to the owner with the deal, meter and volume fields pre-filled. Show status so requesters need not chase.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.35,
+      "messages": ["farmer-d/logistics/103", "farmer-d/logistics/100", "farmer-d/logistics/98", "farmer-d/logistics/96", "farmer-d/logistics/95", "farmer-d/logistics/90"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/103", "quote": "Let me know if you have any objections to me entering the deals"},
+        {"msg": "farmer-d/logistics/100", "quote": "I looked in Sitara and deal 70550 is still not released."},
+        {"msg": "farmer-d/logistics/98", "quote": "there is no sales draft in Unify for this sale."},
+        {"msg": "farmer-d/logistics/95", "quote": "I have not heard back from Mike Olsen on this. Can you extend this deal for me?"},
+        {"msg": "farmer-d/logistics/96", "quote": "Can you verify how this deal should be priced?"}
+      ]
+    },
+    {
+      "name": "Daily EES model/sheet distribution and MPC reconciliation",
+      "description": "A daily EES model or sheet is emailed to a short list. Kate Symes reports that the settlements people who need it still do not receive it. Month-end MPC numbers are reworked from last year's inc and service sheets under time pressure.",
+      "participants": ["bert.meyers@enron.com", "bill.williams@enron.com", "kate.symes@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "The sheet goes to the wrong recipients, so the group that needs it never receives it. MPC numbers are dug out of old sheets by hand.",
+      "automation": "Send the daily file to a standing settlements distribution list automatically. Keep inc and service sheets in a lookup so MPC figures can be pulled directly.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.5,
+      "messages": ["williams-w3/sent_items/460", "williams-w3/sent_items/456", "williams-w3/sent_items/459", "williams-w3/sent_items/458"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/456", "quote": "the people who need the sheet are still not getting it - namely, Brooklyn Couch and Ainsley Gaddis."},
+        {"msg": "williams-w3/sent_items/456", "quote": "This can be remedied by sending the sheet to EES Power Settlements."},
+        {"msg": "williams-w3/sent_items/456", "quote": "now about those MPC numbers...we need to go through the inc sheets and service sheets from last year"}
+      ]
+    },
+    {
+      "name": "Misdirected mail to Bill Williams III and address book corrections",
+      "description": "Colleagues repeatedly send project and trading mail to Bill Williams III instead of Bill Williams. He forwards each one to the right person and asks the sender to fix the address book.",
+      "participants": ["bill.williams@enron.com", "d'ann.gordon@enron.com", "troy.denetsosie@enron.com", "eric.booth@enron.com", "david.poston@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Senders keep choosing the wrong contact, so each message is forwarded and explained again.",
+      "automation": "Add a directory alias or auto-reply for the near-duplicate name so the mail reaches the right person.",
+      "minutes_per_occurrence": 4,
+      "automatable_fraction": 0.7,
+      "messages": ["williams-w3/sent_items/448", "williams-w3/sent_items/437", "williams-w3/sent_items/429", "williams-w3/sent_items/450"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/448", "quote": "This needs to go to Bill Williams, not Bill Williams III."},
+        {"msg": "williams-w3/sent_items/437", "quote": "Please make the appropriate change to your address book."},
+        {"msg": "williams-w3/sent_items/429", "quote": "Please make the change in your address book."},
+        {"msg": "williams-w3/sent_items/450", "quote": "Try to make sure you get these to me rather than to my Dad."}
+      ]
+    }
+  ]
+}

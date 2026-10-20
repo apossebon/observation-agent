@@ -1,0 +1,136 @@
+{
+ "slug": "meter-flow-without-a-valid-deal-extension-new-deal-and-write",
+ "name": "Meter flow without a valid deal: extension, new-deal and write-off requests",
+ "description": "Volume management, logistics and settlement staff find gas flowing at an HPL meter with no active Sitara deal. The deal may have expired or missed its evergreen roll, the flow may be parked on the Strangers Gas contract, or the meter may be new. They email Daren Farmer, one meter at a time, asking him to extend or roll a deal, create a new one, or sign a printed write-off to Unaccounted for Gas. Allocation, accounting arrangements and invoicing cannot go ahead until he answers. This is the largest and most frequent process in the archive. Nearly every batch shows it, and almost all of it runs through one person.",
+ "stall_points": "Every request waits on Daren Farmer, who is also trading, so requesters send reminders and the same meters come back the next month. Write-offs need a printed, signed and returned original. Forwarded threads carry long quoted history. Feedback and bridge errors pass through four or five people before reaching the deal owner. Deal numbers are sometimes wrong or sit with another desk, and suspended counterparties or expired contracts block the fix.",
+ "automation": "A daily and month-end exception job that compares allocated meter flow with active Sitara deals and lists every meter with flow and no deal, including Strangers Gas allocations and lapsed evergreens. Each exception goes to the deal owner as a pre-filled work item with the meter, days, volume and the prior deal proposed for extension, plus one-click options to extend, create or approve a write-off electronically, with status tracking and automatic reminders. This replaces the one-off emails, the printed approval forms and the chasers.",
+ "participants": [
+  "aimee.lannou@enron.com",
+  "charlene.richmond@enron.com",
+  "charlotte.hawkins@enron.com",
+  "clem.cernosek@enron.com",
+  "danny.conner@enron.com",
+  "daren.farmer@enron.com",
+  "donald.reinhardt@enron.com",
+  "fred.boas@enron.com",
+  "gary.lamphier@enron.com",
+  "h..wallis@enron.com"
+ ],
+ "economics": {
+  "messages_total": 235,
+  "messages_dated": 235,
+  "first_date": "1999-12-14",
+  "last_date": "2001-11-08",
+  "active_months": 24,
+  "distinct_months": 21,
+  "recurring": true,
+  "min_recurring_months": 6,
+  "occurrences_per_month": 9.79,
+  "minutes_per_occurrence": 20.0,
+  "automatable_fraction": 0.5,
+  "gross_hours_per_month": 3.26,
+  "hours_saved_per_month": 1.63,
+  "dollars_saved_per_month": 138.72,
+  "blended_rate": 85.0,
+  "formula": "dated_messages / active_months * minutes / 60 * automatable_fraction * 85"
+ },
+ "evidence": [
+  {
+   "msg": "farmer-d/logistics/590",
+   "line": 20,
+   "quote": "Settlements is unable to draft an invoice for this deal.  This deal either needs to be extended or a new deal needs to be set up.",
+   "date": "1999-12-15",
+   "sender": "howard.camp@enron.com",
+   "subject": "Meter 1431 - Nov 1999"
+  },
+  {
+   "msg": "farmer-d/logistics/596",
+   "line": 19,
+   "quote": "Please enter deal for sale on contract 078-15631-102 for 17,462 MMBTU.",
+   "date": "1999-12-16",
+   "sender": "stella.morris@enron.com",
+   "subject": "UA4 for Meter 8608 - 6/98 - deal 96731"
+  },
+  {
+   "msg": "farmer-d/logistics/638",
+   "line": 21,
+   "quote": "Please establish a spot ticket for United Oil & Minerals, Inc. at meter 5053 for January.",
+   "date": "1999-12-30",
+   "sender": "donald.reinhardt@enron.com",
+   "subject": "United Oil & Minerals, Inc."
+  },
+  {
+   "msg": "farmer-d/logistics/693",
+   "line": 19,
+   "quote": "Daren, can you help me with placing K's @ the below listed meters?",
+   "date": "2000-01-18",
+   "sender": "jackie.young@enron.com",
+   "subject": "12/99 K's Needed and 1/2000 K's Needed"
+  },
+  {
+   "msg": "farmer-d/logistics/755",
+   "line": 22,
+   "quote": "Can you please extend the deal thru 2-1-00 to cover this small volume?",
+   "date": "2000-02-04",
+   "sender": "jackie.young@enron.com",
+   "subject": "98-1534"
+  },
+  {
+   "msg": "farmer-d/logistics/749",
+   "line": 38,
+   "quote": "There is a bridgeback error at the above referenced meter and month.  The",
+   "date": "2000-02-03",
+   "sender": "aimee.lannou@enron.com",
+   "subject": "Bridgeback Error at Meter 1450 for 11/99"
+  },
+  {
+   "msg": "farmer-d/logistics/751",
+   "line": 20,
+   "quote": "volume management wants a deal set up so they won't have to set up an accounting arrangement",
+   "date": "2000-02-04",
+   "sender": "aimee.lannou@enron.com",
+   "subject": "Cilco Storage Withdrawal"
+  },
+  {
+   "msg": "farmer-d/logistics/748",
+   "line": 26,
+   "quote": "If you had fogotten, this can serve as reminder.",
+   "date": "2000-02-03",
+   "sender": "jackie.young@enron.com",
+   "subject": "Re: 98-3405 Activity Being Allocated/Nomed @ 98-9643"
+  },
+  {
+   "msg": "farmer-d/logistics/898",
+   "line": 19,
+   "quote": "Could you please extend deal #169625 for meter 1520 for",
+   "date": "2000-03-11",
+   "sender": "aimee.lannou@enron.com",
+   "subject": "Re: Allocation Exceptions"
+  },
+  {
+   "msg": "farmer-d/logistics/872",
+   "line": 17,
+   "quote": "Can you please extend sitara deal #156657 for 3/1/00, if the deal will allow?",
+   "date": "2000-03-03",
+   "sender": "jackie.young@enron.com",
+   "subject": "98-0432"
+  },
+  {
+   "msg": "farmer-d/logistics/879",
+   "line": 19,
+   "quote": "I'm attempting to clean up my allocations, due to this being allocation close week for Volume Management.",
+   "date": "2000-03-06",
+   "sender": "jackie.young@enron.com",
+   "subject": "98-1052 and 98-1534 (K extensions)"
+  },
+  {
+   "msg": "farmer-d/logistics/881",
+   "line": 19,
+   "quote": "Could one of you please extend deal # 151203 for meter 1595?  This deal expired 12/31/99.",
+   "date": "2000-03-06",
+   "sender": "aimee.lannou@enron.com",
+   "subject": "Feedback Error - 1/00"
+  }
+ ],
+ "output_prefix": "out/drafts/meter-flow-without-a-valid-deal-extension-new-deal-and-write-"
+}

@@ -1,0 +1,37 @@
+{
+ "stages": {
+  "prepare": {
+   "fingerprint": "d2235dade6dde6e83fa8fb99094d33e706497103",
+   "done": true,
+   "at": "2026-10-20T18:34:11.938032+00:00",
+   "files": 3240,
+   "unique": 3194,
+   "batches": 28
+  },
+  "validate": {
+   "fingerprint": "1ac45dd7e8df464d17b073f2a230d18ce1210b0d",
+   "done": true,
+   "at": "2026-10-20T18:44:24.519521+00:00",
+   "checked": 918,
+   "valid": 918,
+   "rejected": 0,
+   "batches_validated": 28,
+   "processes_kept": 232,
+   "messages_attributed": 1623
+  },
+  "economics": {
+   "fingerprint": "212bc8d16750247f1f03f5c10d5750ee4dfe56ce:t=100:m=6",
+   "done": true,
+   "at": "2026-10-20T19:22:52.809647+00:00",
+   "opportunities": 20,
+   "total_dollars": 1331.93
+  },
+  "report": {
+   "fingerprint": "c8651e599ea2f8335af988bd7cb759749b542f40",
+   "done": true,
+   "at": "2026-10-20T19:23:28.070899+00:00",
+   "opportunities": 20,
+   "drafts": 5
+  }
+ }
+}

@@ -1,0 +1,127 @@
+{
+ "slug": "real-time-power-position-hand-off-and-enpower-caps-deal-entr",
+ "name": "Real-time power position hand-off and Enpower/CAPS deal entry",
+ "description": "On the Portland real-time desk, Bill Williams, prescheduling and the cash desks email the shift whenever the book is short or long. Each email gives MW, hours, hub, price, book and deal numbers, along with instructions for El Paso Electric lending days and EOL trades. Shift traders and support re-key these into Enpower, CAPS and the position sheets, following entry rules that are restated by email. Mismatches between the emailed positions and Enpower are clarified by further emails.",
+ "stall_points": "Instructions are sent piecemeal and re-forwarded as more trades are made. The same shorts and deal numbers are re-sent day after day. Price and counterparty details are deferred to 'check with' other traders. Emailed positions carry wrong hours, delivery points or deal numbers. Lending prices and deal numbers are re-keyed per day and corrected afterwards, and EOL deals go missing in Enpower.",
+ "automation": "Generate the shift position summary directly from the position manager and the Enpower deals. Templated deal sets (for example EPE lending) and EOL trades would be auto-created in Enpower with book and strip defaults, and validated against desk rules. A daily match of broker and EOL deals against Enpower would flag gaps, replacing free-text position emails and manual re-keying.",
+ "participants": [
+  "bill.williams@enron.com"
+ ],
+ "economics": {
+  "messages_total": 60,
+  "messages_dated": 60,
+  "first_date": "2001-06-12",
+  "last_date": "2001-11-28",
+  "active_months": 6,
+  "distinct_months": 6,
+  "recurring": true,
+  "min_recurring_months": 6,
+  "occurrences_per_month": 10.0,
+  "minutes_per_occurrence": 15.0,
+  "automatable_fraction": 0.5,
+  "gross_hours_per_month": 2.5,
+  "hours_saved_per_month": 1.25,
+  "dollars_saved_per_month": 106.25,
+  "blended_rate": 85.0,
+  "formula": "dated_messages / active_months * minutes / 60 * automatable_fraction * 85"
+ },
+ "evidence": [
+  {
+   "msg": "williams-w3/sent_items/512",
+   "line": 17,
+   "quote": "We are long 25 mws in NP-15 at $54 for HE 7-22.  This is under the ST-WBOM line in CAPS.",
+   "date": "2001-06-12",
+   "sender": "bill.williams@enron.com",
+   "subject": "Length for 06/12/01"
+  },
+  {
+   "msg": "williams-w3/sent_items/502",
+   "line": 23,
+   "quote": "We have 25 mws of length in the BOM book at $56 again for 06/14/01 on peak.",
+   "date": "2001-06-14",
+   "sender": "bill.williams@enron.com",
+   "subject": "Length for 06/14/01"
+  },
+  {
+   "msg": "williams-w3/sent_items/466",
+   "line": 22,
+   "quote": "We are long 25 mws on peak for 06/27/01 in SP-15.  This should be in CAPS under ST-WBOM, deals should be under ST-WBOM in Enpower as well.",
+   "date": "2001-06-27",
+   "sender": "bill.williams@enron.com",
+   "subject": "Length for Wednesday"
+  },
+  {
+   "msg": "williams-w3/sent_items/510",
+   "line": 23,
+   "quote": "CAPS shows a final of 25 mws as a firm import.  This should be a n-firm export.",
+   "date": "2001-06-12",
+   "sender": "bill.williams@enron.com",
+   "subject": "CAPS manual entry for 06/09/01"
+  },
+  {
+   "msg": "williams-w3/sent_items/463",
+   "line": 24,
+   "quote": "We need to make a buy from EPE under ST-Whourly in Enpower, and a sale to APS at zero in Enpower.",
+   "date": "2001-06-27",
+   "sender": "bill.williams@enron.com",
+   "subject": "Losses to APS"
+  },
+  {
+   "msg": "williams-w3/sent_items/414",
+   "line": 25,
+   "quote": "St-Cali is short 50 mws in SP-15 for HE 7-22. All deals should be under St-Cali in Enpower and CAPS.",
+   "date": "2001-07-11",
+   "sender": "bill.williams@enron.com",
+   "subject": "Short for 07/11/01 at SP-15"
+  },
+  {
+   "msg": "williams-w3/sent_items/403",
+   "line": 22,
+   "quote": "We have also bought HE 21 and HE 22 from the APX. We bought 20 mws at $32 for HE 21 and 23 mws at $30 for HE 22.",
+   "date": "2001-07-13",
+   "sender": "bill.williams@enron.com",
+   "subject": "FW: Short for Friday and Saturday"
+  },
+  {
+   "msg": "williams-w3/sent_items/390",
+   "line": 20,
+   "quote": "We are missing an ID-S from ST-WBOM to ST-CALI for Saturday.",
+   "date": "2001-07-16",
+   "sender": "bill.williams@enron.com",
+   "subject": ""
+  },
+  {
+   "msg": "williams-w3/sent_items/416",
+   "line": 30,
+   "quote": "Total volume was 96 mws at $248, revenue should be $23808.",
+   "date": "2001-07-10",
+   "sender": "bill.williams@enron.com",
+   "subject": "Congestion revenue for 07/09/01"
+  },
+  {
+   "msg": "williams-w3/sent_items/380",
+   "line": 23,
+   "quote": "We are lending from El Paso Electric on Monday.",
+   "date": "2001-07-21",
+   "sender": "bill.williams@enron.com",
+   "subject": "El Paso Lending for Monday"
+  },
+  {
+   "msg": "williams-w3/sent_items/374",
+   "line": 20,
+   "quote": "Please work with the preschedulers to get the sheet correct (Friday's sheet for Monday had a duplicate 10 mw schedule in it).",
+   "date": "2001-07-23",
+   "sender": "bill.williams@enron.com",
+   "subject": "More lending"
+  },
+  {
+   "msg": "williams-w3/sent_items/340",
+   "line": 28,
+   "quote": "You will know you've done this correctly when the CARP report EXACTLY matches the El Paso model.",
+   "date": "2001-07-31",
+   "sender": "bill.williams@enron.com",
+   "subject": "RE: EPE Lending for 8/1"
+  }
+ ],
+ "output_prefix": "out/drafts/real-time-power-position-hand-off-and-enpower-caps-deal-entr-"
+}

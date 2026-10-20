@@ -1,0 +1,153 @@
+{
+  "batch": 24,
+  "processes": [
+    {
+      "name": "Netco book, curve and access set-up requests",
+      "description": "Risk/controls staff on the gas desks repeatedly collect book requests, trader matrices, curve lists and Sitara curve mappings for the Netco move, saving spreadsheets to shared folders and emailing them to the people who load them. Each step is a separate email asking the group to fill in or confirm a list.",
+      "participants": ["kam.keiser@enron.com", "m..love@enron.com", "c..giron@enron.com", "d..winfree@enron.com", "scott.palmer@enron.com", "susan.trevino@enron.com", "john.valdes@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Each list is re-requested and re-sent by email and depends on every desk filling in its own part; requests are amended after sending (add Financial and Control group, replace matrix).",
+      "automation": "A single tracked request form or shared sheet with per-desk status and automatic hand-off to the book/curve loaders would replace the email round trips.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.4,
+      "messages": ["giron-d/inbox/164", "giron-d/inbox/161", "giron-d/inbox/160", "giron-d/inbox/159", "giron-d/inbox/156", "giron-d/inbox/155", "giron-d/inbox/154", "giron-d/inbox/153", "giron-d/inbox/150", "giron-d/inbox/147", "giron-d/inbox/146", "giron-d/inbox/144", "giron-d/inbox/140"],
+      "evidence": [
+        {"msg": "giron-d/inbox/161", "quote": "These are book requests for the Netco books for all regions."},
+        {"msg": "giron-d/inbox/159", "quote": "Please add Financial and Control group to these book requests if they are missing."},
+        {"msg": "giron-d/inbox/155", "quote": "Check your regions and if you see any locations mapped to curves we won't be setting anymore, make a list of those and what the new mappings should be."},
+        {"msg": "giron-d/inbox/147", "quote": "When you have decided can you please input that into the trader matrix and I'll then forward everything to Ramesh."}
+      ]
+    },
+    {
+      "name": "EOL product-to-trader book assignment",
+      "description": "The risk group assigns EOL products to traders and books, then makes a second pass and confirms with desk heads. Confirmation comes back by reply emails from each region.",
+      "participants": ["kam.keiser@enron.com", "m..love@enron.com", "d..winfree@enron.com", "c..giron@enron.com", "scott.palmer@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Needs each desk head to confirm names and mappings; the same spreadsheet is revisited weeks later for a second pass.",
+      "automation": "A shared mapping sheet with per-desk sign-off tracking and automated reminders would remove chasing by email.",
+      "minutes_per_occurrence": 40,
+      "automatable_fraction": 0.35,
+      "messages": ["giron-d/inbox/132", "giron-d/inbox/131", "giron-d/inbox/63", "giron-d/inbox/62", "giron-d/inbox/60"],
+      "evidence": [
+        {"msg": "giron-d/inbox/132", "quote": "We need to assign EOL products to traders."},
+        {"msg": "giron-d/inbox/63", "quote": "Can you confirm with your desk heads that the list of names we have is correct, and then update the product mappings by tomorrow afternoon?"},
+        {"msg": "giron-d/inbox/60", "quote": "Per Grigsby, all ten traders have signed on and the products are fixed."}
+      ]
+    },
+    {
+      "name": "Moving terminated counterparty deals into bankruptcy books",
+      "description": "Credit/risk staff send lists of deals that auto-terminate after counterparty bankruptcy filings, and the gas risk team must move those deals into the bankruptcy books. Lists arrive as spreadsheets in batches, with more promised on later days.",
+      "participants": ["stacey.richardson@enron.com", "m..love@enron.com", "c..giron@enron.com", "scott.palmer@enron.com", "c..gossett@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Lists arrive piecemeal ('many more deals' later) and ownership of the task had to be handed off by email.",
+      "automation": "Generate the deal move list directly from the counterparty termination report and book the moves in bulk rather than from emailed spreadsheets.",
+      "minutes_per_occurrence": 60,
+      "automatable_fraction": 0.5,
+      "messages": ["giron-d/inbox/117", "giron-d/inbox/116", "giron-d/inbox/115"],
+      "evidence": [
+        {"msg": "giron-d/inbox/117", "quote": "With the bankruptcy filing of ENA Upstream yesterday, please find a listing of auto-terminating deals that need to be moved into the bankruptcy books."},
+        {"msg": "giron-d/inbox/116", "quote": "Please start forwarding these requests to myself and Darron Giron."},
+        {"msg": "giron-d/inbox/115", "quote": "Based on that list, here are some deals that need to be moved into the bankruptcy books."}
+      ]
+    },
+    {
+      "name": "Real-time power desk schedule corrections and finals handling",
+      "description": "The Portland real-time desk corrects import IDs and load zones in the position manager, takes schedules between DA and HA markets, creates DA/HA finals in CAPS, and keeps paper cut sheets and EPE deal sheets. Corrections are communicated by email between shift operators.",
+      "participants": ["bill.williams@enron.com", "albert.meyers@enron.com", "craig.dean@enron.com", "geir.solberg@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "HA final creation hits SQL errors needing manual pulls hour by hour; paper deal and cut sheets get lost and have to be reconstructed.",
+      "automation": "Automated checks for unpublished hours and import ID mismatches, plus electronic cut/deal logging instead of paper binders.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.4,
+      "messages": ["williams-w3/sent_items/37", "williams-w3/inbox/127", "williams-w3/inbox/126", "williams-w3/inbox/125", "williams-w3/inbox/124", "williams-w3/inbox/123", "williams-w3/inbox/122", "williams-w3/sent_items/36"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/37", "quote": "If it is a weekend (or holiday), we first need to import DA finals and then create DA finals in CAPS."},
+        {"msg": "williams-w3/inbox/126", "quote": "Please note that for Wednesday 01/02/02, Import ID ENRJ_CISO_8000 is wrong."},
+        {"msg": "williams-w3/inbox/125", "quote": "ENRJ_CISO_8000 has been corrected for the whole day."},
+        {"msg": "williams-w3/inbox/123", "quote": "please put all cuts and scheduling sheets in the accordion file on the RT overflow desk"},
+        {"msg": "williams-w3/inbox/122", "quote": "The deal sheets MUST be kept in this binder."}
+      ]
+    },
+    {
+      "name": "Weekly California capacity report distribution",
+      "description": "Each week the Transwestern commercial account director compiles average deliveries to California, El Paso comparisons and Gas Daily prices, and emails them to a fixed distribution list. Errors in the date label are corrected with a follow-up email.",
+      "participants": ["michelle.lokay@enron.com", "kimberly.watson@enron.com", "lindy.donoho@enron.com", "lorraine.lindberg@enron.com", "mark.mcconnell@enron.com", "audrey.robertson@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "The same report is resent by forwarding with the wrong week label and corrected afterwards.",
+      "automation": "Auto-generate the report from pipeline throughput and price feeds and send it on a schedule.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.7,
+      "messages": ["lokay-m/sent_items/55", "lokay-m/sent_items/47", "lokay-m/sent_items/46", "lokay-m/sent_items/40"],
+      "evidence": [
+        {"msg": "lokay-m/sent_items/55", "quote": "Transwestern's average deliveries to California were 840 MMBtu/d (77%), with San Juan lateral throughput at 829 MMBtu/d."},
+        {"msg": "lokay-m/sent_items/46", "quote": "Sorry, the effective date for this new report is 01/07-01/11."},
+        {"msg": "lokay-m/sent_items/40", "quote": "California Capacity Report for Week of 01/14-01/18"}
+      ]
+    },
+    {
+      "name": "Customer transport contract amendment approvals",
+      "description": "Shippers email requests to change or continue transport contracts (MDQ increases, continuing capacity, pool receipts) and the account director approves and forwards each with instructions to the contract administrator.",
+      "participants": ["michelle.lokay@enron.com", "dennis.lee@enron.com", "tk.lohman@enron.com", "craig.buehler@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Each request is handled by forwarding the customer email with a one-line approval; copies are re-forwarded to additional people.",
+      "automation": "A request/approval workflow with structured amendment fields feeding the contract system directly.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.5,
+      "messages": ["lokay-m/sent_items/61", "lokay-m/sent_items/60", "lokay-m/sent_items/59", "lokay-m/sent_items/57"],
+      "evidence": [
+        {"msg": "lokay-m/sent_items/60", "quote": "Approved.  Amendment to increase TQ by 10,000 for 2 days."},
+        {"msg": "lokay-m/sent_items/61", "quote": "This is the San Juan to San Juan contract, with alternates out of the path.  Same as December."},
+        {"msg": "lokay-m/sent_items/57", "quote": "Approved.  Please increase, on Amendment #4, the West Texas receipts from 14,265 to 18,000 effective Nov 2002-Feb 2003."}
+      ]
+    },
+    {
+      "name": "Capacity release invoice manual adjustment",
+      "description": "Monthly billing for the ENA/Burlington capacity release needs a manual adjustment on ENA's demand invoice and a marketing-fee booking under the 50/50 sharing. The calculation is redone by hand each month and checked by email.",
+      "participants": ["michelle.lokay@enron.com", "elizabeth.brown@enron.com", "amy.mulligan@enron.com", "richard.hanagriff@enron.com", "paul.y'barbo@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Disagreement over who owes whom delays billing; numbers are rebuilt each month and sent for a sanity check.",
+      "automation": "Encode the sharing rule in the billing system so the credit and fee are computed automatically.",
+      "minutes_per_occurrence": 60,
+      "automatable_fraction": 0.5,
+      "messages": ["lokay-m/sent_items/45", "lokay-m/sent_items/44", "lokay-m/sent_items/20"],
+      "evidence": [
+        {"msg": "lokay-m/sent_items/44", "quote": "a manual adjustment will need to occur on ENA's contract 24924."},
+        {"msg": "lokay-m/sent_items/20", "quote": "ENA demand invoice will be adjusted for a capacity release credit of $56,700"},
+        {"msg": "lokay-m/sent_items/45", "quote": "Let's discuss this prior to billing.  I agree that ENA owes us money"}
+      ]
+    },
+    {
+      "name": "EnPower database outage coordination and test deals",
+      "description": "IT announces and seeks approval for database downtime tied to the Netco/Estate split, the desk confirms, the outage is broadcast and the desk then enters test deals after restore.",
+      "participants": ["susan.amador@enron.com", "bill.williams@enron.com", "craig.dean@enron.com", "geir.solberg@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Approval waits on settlements and shift operators; test entry is passed to the next shift if the database is not up.",
+      "automation": "Scheduled maintenance notices with an automated post-restore smoke test.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.3,
+      "messages": ["williams-w3/sent_items/29", "williams-w3/inbox/110", "williams-w3/sent_items/24"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/29", "quote": "The DBAs for the EnPower database want to take it down from 4 PM Friday afternoon"},
+        {"msg": "williams-w3/inbox/110", "quote": "You must re-boot your machines following this shut down to access any EnPower applications."},
+        {"msg": "williams-w3/sent_items/24", "quote": "Please enter a few test deals on Saturday after the databases are brought back up."}
+      ]
+    },
+    {
+      "name": "Month-end write-off and intercompany liquidation accounting",
+      "description": "Accounting and risk staff chase differences in the general ledger, decide on write-offs, and plan intercompany termination and sale transactions for EMW, forwarding attachments and approvals by email.",
+      "participants": ["richard.tomaski@enron.com", "greg.whiting@enron.com", "gregg.penman@enron.com", "c..giron@enron.com", "laura.luce@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Attachments are re-forwarded because they were missing, and approvals are sequential across several reviewers.",
+      "automation": "A reconciliation workbench that lists unexplained GL differences with owners and status.",
+      "minutes_per_occurrence": 60,
+      "automatable_fraction": 0.25,
+      "messages": ["giron-d/inbox/138", "giron-d/inbox/137", "giron-d/inbox/127", "giron-d/inbox/124", "giron-d/inbox/123"],
+      "evidence": [
+        {"msg": "giron-d/inbox/138", "quote": "Can you guys help try to resolve these differences?  We may have to write them off anyways, but we need to know what they relate to."},
+        {"msg": "giron-d/inbox/127", "quote": "Terminate all physical and financial deals between ENA and EMW."},
+        {"msg": "giron-d/inbox/124", "quote": "Upon conversation with Jeff Hodge the intercompany AR/AP with ENA can be offset."},
+        {"msg": "giron-d/inbox/123", "quote": "I will complete this transaction and book it tomorrow."}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "batch": 10,
+  "processes": [
+    {
+      "name": "Unallocated meter volumes: deal or write-off to Unaccounted for Gas",
+      "description": "Clem Cernosek emails Daren Farmer one message per meter showing flow that landed on the HPL Strangers Gas Contract with no deal. He asks for a deal extension, a new deal, or a signed approval to write the volumes off. Daren must print, sign and return the original on paper.",
+      "participants": ["clem.cernosek@enron.com", "daren.farmer@enron.com", "aimee.lannou@enron.com", "mary.poorman@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Each request waits on Daren's printed and signed approval, and the same template is re-sent per meter. Questions about the cause (for example February Transco allocations) come back only after the request is sent.",
+      "automation": "Generate the per-meter exception list from the allocation data and route it for electronic approval. Auto-fill the deal, new-deal or write-off options and log the decision.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.6,
+      "messages": ["farmer-d/logistics/1961", "farmer-d/logistics/1963", "farmer-d/logistics/1973", "farmer-d/logistics/1974", "farmer-d/logistics/1975", "farmer-d/logistics/1978", "farmer-d/logistics/1985", "farmer-d/logistics/1986", "farmer-d/logistics/1988", "farmer-d/logistics/2002", "farmer-d/logistics/2005", "farmer-d/logistics/2006", "farmer-d/logistics/2004"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1974", "quote": "Logistics needs approval to writeoff these volumes to Unaccounted for Gas.  Please print, sign, and return original to Clem Cernosek."},
+        {"msg": "farmer-d/logistics/1978", "quote": "Logistics needs either (1) Deal #113050 extended to cover 9/15/99;  (2) a new deal to record these volumes; or (3) Logistics needs approval to writeoff these volumes to Unaccounted for Gas."},
+        {"msg": "farmer-d/logistics/2006", "quote": "Currently, the volume is booked to HPL Strangers Gas Contract.  Logistic needs approval to writeoff this volume to Unaccounted for Gas."},
+        {"msg": "farmer-d/logistics/1963", "quote": "Transco told us they would not go back and reallocate due to the statute of limitations (6 months)."}
+      ]
+    },
+    {
+      "name": "Enerfin / TETCO meter 98-0439 deal extensions and reallocation",
+      "description": "Volume management and schedulers go back and forth to extend prior-month deals, insert Unify paths and create accounting arrangements so small overflow volumes at meter 98-0439 stop landing on strangers gas. Each step needs a different person to extend a specific deal ticket.",
+      "participants": ["jackie.young@enron.com", "victor.lamadrid@enron.com", "daren.farmer@enron.com", "meredith.mitchell@enron.com", "sherlyn.schumack@enron.com", "cynthia.franklin@enron.com", "clem.cernosek@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Deal numbers are mistaken or sit with another desk (typo, wrong deal, no access), the OBA effective date moved, and volumes get changed two or three times. Requests get re-sent to Daren days later.",
+      "automation": "Flag days allocated to strangers gas against the OBA and prompt the deal owner with the exact ticket and volume. Keep one tracked work item instead of long forwarded email chains.",
+      "minutes_per_occurrence": 90,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/1960", "farmer-d/logistics/1967", "farmer-d/logistics/1971", "farmer-d/logistics/1972", "farmer-d/logistics/1977", "farmer-d/logistics/1981", "farmer-d/logistics/2003", "farmer-d/logistics/1982", "farmer-d/logistics/1983", "farmer-d/logistics/1987", "farmer-d/logistics/1999"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1960", "quote": "Can these deals be rolled to cover these couple of days?"},
+        {"msg": "farmer-d/logistics/1972", "quote": "We go round and round at this point changing volumes two, three or more times."},
+        {"msg": "farmer-d/logistics/1977", "quote": "The deal you reference is an HPL deal with Dynegy and I don't have access to it. I'm on the East desk."},
+        {"msg": "farmer-d/logistics/1999", "quote": "I know that this is a busy part of the day for you.  But, when you get a minute, can you please extend deal #465322"},
+        {"msg": "farmer-d/logistics/1983", "quote": "465490 is not a deal between ENA and HPL.. It is a Zone 5 Tennessee sale between ENA and a third party"}
+      ]
+    },
+    {
+      "name": "Requests to set up deals for meter flow with no nomination",
+      "description": "Schedulers and billing staff email Daren Farmer when a meter shows flow without a deal, or when brokered volumes need reallocating, asking him to create or extend a deal. Daren handles each one individually by email.",
+      "participants": ["aimee.lannou@enron.com", "thu.nguyen@enron.com", "rebecca.griffin@enron.com", "daren.farmer@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "The request waits on Daren to create the deal, and the requester must follow up to learn whether it was done. Old balances need manual reallocation guidance.",
+      "automation": "Auto-detect meters with flow but no nomination at month end and raise a deal-creation task to the owner. Provide a standard form with meter, counterparty and dates.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/1559", "farmer-d/logistics/1560", "farmer-d/logistics/1554", "farmer-d/logistics/1998"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1559", "quote": "Please let me know if you create a deal for meter 1351 and if you extend the deal for meter 1603."},
+        {"msg": "farmer-d/logistics/1560", "quote": "I need a deal set up for Nov 00.  Per Gary Hanks, gas is taken from South Texas and put into Midtex Pipeline at Dewville"},
+        {"msg": "farmer-d/logistics/1554", "quote": "I am unsure how to have Volume Management reallocate."}
+      ]
+    },
+    {
+      "name": "Nightly Schedule C release notification",
+      "description": "Darron Giron emails the credit contact a short note each time an amount is moved to or released from Schedule C. He writes it by hand with the dollar figure and resends or forwards it to others.",
+      "participants": ["darron.giron@enron.com", "chris.abel@enron.com", "daniel.falcone@enron.com", "kenneth.thibodeaux@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Manual one-line emails with amounts typed by hand, and later forwarded again to another recipient. The release timing is often unknown when the notice is sent.",
+      "automation": "Post the Schedule C add and release amounts automatically to a distribution list from the risk system.",
+      "minutes_per_occurrence": 5,
+      "automatable_fraction": 0.7,
+      "messages": ["giron-d/sent/399", "giron-d/sent/392", "giron-d/sent/200", "giron-d/sent/197", "giron-d/sent/191", "giron-d/sent/109"],
+      "evidence": [
+        {"msg": "giron-d/sent/399", "quote": "We released $75M tonight."},
+        {"msg": "giron-d/sent/200", "quote": "We are taking $100M to Schedule C tonight.  I don't know when it may be released."},
+        {"msg": "giron-d/sent/191", "quote": "We are removing the $100M from Schedule C that was put there on Friday."},
+        {"msg": "giron-d/sent/109", "quote": "We added $75M so Schedule C tonight."}
+      ]
+    },
+    {
+      "name": "Book and deal correction requests (flip to book, TAGG numbers, new curves)",
+      "description": "Settlement and support staff send Darron Giron deal numbers that sit in the wrong book, are missing a TAGG number, or need new curves. He forwards each to the person who owns the book, or sets up the item himself.",
+      "participants": ["darron.giron@enron.com", "stacey.vallejo@enron.com", "jason.wolfe@enron.com", "carole.frank@enron.com", "luchas.johnson@enron.com", "jeremy.wong@enron.com", "patrick.ryder@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Requests are urgent (invoice and settle the same day) but depend on a forward to whoever runs the book. Darron lacks access to some desks' deals, so he forwards again.",
+      "automation": "Route book-correction and TAGG-number lookups automatically by book owner. Show the owner and status of each deal.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.4,
+      "messages": ["giron-d/sent/419", "giron-d/sent/406", "giron-d/sent/405", "giron-d/sent/404", "giron-d/sent/411", "giron-d/sent/396", "giron-d/sent/362", "giron-d/sent/423"],
+      "evidence": [
+        {"msg": "giron-d/sent/405", "quote": "These need to be fixed right away this morning as I need to invoice and settle them today."},
+        {"msg": "giron-d/sent/419", "quote": "This needs to be fixed so liquidations will be correct for Novmeber."},
+        {"msg": "giron-d/sent/396", "quote": "See if you can help this guy.  I don't have access to Denver deals."},
+        {"msg": "giron-d/sent/411", "quote": "I set up these new curves this morning and need them added to Tagg"}
+      ]
+    },
+    {
+      "name": "Forwarding risk-management procedure memos to book administrators",
+      "description": "Darron Giron receives policy and process memos from Gossett, Kelly, Keiser and Kenne about books, curves, physical flags and bridging. He forwards each to his book administrators with a note like 'Please read'.",
+      "participants": ["darron.giron@enron.com", "anne.bike@enron.com", "carole.frank@enron.com", "chris.walker@enron.com", "jason.wolfe@enron.com", "jennifer.bagwell@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Manual forwarding to a hand-kept list. The same errors (books not marked physical, desk summaries wrongly keyed) recur and must be re-communicated.",
+      "automation": "Distribute procedure memos automatically to a maintained group with read acknowledgement. Add validation in the booking system for the recurring errors.",
+      "minutes_per_occurrence": 5,
+      "automatable_fraction": 0.6,
+      "messages": ["giron-d/sent/401", "giron-d/sent/384", "giron-d/sent/382", "giron-d/sent/381", "giron-d/sent/380", "giron-d/sent/364", "giron-d/sent/410", "giron-d/sent/402"],
+      "evidence": [
+        {"msg": "giron-d/sent/381", "quote": "Please make sure that all physical deals with a finacial component are marked physical in TAGG."},
+        {"msg": "giron-d/sent/364", "quote": "could you please forward this to your intra-month book admins."},
+        {"msg": "giron-d/sent/410", "quote": "In the past few months, the procedures for setting up new curves and books have not been followed by everyone."},
+        {"msg": "giron-d/sent/384", "quote": "it is extremely important that any deal booked to the East is communicated quickly to someone on my team."}
+      ]
+    },
+    {
+      "name": "Daily DPR, curve and P&L report distribution",
+      "description": "Darron Giron sends daily desk reports (DPR, curves, physical forward detail) to internal and external recipients and responds to quarter-close P&L requests. Files are attached by hand, and some go out without the attachment.",
+      "participants": ["darron.giron@enron.com", "daniel.falcone@enron.com", "james.simpson@enron.com", "sharon.smith@enron.com", "carole.frank@enron.com", "chris.walker@enron.com", "jason.wolfe@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Attachments forgotten and resent. Missing P&L top pages and curve shift reports from prior months require a chaser and compilation by the team.",
+      "automation": "Generate and send the daily reports on a schedule. Track which regions' P&L pages and curve shift reports have been received for quarter close.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.6,
+      "messages": ["giron-d/sent/376", "giron-d/sent/374", "giron-d/sent/371", "giron-d/sent/365", "giron-d/sent/420", "giron-d/sent/369"],
+      "evidence": [
+        {"msg": "giron-d/sent/374", "quote": "It would help if I attached the file."},
+        {"msg": "giron-d/sent/420", "quote": "we have not received the P&L top pages or curve shift reports for the following regions:  West Firm, FT Northwest and Mgmt. West."},
+        {"msg": "giron-d/sent/376", "quote": "12/21 Curves"},
+        {"msg": "giron-d/sent/369", "quote": "The Central desk has the other side of the transaction and if I backed your portion out, then the loss would be double counted."}
+      ]
+    },
+    {
+      "name": "Holiday and weather staffing coordination for Texas logistics desk",
+      "description": "Mary Poorman and Heather Choate canvass the logistics team by email for holiday coverage, weather contingency rooms and lunch attendance, then report the roster to Daren Farmer. Each reply is a separate reply-all email.",
+      "participants": ["mary.poorman@enron.com", "heather.choate@enron.com", "daren.farmer@enron.com", "tom.acton@enron.com", "mark.mccoy@enron.com", "aimee.lannou@enron.com", "eddie.janzen@enron.com", "sabrae.zajac@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Volunteers answer one by one by reply-all with the full quoted thread, and the organizer must compile the roster by hand.",
+      "automation": "Use a sign-up poll or shared calendar for coverage that auto-compiles the roster and notifies the manager.",
+      "minutes_per_occurrence": 25,
+      "automatable_fraction": 0.6,
+      "messages": ["farmer-d/logistics/1990", "farmer-d/logistics/1991", "farmer-d/logistics/1993", "farmer-d/logistics/1994", "farmer-d/logistics/1995", "farmer-d/logistics/1996", "farmer-d/logistics/1997", "farmer-d/logistics/1552", "farmer-d/logistics/1556"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1990", "quote": "would like to have a minimum of three on staff, so I need two volunteers (one offsystem, just in  case)."},
+        {"msg": "farmer-d/logistics/1997", "quote": "The following Logistics personnel will be in the office on Tuesday:"},
+        {"msg": "farmer-d/logistics/1552", "quote": "The Texas Desk has reserved 15 rooms at the Hyatt in preparation of this Inclement Weather."},
+        {"msg": "farmer-d/logistics/1991", "quote": "Mary since I will be on call I'll be in here."}
+      ]
+    },
+    {
+      "name": "Analyst and interview recruiting coordination",
+      "description": "Darron Giron works with HR on analyst needs: asking how to get on candidate lists, completing needs assessment forms, and collecting interview questions from peers. It is done by forwarding emails among managers and recruiters.",
+      "participants": ["darron.giron@enron.com", "shelly.jones@enron.com", "andrea.richards@enron.com", "william.kelly@enron.com", "jeffrey.gossett@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Darron does not know the process and each step is relayed through a different HR contact. Interview questions are gathered by manual reply chains.",
+      "automation": "Provide a single requisition intake form and a shared interview question bank.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.3,
+      "messages": ["giron-d/sent/429", "giron-d/sent/408", "giron-d/sent/363"],
+      "evidence": [
+        {"msg": "giron-d/sent/429", "quote": "I am ignorant of the process, so if I am presuming something incorrect, I would appreciate info on how this is supposed to work."},
+        {"msg": "giron-d/sent/408", "quote": "please complete the attached \"Needs Assessment Form \" and return to me so that I may forward resumes to you of candidates that fit your need."},
+        {"msg": "giron-d/sent/363", "quote": "Some aren't technical.  I don't have any problem solving questions."}
+      ]
+    }
+  ]
+}

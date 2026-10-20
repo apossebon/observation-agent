@@ -1,0 +1,119 @@
+{
+  "batch": 27,
+  "processes": [
+    {
+      "name": "Weekly California Capacity Report",
+      "description": "Every Friday Michelle Lokay compiles Transwestern and El Paso deliveries to California, utilization percentages and posted Gas Daily prices, and emails the same-format summary to the TW commercial team. Figures are re-keyed each week from pipeline data and price postings.",
+      "participants": ["michelle.lokay@enron.com", "kimberly.watson@enron.com", "lindy.donoho@enron.com", "lorraine.lindberg@enron.com", "mark.mcconnell@enron.com", "audrey.robertson@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Numbers are pulled and typed by hand every week into an identical template, so any late data delays the report.",
+      "automation": "Generate the report from the deliveries and price feeds on a schedule and email it automatically.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.7,
+      "messages": ["lokay-m/sent_items/86", "lokay-m/sent_items/97", "lokay-m/sent_items/110", "lokay-m/sent_items/117", "lokay-m/sent_items/131", "lokay-m/sent_items/146", "lokay-m/inbox/32"],
+      "evidence": [
+        {"msg": "lokay-m/sent_items/86", "quote": "Transwestern's average deliveries to California were 1011 MMBtu/d (93%), with San Juan lateral throughput at 872 MMBtu/d."},
+        {"msg": "lokay-m/sent_items/110", "quote": "El Paso's average deliveries to California were 2063 MMBtu/d (70%):"},
+        {"msg": "lokay-m/sent_items/117", "quote": "Transwestern's average deliveries to California were 815 MMBtu/d (75%), with San Juan lateral throughput at 879 MMBtu/d."}
+      ]
+    },
+    {
+      "name": "Pipeline imbalance reconciliation with El Paso/Mojave/CIG",
+      "description": "Michelle reconciles monthly scheduled and measured volume differences with El Paso (Mojave, CIG/Tumbleweed). She requests daily volume statements and Location Quantity Summary lists, runs further reports, and sends back summaries of faxed support showing which days caused each difference.",
+      "participants": ["michelle.lokay@enron.com", "susan.mayher@elpaso.com", "richard.hanagriff@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Support moves by fax and forwarded email chains. Statements are requested month by month and the same difference tables are re-sent repeatedly.",
+      "automation": "Compare both parties' scheduled and measured volumes automatically, flag the days that differ, and assemble the support package.",
+      "minutes_per_occurrence": 90,
+      "automatable_fraction": 0.5,
+      "messages": ["lokay-m/sent_items/89", "lokay-m/sent_items/90", "lokay-m/sent_items/91", "lokay-m/sent_items/103", "lokay-m/sent_items/123", "lokay-m/sent_items/101", "lokay-m/sent_items/122", "lokay-m/sent_items/125", "lokay-m/sent_items/127", "lokay-m/inbox/30"],
+      "evidence": [
+        {"msg": "lokay-m/sent_items/89", "quote": "Based on your reconciling, I will run additional reports on our side for 09/00 and 11/00."},
+        {"msg": "lokay-m/sent_items/103", "quote": "Can I have one for each of the following months for Mojave #56696 to confirm Scheduled volumes?"},
+        {"msg": "lokay-m/sent_items/122", "quote": "Here is a summary of the support I have faxed to you concerning the scheduled volume discrepancies:"},
+        {"msg": "lokay-m/sent_items/101", "quote": "Could you re-check your scheduled volumes?"}
+      ]
+    },
+    {
+      "name": "Time report submission chaser",
+      "description": "Audrey Robertson emails the group before each deadline to remind them to submit time reports. Each person replies with absences or vacation days that need to be recorded.",
+      "participants": ["audrey.robertson@enron.com", "michelle.lokay@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Reminders go out repeatedly and people reply individually with their absence details.",
+      "automation": "Send automatic deadline reminders and collect time and absence entries in a form or timesheet tool.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.6,
+      "messages": ["lokay-m/sent_items/92", "lokay-m/sent_items/99", "lokay-m/sent_items/115", "lokay-m/sent_items/142"],
+      "evidence": [
+        {"msg": "lokay-m/sent_items/92", "quote": "Don't forget to submit your time reports by Thursday morning."},
+        {"msg": "lokay-m/sent_items/115", "quote": "I have been here except last Tuesday..traveling for work!"},
+        {"msg": "lokay-m/sent_items/142", "quote": "I took 1/2 day of vacation last Friday, 03/08.  Thanks."}
+      ]
+    },
+    {
+      "name": "TW web page review before production",
+      "description": "Developers post a modified TW Unsubscribed Capacity page on a test site. Commercial and marketing staff review it by email, raise print and format issues, and iterate before the page moves to production.",
+      "participants": ["jeff.huo@enron.com", "perry.frazier@enron.com", "michelle.lokay@enron.com", "toby.kuehl@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Review happens in long forwarded chains with calls requested. Printing issues went back and forth, and the page returned an error.",
+      "automation": "Use a tracked review and sign-off workflow with test links and issue lists in one place.",
+      "minutes_per_occurrence": 60,
+      "automatable_fraction": 0.3,
+      "messages": ["lokay-m/sent_items/83", "lokay-m/sent_items/87"],
+      "evidence": [
+        {"msg": "lokay-m/sent_items/87", "quote": "When the formatting issues are resolved, I recommend we move this to production."},
+        {"msg": "lokay-m/sent_items/87", "quote": "I added an extra \"Printable Page\" button on the page so that the entire page can be printed out."},
+        {"msg": "lokay-m/sent_items/83", "quote": "Please go to http://twdev.ets.enron.com our testing site to view the modified TW Unsubscribed Capacity web page and see if this is what you guys want."}
+      ]
+    },
+    {
+      "name": "Contract, OBA and amendment administration",
+      "description": "Michelle routes contract changes to Contract Administration, such as OBA name changes and amendment volume changes. She also tracks contract status lists and answers billing questions about expired contracts. Each step is a forward or email to the contract group.",
+      "participants": ["michelle.lokay@enron.com", "dennis.lee@enron.com", "craig.buehler@enron.com", "jeanette.doll@enron.com", "jan.moore@enron.com", "bill.rapp@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Changes depend on a customer formally requesting by email, and contracts wait on missing CAFs or tender and execute status. Expired-contract billing was left unresolved.",
+      "automation": "Use a contract workflow tracker with request intake, status and automatic notifications.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.4,
+      "messages": ["lokay-m/sent_items/105", "lokay-m/sent_items/149", "lokay-m/sent_items/150", "lokay-m/sent_items/154", "lokay-m/sent_items/128", "lokay-m/inbox/37", "lokay-m/sent_items/126"],
+      "evidence": [
+        {"msg": "lokay-m/sent_items/150", "quote": "Contract Administration needs you to email them officially requesting a name change.  Thanks."},
+        {"msg": "lokay-m/sent_items/149", "quote": "Burlington has agreed to execute this outstanding OBA if the name on the contract is changed."},
+        {"msg": "lokay-m/sent_items/126", "quote": "We still need to bill Conoco the TCR II Surcharges on 20,000 MMBtu per day."}
+      ]
+    },
+    {
+      "name": "Meeting and training scheduling by email",
+      "description": "Meetings, project discussions and training sessions are arranged through email threads. Participants propose slots, reply with conflicts and reconfirm. The threads cover Baker Field, Red Lake, Window Rock, CAS training and the TW system demo.",
+      "participants": ["michelle.lokay@enron.com", "mansoor.abdmoulaie@enron.com", "ron.matthews@enron.com", "ramona.betancourt@enron.com", "perry.frazier@enron.com", "audrey.robertson@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Slots are negotiated over several reply rounds, and meetings are cancelled or rescheduled.",
+      "automation": "Use a calendar scheduling assistant that polls availability and sends the invite.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.6,
+      "messages": ["lokay-m/sent_items/118", "lokay-m/sent_items/119", "lokay-m/sent_items/120", "lokay-m/sent_items/136", "lokay-m/sent_items/124", "lokay-m/sent_items/153", "lokay-m/inbox/31", "lokay-m/inbox/33", "lokay-m/inbox/34", "lokay-m/sent_items/85"],
+      "evidence": [
+        {"msg": "lokay-m/sent_items/118", "quote": "Is Monday Mar-4, 9-10 am or Tuesday-Mar-4, 9-10 am ( my office) good for you to discuss the Baker Field project?"},
+        {"msg": "lokay-m/sent_items/153", "quote": "Let's schedule all the marketers:  me, Lorraine, TK, Paul, Mark, and Kim."},
+        {"msg": "lokay-m/inbox/34", "quote": "has been cancelled due to recent personnel changes at Transwestern. Another meeting will be scheduled later this week."},
+        {"msg": "lokay-m/sent_items/124", "quote": "Is there still room in the 03/21 class?  Thanks."}
+      ]
+    },
+    {
+      "name": "Weekly bullets status roll-up",
+      "description": "The manager asks each marketer for weekly accomplishments (bullets), including a reply of none if there is nothing to report. Michelle replies with a short list of deals, OBA reconciliations and sales.",
+      "participants": ["kimberly.watson@enron.com", "michelle.lokay@enron.com", "darrell.schoolcraft@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "The manager has to chase for bullets on short notice and asks for a no-bullets reply from everyone.",
+      "automation": "Pull status items from the deal and contract trackers and prefill the weekly summary.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.4,
+      "messages": ["lokay-m/sent_items/132", "lokay-m/sent_items/160"],
+      "evidence": [
+        {"msg": "lokay-m/sent_items/132", "quote": "Please send me your bullets ASAP this morning.  If you have no bullets to report, please reply to me that you have none."},
+        {"msg": "lokay-m/sent_items/132", "quote": "No bullets....ongoing with TXU, Burlington, Mojave."},
+        {"msg": "lokay-m/sent_items/160", "quote": "New dollar-valued OBA, containing monthly cash out provision, with Burlington is executed."}
+      ]
+    }
+  ]
+}

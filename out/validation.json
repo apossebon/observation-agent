@@ -1,0 +1,11 @@
+{
+ "stage": "observe",
+ "checked": 918,
+ "valid": 918,
+ "rejected": [],
+ "processes_dropped": [],
+ "batches_validated": 28,
+ "batches_missing": [],
+ "processes_kept": 232,
+ "messages_attributed": 1623
+}

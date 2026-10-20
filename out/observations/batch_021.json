@@ -1,0 +1,110 @@
+{
+  "batch": 21,
+  "processes": [
+    {
+      "name": "Real-time power deal entry and position hand-off (Enpower/CAPS)",
+      "description": "The Portland real-time desk builds trades in Enpower and schedules in CAPS, then emails positions and deal numbers to the shift. Bill Williams and Kate Symes review these emails for mismatches against Enpower and correct them by email.",
+      "participants": ["bill.williams@enron.com", "kate.symes@enron.com", "ryan.slinger@enron.com", "diane.cutsforth@enron.com", "diana.scholtes@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Position emails carry wrong hours, delivery points or deal numbers that differ from Enpower, so they are re-clarified by email. Deals sit in CAPS but not Enpower until the next day.",
+      "automation": "Generate the shift position email from Enpower deals directly, and flag mismatches between emailed positions and Enpower before sending.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.5,
+      "messages": ["williams-w3/sent_items/101", "williams-w3/sent_items/97", "williams-w3/sent_items/112", "williams-w3/sent_items/120", "williams-w3/sent_items/104", "williams-w3/sent_items/126"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/101", "quote": "I have made the Enpower deals (868223, 868224, 868234) to buy from PinWest and sell to the imbalance in SP-15."},
+        {"msg": "williams-w3/sent_items/112", "quote": "do not make the Enpower till the next day if it will be under St-Whourly"},
+        {"msg": "williams-w3/sent_items/120", "quote": "it is imperative that any information included in an e-mail to Real Time corroborates with data entered into Enpower."},
+        {"msg": "williams-w3/sent_items/104", "quote": "We will return to running the Enpower to CAPS report as usual."},
+        {"msg": "williams-w3/sent_items/97", "quote": "We are long 20 mws in SDG1 for HE 2 and HE 3."}
+      ]
+    },
+    {
+      "name": "CAISO congestion revenue settlement checks",
+      "description": "Real-time flags days with congestion revenue so Volume Management settles it from the inc sheet or CAPS. Volume Management recalculates the charges by hour and the two sides reconcile missing hours by email.",
+      "participants": ["bill.williams@enron.com", "jim.reyes@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Hours were missing from Volume Management's hand calculation and from the CAISO site, so Bill had to point to the sheet location in follow-up emails. Published CAISO prices did not match bids, which forces manual bid-price input.",
+      "automation": "Compute hourly congestion revenue from schedules and bids and reconcile it against the settlement entries automatically, flagging missing hours.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.5,
+      "messages": ["williams-w3/sent_items/96", "williams-w3/sent_items/94", "williams-w3/sent_items/90", "williams-w3/sent_items/89", "williams-w3/sent_items/117"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/96", "quote": "We have recieved significant amounts of congestion revenue on real-time for 11/13."},
+        {"msg": "williams-w3/sent_items/89", "quote": "You can find HE 10 through 18 at the bottom of the November Service Sheet."},
+        {"msg": "williams-w3/sent_items/90", "quote": "We also received congestion revenue for HE 10 through HE 18."},
+        {"msg": "williams-w3/sent_items/117", "quote": "Our volume management group will then be inputing our bid price rather than the published congestion management price"}
+      ]
+    },
+    {
+      "name": "Gas deal and meter corrections in POPS/Unify",
+      "description": "Logistics and settlements staff ask Daren Farmer or deal-entry colleagues to find, back-date or add gas deals so meters and invoices reconcile. They trace volumes through POPS, Unify and Path Manager by hand.",
+      "participants": ["j..farmer@enron.com", "megan.parker@enron.com", "sherlyn.schumack@enron.com", "michael.olsen@enron.com", "rita.wynne@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Missing deals are found only after an invoice arrives or a meter is traced by hand. Closed-period payback cannot be booked in POPS and needs manual entries.",
+      "automation": "Flag meters with flow but no deal each month and propose the missing deal. Show the supply path and price for a deal directly.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/30", "farmer-d/logistics/29", "farmer-d/logistics/22", "farmer-d/logistics/21"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/30", "quote": "I can follow the ENA deals in path Manager, but I am having a hard time with the HPLC deals."},
+        {"msg": "farmer-d/logistics/29", "quote": "I did not see a deal in Unify, so I went to POPS to find the meter."},
+        {"msg": "farmer-d/logistics/22", "quote": "Can you back date deals 83347 and 83905  to start 6/1/99 through  12/31/99 for the Black Marlin meter."},
+        {"msg": "farmer-d/logistics/21", "quote": "we can't do it in POPS so we will have to make manual entries to clear the imbalance from the books"}
+      ]
+    },
+    {
+      "name": "Ad hoc information requests and chasers",
+      "description": "Colleagues and customers email individuals for data, answers or input, and re-send when no reply arrives. This covers gas market data, negotiation parameters, slide content, past-due invoice opinions and nomination access surveys.",
+      "participants": ["j..farmer@enron.com", "elizabeth.webb@enron.com", "richard.hanagriff@enron.com", "michelle.lokay@enron.com", "kevin.hyatt@enron.com", "csulzer@grenergy.com", "c..giron@enron.com", "richard.pinion@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Requests wait on one person, and chasers repeat the original ask. The AR aging item stayed open from September to October.",
+      "automation": "Track open requests with owners and due dates and send automatic reminders. Keep standard data pulls and answers in a shared place.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.3,
+      "messages": ["farmer-d/logistics/27", "lokay-m/inbox/42", "lokay-m/inbox/41", "giron-d/inbox/368", "farmer-d/logistics/20"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/27", "quote": "Have you had a chance to complete the Texas logistics information for the PowerPoint presentation?"},
+        {"msg": "lokay-m/inbox/42", "quote": "This past due amount is getting old and it needs to be resolved?"},
+        {"msg": "lokay-m/inbox/41", "quote": "Is an answer possible by Tuesday 11/12?"},
+        {"msg": "giron-d/inbox/368", "quote": "Is it possible for someone at Enron to occasionally provide the gas market data that I need?"},
+        {"msg": "farmer-d/logistics/20", "quote": "Please ask your schedulers to e-mail me which pipelines still maintain the ability to do Nominations via a dial up connection to their EBB"}
+      ]
+    },
+    {
+      "name": "Desk-wide operational notices to the real-time shift",
+      "description": "Bill Williams relays trading restrictions, contract numbers, transmission availability and compliance reminders to the shift by email. He also compiles lists such as the traders using FSP on request.",
+      "participants": ["bill.williams@enron.com", "shift.dl-portland@enron.com", "susan.amador@enron.com", "diana.scholtes@enron.com", "kate.symes@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Notices are hand-written and forwarded days after the original (the BPA contract number was forwarded four weeks later). Lists of traders are rebuilt by hand per request.",
+      "automation": "Keep a maintained roster, counterparty restrictions and contract-number page that the shift reads, with change notifications.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.4,
+      "messages": ["williams-w3/sent_items/95", "williams-w3/sent_items/92", "williams-w3/sent_items/124", "williams-w3/sent_items/119", "williams-w3/sent_items/100"],
+      "evidence": [
+        {"msg": "williams-w3/sent_items/95", "quote": "Extra ST-SW transmission can be viewed in the Available Transmission Sheet."},
+        {"msg": "williams-w3/sent_items/92", "quote": "Our old BPA contract # was 96104 our new BPA Contract # is 10728."},
+        {"msg": "williams-w3/sent_items/124", "quote": "Do not sell to them, do not buy from them."},
+        {"msg": "williams-w3/sent_items/119", "quote": "Please send me a list of the real time traders who will be using FSP."},
+        {"msg": "williams-w3/sent_items/100", "quote": "Everything must be tagged both light load and heavy load."}
+      ]
+    },
+    {
+      "name": "Meeting, call and travel coordination with counterparties",
+      "description": "Giron and a customer contact (GRE) arrange conference calls, hotel, dinner and flights by email. The assistant and travel agency circulate the itineraries and calendar invites.",
+      "participants": ["c..giron@enron.com", "csulzer@grenergy.com", "kimberly.bates@enron.com", "laura.luce@enron.com"],
+      "frequency_hint": "ad hoc",
+      "stall_points": "Plans change (cancelled Houston meeting, postponed flight) and each change needs another email round to confirm numbers and times.",
+      "automation": "Use a shared scheduling and itinerary tool that confirms call times and dial-ins and updates all parties on a change.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.4,
+      "messages": ["giron-d/inbox/374", "giron-d/inbox/421", "giron-d/inbox/379", "giron-d/inbox/444", "giron-d/inbox/439"],
+      "evidence": [
+        {"msg": "giron-d/inbox/374", "quote": "I recommend a brief conference call at 10:00 Tuesday."},
+        {"msg": "giron-d/inbox/421", "quote": "I was thinking that perhaps we should plan to have dinner on Monday evening."},
+        {"msg": "giron-d/inbox/379", "quote": "Should I use 763-241-2490 as the number to use for our conference call?"},
+        {"msg": "giron-d/inbox/439", "quote": "Please accept this invitation, as it will automatically populate onto your schedule."}
+      ]
+    }
+  ]
+}

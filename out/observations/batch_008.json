@@ -1,0 +1,145 @@
+{
+  "batch": 8,
+  "processes": [
+    {
+      "name": "Flow-without-deal exceptions: logistics asks Daren Farmer to extend or create deals",
+      "description": "Logistics and volume analysts find gas that flowed at a meter with no nomination or an expired deal. They email Daren Farmer to extend or create a deal ticket so volume can be allocated, and Daren often routes it to contracts or the desk. Each case is a separate email thread with deal and meter numbers retyped.",
+      "participants": ["mary.poorman@enron.com", "daren.farmer@enron.com", "julie.meyers@enron.com", "aimee.lannou@enron.com", "susan.hadix@enron.com", "jackie.young@enron.com", "mark.mccoy@enron.com", "victor.lamadrid@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "Requests wait on Daren or the deal owner, who is sometimes out. Follow-ups ask for status again, and a request can turn out to be for a period too old to process.",
+      "automation": "Flag meter flow with no active deal automatically and route a pre-filled extension request to the deal owner with a status tracker. This would replace ad hoc emails and repeated status chasers.",
+      "minutes_per_occurrence": 25,
+      "automatable_fraction": 0.5,
+      "messages": ["farmer-d/logistics/1456", "farmer-d/logistics/1457", "farmer-d/logistics/1458", "farmer-d/logistics/1474", "farmer-d/logistics/1485", "farmer-d/logistics/1506", "farmer-d/logistics/1478", "farmer-d/logistics/1479", "farmer-d/logistics/1482", "farmer-d/logistics/1480", "farmer-d/logistics/1486", "farmer-d/logistics/1489", "farmer-d/logistics/1492", "farmer-d/logistics/1493", "farmer-d/logistics/1502", "farmer-d/logistics/1497"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1479", "quote": "I have some flow at the above referenced meter without a deal.  Flow was for the first 2 days only"},
+        {"msg": "farmer-d/logistics/1478", "quote": "Can you extend the deal throughout the month so that the volumes will have a deal to link to."},
+        {"msg": "farmer-d/logistics/1485", "quote": "Daren - What is the status of meter 6387?"},
+        {"msg": "farmer-d/logistics/1480", "quote": "Gas flowed for the first four days without a deal.  Please input a deal to cover."},
+        {"msg": "farmer-d/logistics/1482", "quote": "The contract attached to that deal was a GTC Firm which ended 9/30/00.  I created a new ticket for those two days (461059)."}
+      ]
+    },
+    {
+      "name": "P&L top sheet and curve shift support requests from the Arthur Andersen gas testing group",
+      "description": "A group led by Sharon Smith and Carrie Richardson requests P&L top sheets and curve shift reports for named books and dates. Darron Giron forwards each request to his analysts to gather the support, then tells the requester it is ready.",
+      "participants": ["darron.giron@enron.com", "sharon.smith@enron.com", "chris.walker@enron.com", "jason.wolfe@enron.com", "jennifer.bagwell@enron.com", "carole.frank@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Requests arrive as 2nd requests, and the requester has to resend info that was misplaced. Every ask is manually forwarded to analysts and the support is gathered by hand.",
+      "automation": "Keep a monthly request tracker and auto-generate top sheets and curve shift reports for the requested books and dates. The tool could also remind owners of open requests.",
+      "minutes_per_occurrence": 60,
+      "automatable_fraction": 0.5,
+      "messages": ["giron-d/sent/583", "giron-d/sent/574", "giron-d/sent/521", "giron-d/sent/517", "giron-d/sent/516", "giron-d/sent/515"],
+      "evidence": [
+        {"msg": "giron-d/sent/583", "quote": "Gather this info when you get a chance and give it to me.  Thanks."},
+        {"msg": "giron-d/sent/516", "quote": "Please get this info to me and I will pass it on to AA.  Thanks."},
+        {"msg": "giron-d/sent/516", "quote": "In order for us to complete our monthly gas testing, please provide the following items."},
+        {"msg": "giron-d/sent/521", "quote": "I missplaced the info we were speaking about yesterday.  Please send it to me again so I can follow up.  Thanks."},
+        {"msg": "giron-d/sent/515", "quote": "Please provide us with the P&L top sheet as of October 31 for the following books."}
+      ]
+    },
+    {
+      "name": "Nightly post-id officialization and V@R position checks",
+      "description": "Book admins must make sure each post id is officialized every night, using a macro that queries official books by portfolio and book code. Darron Giron forwards the macro, its modifications and the V@R controls to his analysts and reminds them to run it daily.",
+      "participants": ["darron.giron@enron.com", "jason.wolfe@enron.com", "anne.bike@enron.com", "carole.frank@enron.com", "chris.walker@enron.com", "jennifer.bagwell@enron.com", "dutch.quigley@enron.com", "kam.keiser@enron.com"],
+      "frequency_hint": "daily",
+      "stall_points": "The nightly run is informal. One analyst runs it most nights, and Darron has to remind the team to do it every night. The macro has been replaced, so every tool update must be forwarded by hand.",
+      "automation": "Schedule the official post-id check as a nightly job that emails a sheet of unofficialized books to each controller, replacing the manually run macro and reminder emails.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.7,
+      "messages": ["giron-d/sent/582", "giron-d/sent/580", "giron-d/sent/570", "giron-d/sent/533"],
+      "evidence": [
+        {"msg": "giron-d/sent/582", "quote": "Use it to make sure all your postid's that need to be, are officialized each night."},
+        {"msg": "giron-d/sent/533", "quote": "we need to have the last person finished do it every day."},
+        {"msg": "giron-d/sent/533", "quote": "All regional controllers will receive a sheet at the end of the night, verifying that all books are officialized."},
+        {"msg": "giron-d/sent/580", "quote": "This one requires a comment in all post-id's to pull in only those."}
+      ]
+    },
+    {
+      "name": "Moving deals between books (ECC/Canadian deals, index book move)",
+      "description": "The Calgary-based invoicing contact (Stacey Vallejo) asks the controllers to flip ECC deals from US books to the FT-US/CAND-ERMS book before invoicing. Giron receives the requests, forwards them to analysts to fix, and also asks IT to move index deals between books.",
+      "participants": ["darron.giron@enron.com", "stacey.vallejo@enron.com", "jeffrey.gossett@enron.com", "jason.wolfe@enron.com", "chris.walker@enron.com", "jeremy.wong@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Requests land with the wrong person and are forwarded. The same message is forwarded to analysts more than once, and the invoicing deadline falls right after month-end.",
+      "automation": "Run a month-end check that lists ECC deals sitting in US books and generates a re-book work list for the owning controller, replacing the manual sweep and forwarding.",
+      "minutes_per_occurrence": 30,
+      "automatable_fraction": 0.5,
+      "messages": ["giron-d/sent/551", "giron-d/sent/550", "giron-d/sent/407", "giron-d/sent/539", "giron-d/sent/535", "giron-d/sent/575"],
+      "evidence": [
+        {"msg": "giron-d/sent/550", "quote": "There are a few deals in the MGMT-WEST book that need to be moved to the FT-US/CAND-ERMS BOOK."},
+        {"msg": "giron-d/sent/539", "quote": "they need to be flipped to the FT-US/CAND-ERMS book as soon as possible."},
+        {"msg": "giron-d/sent/535", "quote": "I can't remember if I forwarded this to you already.  Thanks."},
+        {"msg": "giron-d/sent/407", "quote": "make sure that there aren't any more deals with ECC and a third counterparty in this book as it messes up invoicing and settlement."},
+        {"msg": "giron-d/sent/575", "quote": "Currently, all of our index deals are in the FT-WEST book.  I would like to move them all to the GD-NEW book."}
+      ]
+    },
+    {
+      "name": "System access and set-up requests (minibook, book codes, TDS, net send, curves)",
+      "description": "Giron sends one-off requests to the systems group to get calc and print access for books, add curves to Tagg, add users to the net send list, and name TDS security approvers. Each is a separate email and often needs a follow-up.",
+      "participants": ["darron.giron@enron.com", "jeremy.wong@enron.com", "dutch.quigley@enron.com", "william.kasemervisz@enron.com", "jeffrey.gossett@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Access arrives partially. Calc was granted for FT-NW but not print, so a second request followed. Giron also chased the status of an earlier request.",
+      "automation": "Use a single access-request form with status tracking and automatic approval routing, so requests and follow-ups are not emailed one by one.",
+      "minutes_per_occurrence": 10,
+      "automatable_fraction": 0.5,
+      "messages": ["giron-d/sent/568", "giron-d/sent/567", "giron-d/sent/532", "giron-d/sent/520", "giron-d/sent/541", "giron-d/sent/578", "giron-d/sent/573", "giron-d/sent/569"],
+      "evidence": [
+        {"msg": "giron-d/sent/532", "quote": "I don't have access to run this book.  Will you please get me authorization?  Thanks."},
+        {"msg": "giron-d/sent/520", "quote": "I can calc postids for FT-NW but cannot print.  Please help.  Thanks."},
+        {"msg": "giron-d/sent/568", "quote": "I need to have access to calc all books on a minibook level."},
+        {"msg": "giron-d/sent/541", "quote": "Please add Carole Frank to the list.  Her NT username is cfrank2."},
+        {"msg": "giron-d/sent/573", "quote": "Please add them to Tagg.  Call me if you have any questions."}
+      ]
+    },
+    {
+      "name": "Deal data corrections across Tagg, Sitara, Unify and EOL",
+      "description": "Giron and colleagues look up or fix deal identifiers and prices across systems. They provide Sitara numbers for Tagg deals, flag deals missing EOL or Sitara numbers, and question prices pulled into Unify. Each is a case-by-case email to the deal owner.",
+      "participants": ["darron.giron@enron.com", "doug.nelson@enron.com", "kevin.radous@enron.com", "chris.schomer@enron.com", "lisa.valderrama@enron.com"],
+      "frequency_hint": "weekly",
+      "stall_points": "Cross-system IDs are not linked, so the same lookups are done by hand. Giron has to remind traders to always record the numbers in Tagg.",
+      "automation": "Auto-link Tagg, Sitara and EOL ids and flag deals with missing links or missing prices, replacing manual lookup emails.",
+      "minutes_per_occurrence": 20,
+      "automatable_fraction": 0.5,
+      "messages": ["giron-d/sent/571", "giron-d/sent/561", "giron-d/sent/549", "giron-d/sent/513"],
+      "evidence": [
+        {"msg": "giron-d/sent/549", "quote": "It is very important that you always put this information in Tagg."},
+        {"msg": "giron-d/sent/571", "quote": "The Sitara numbers for both of these deals are in the comments section of each deal in Tagg."},
+        {"msg": "giron-d/sent/561", "quote": "I think Sitara deal 286147 is not pulling the correct price in Unify."},
+        {"msg": "giron-d/sent/513", "quote": "Yet, I show no transactions for them in that region."}
+      ]
+    },
+    {
+      "name": "Volume write-offs, manual payments and settlement price disputes",
+      "description": "Logistics prepares formal write-off approvals for stray volumes and pushes to clean up manual payments. Counterparty price disputes are traced through the deal ticket, and Daren Farmer approves or adjusts the entries.",
+      "participants": ["daren.farmer@enron.com", "clem.cernosek@enron.com", "fred.boas@enron.com", "aimee.lannou@enron.com", "mary.poorman@enron.com", "pat.clynes@enron.com", "charlene.richmond@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "Approvals need a printed, signed original. Price disputes run across weeks of replies with no clear owner, and the counterparty keeps pressing.",
+      "automation": "Provide a write-off approval workflow with electronic sign-off and a manual-check log by counterparty, meter and deal, replacing printed approvals and ad hoc emails.",
+      "minutes_per_occurrence": 45,
+      "automatable_fraction": 0.4,
+      "messages": ["farmer-d/logistics/1468", "farmer-d/logistics/1499", "farmer-d/logistics/1472", "farmer-d/logistics/1488", "farmer-d/logistics/1507", "farmer-d/logistics/1519", "farmer-d/logistics/1890"],
+      "evidence": [
+        {"msg": "farmer-d/logistics/1499", "quote": "Please print, approve, and return original to me."},
+        {"msg": "farmer-d/logistics/1468", "quote": "Get Daren to put the proper deal tickets in MOPS and then let me know how to path this gas."},
+        {"msg": "farmer-d/logistics/1472", "quote": "I would propose that Logistics be included in the communication of when checks are manually cut."},
+        {"msg": "farmer-d/logistics/1507", "quote": "Daren would you look at the price for 29 and 30th of March 2000 .  There are no prices for these days but volume was scheduled for these days."},
+        {"msg": "farmer-d/logistics/1488", "quote": "Help .   Steve Mauch at Hesco is wanting an answer ASAP"}
+      ]
+    },
+    {
+      "name": "HR and supervisor administration (PEP, reviews, rosters)",
+      "description": "Giron handles HR system tasks, including PEP supervisor set-up, correcting direct reports, performance review names and ranking his team for class rosters. These are repeated back-and-forth emails with HR.",
+      "participants": ["darron.giron@enron.com", "hector.mcloughlin@enron.com", "susan.wimberley@enron.com", "jeffrey.gossett@enron.com", "william.kelly@enron.com"],
+      "frequency_hint": "monthly",
+      "stall_points": "The reporting lines in PEP are wrong and need several rounds to correct, since HR cannot change records outside ENA.",
+      "automation": "Sync reporting lines from the HR master data into PEP, so supervisors are not corrected by email.",
+      "minutes_per_occurrence": 15,
+      "automatable_fraction": 0.4,
+      "messages": ["giron-d/sent/789", "giron-d/sent/523", "giron-d/sent/511", "giron-d/sent/510", "giron-d/sent/790"],
+      "evidence": [
+        {"msg": "giron-d/sent/789", "quote": "I don't believe I am set up to review as a supervisor in the PEP system.  How do I get this changed in the system?"},
+        {"msg": "giron-d/sent/523", "quote": "Kimberly S. Olinger is listed as reporting to me in the PEP system.  She should be moved to Jeff Gossett."},
+        {"msg": "giron-d/sent/511", "quote": "I see Jennifer Bagwell in the system, but not Christopher Walker."}
+      ]
+    }
+  ]
+}
